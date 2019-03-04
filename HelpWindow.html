@@ -5,34 +5,44 @@
 <div class="paragraph">
 <p>By: <code>Team W17-2</code>      Since: <code>Feb 2019</code>      Licence: <code>MIT</code></p>
 </div>
+<div class="paragraph">
+<p>Last Updated: 2/12/2019 21:35:35</p>
+</div>
 </div>
 <div id="toc" class="toc">
 <div id="toctitle"></div>
 <ul class="sectlevel1">
 <li><a href="#introduction">1. Introduction</a></li>
-<li><a href="#quick-start">2. Quick Start</a></li>
-<li><a href="#Features">3. Features</a>
+<li><a href="#prerequisites">2. Prerequisites</a></li>
+<li><a href="#quick-start-guide">3. Quick Start Guide</a></li>
+<li><a href="#commands-and-features">4. Commands and Features</a>
 <ul class="sectlevel2">
-<li><a href="#viewing-help-code-help-code">3.1. Viewing help : <code>help</code></a></li>
-<li><a href="#adding-a-person-code-add-code">3.2. Adding a person: <code>add</code></a></li>
-<li><a href="#listing-all-persons-code-list-code">3.3. Listing all persons : <code>list</code></a></li>
-<li><a href="#editing-a-person-code-edit-code">3.4. Editing a person : <code>edit</code></a></li>
-<li><a href="#locating-persons-by-name-code-find-code">3.5. Locating persons by name: <code>find</code></a></li>
-<li><a href="#deleting-a-person-code-delete-code">3.6. Deleting a person : <code>delete</code></a></li>
-<li><a href="#selecting-a-person-code-select-code">3.7. Selecting a person : <code>select</code></a></li>
-<li><a href="#listing-entered-commands-code-history-code">3.8. Listing entered commands : <code>history</code></a></li>
-<li><a href="#undoing-previous-command-code-undo-code">3.9. Undoing previous command : <code>undo</code></a></li>
-<li><a href="#redoing-the-previously-undone-command-code-redo-code">3.10. Redoing the previously undone command : <code>redo</code></a></li>
-<li><a href="#clearing-all-entries-code-clear-code">3.11. Clearing all entries : <code>clear</code></a></li>
-<li><a href="#importing-records-code-import-code">3.12. Importing records: <code>import</code></a></li>
-<li><a href="#exporting-records-code-export-code">3.13. Exporting records: <code>export</code></a></li>
-<li><a href="#exiting-the-program-code-exit-code">3.14. Exiting the program : <code>exit</code></a></li>
-<li><a href="#saving-the-data">3.15. Saving the data</a></li>
-<li><a href="#encrypting-data-files-code-coming-in-v2-0-code">3.16. Encrypting data files <code>[coming in v2.0]</code></a></li>
+<li><a href="#login">4.1. Login</a></li>
+<li><a href="#help">4.2. Help</a></li>
+<li><a href="#adding-a-person-add">4.3. Adding a person: add</a></li>
+<li><a href="#deleting-a-person-delete">4.4. Deleting a person: delete</a></li>
+<li><a href="#editing-a-person-s-data-edit">4.5. Editing a person’s data: edit</a></li>
+<li><a href="#copying-a-person-s-data-copy">4.6. Copying a person’s data: copy</a></li>
+<li><a href="#record-access-a-person-s-dental-records">4.7. Record: Access a person’s dental records</a></li>
+<li><a href="#teeth">4.8. Teeth</a></li>
+<li><a href="#export">4.9. Export</a></li>
+<li><a href="#import">4.10. Import</a></li>
+<li><a href="#list">4.11. List</a></li>
+<li><a href="#find">4.12. Find</a></li>
+<li><a href="#sort">4.13. Sort</a></li>
+<li><a href="#history">4.14. History</a></li>
+<li><a href="#undo">4.15. Undo</a></li>
+<li><a href="#redo">4.16. Redo</a></li>
+<li><a href="#clear">4.17. Clear</a></li>
+<li><a href="#exit">4.18. Exit</a></li>
+<li><a href="#appointments-coming-in-v2-0">4.19. Appointments [Coming in v2.0]</a></li>
+<li><a href="#cloud-coming-in-v2-0">4.20. Cloud [Coming in v2.0]</a></li>
 </ul>
 </li>
-<li><a href="#faq">4. FAQ</a></li>
-<li><a href="#command-summary">5. Command Summary</a></li>
+<li><a href="#cloud-functionality-coming-in-v2-0">5. Cloud Functionality [Coming in v2.0]</a></li>
+<li><a href="#spell-checker-functionality-coming-in-v2-0">6. Spell-Checker Functionality [Coming in v2.0]</a></li>
+<li><a href="#frequently-asked-questions-faq">7. Frequently Asked Questions (FAQ)</a></li>
+<li><a href="#command-summary">8. Command Summary</a></li>
 </ul>
 </div>
 </div>
@@ -40,112 +50,158 @@
 <h2 id="introduction"><a class="link" href="#introduction">1. Introduction</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>OurTeeth is for dentists who <strong>prefer to use a desktop app for managing patient records</strong>. More importantly,
- AB4 is <strong>optimized for those who prefer to work with a Command Line Interface</strong> (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, AB4 can get your contact management tasks done faster than traditional GUI apps. Interested? Jump to the <a href="#quick-start">Section 2, &#8220;Quick Start&#8221;</a> to get started. Enjoy!</p>
+<p>OurTeeth is for dental practitioners who want to manage patient records
+through a desktop or mobile app. The application works primarily through
+a Command Line Interface (CLI) while having elements of a Graphical User
+Interface (GUI) for greater visualization of data. The application
+provides a platform for dentists to keep track of their patients’
+personal particulars along with their dental records. Conditions of each
+patients’ teeth (e.g decaying, removed or filled) are also stored for
+ease of reference when providing treatments or follow-ups. As the
+application uses CLI, users who prefer using command line interface will
+be able to comfortably navigate through the many features the offered by
+the application.</p>
+</div>
+<div class="paragraph">
+<p>Interested in trying OurTeeth out? Check section 2 [Prerequisites] to
+see what programs you need to have installed in order for OurTeeth to
+work properly. Once that’s settled, or you’re confident in your computer
+set-up, jump to section 3 [Quick Start] to begin!</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="quick-start"><a class="link" href="#quick-start">2. Quick Start</a></h2>
+<h2 id="prerequisites"><a class="link" href="#prerequisites">2. Prerequisites</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Before downloading and installing OurTeeth, please check that you have
+the following programs installed:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Java version <strong>9</strong> or later</p>
+</li>
+<li>
+<p>The secret to the universe and more…</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Once you have ensured everything is in order, kindly proceed to the
+section 3 [Quick Start Guide].</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="quick-start-guide"><a class="link" href="#quick-start-guide">3. Quick Start Guide</a></h2>
 <div class="sectionbody">
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Ensure you have Java version <code>9</code> or later installed in your Computer.</p>
+<p>Download the latest ourteeth.jar file from our GitHub page</p>
 </li>
 <li>
-<p>Download the latest <code>addressbook.jar</code> <a href="https://github.com/se-edu/addressbook-level4/releases">here</a>.</p>
+<p>Copy the file to the folder you want to use as the home folder for the
+application (all data will be stored there)</p>
 </li>
 <li>
-<p>Copy the file to the folder you want to use as the home folder for your Address Book.</p>
+<p>Double-click the file to launch the application.The application’s GUI
+should start in a few seconds and begin the initialization set-up. (for
+users who have already finished the set-up phase, please go to step 6)</p>
 </li>
 <li>
-<p>Double-click the file to start the app. The GUI should appear in a few seconds.</p>
-<div class="imageblock">
-<div class="content">
-<img src="images/Ui.png" alt="Ui" width="790">
-</div>
-</div>
+<p>The application will prompt the user to input details of the
+clinic/hospital/place of practice such as the name and address of the
+location. (e.g ABC Hospital, 11 Baker Street, Singapore 308433)</p>
 </li>
 <li>
-<p>Type the command in the command box and press <kbd>Enter</kbd> to execute it.<br>
-e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> will open the help window.</p>
+<p>User will then have to create a user account to begin using the
+application.</p>
 </li>
 <li>
-<p>Some example commands you can try:</p>
-<div class="ulist">
-<ul>
-<li>
-<p><strong><code>list</code></strong> : lists all contacts</p>
-</li>
-<li>
-<p><strong><code>add</code></strong><code>n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01</code> : adds a contact named <code>John Doe</code> to the Address Book.</p>
-</li>
-<li>
-<p><strong><code>delete</code></strong><code>3</code> : deletes the 3rd contact shown in the current list</p>
-</li>
-<li>
-<p><strong><code>exit</code></strong> : exits the app</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Refer to <a href="#Features">Section 3, &#8220;Features&#8221;</a> for details of each command.</p>
+<p>Simply login to your account and begin using the application</p>
 </li>
 </ol>
+</div>
+<div class="paragraph">
+<p>For the full list of available commands and their associated details,
+please look at section 4 [Commands]</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="Features"><a class="link" href="#Features">3. Features</a></h2>
+<h2 id="commands-and-features"><a class="link" href="#commands-and-features">4. Commands and Features</a></h2>
 <div class="sectionbody">
-<div class="exampleblock">
-<div class="content">
+<div class="sect2">
+<h3 id="login"><a class="link" href="#login">4.1. Login</a></h3>
 <div class="paragraph">
-<p><strong>Command Format</strong></p>
+<p>Logs into a specific user’s account to access records</p>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p>Words in <code>UPPER_CASE</code> are the parameters to be supplied by the user e.g. in <code>add n/NAME</code>, <code>NAME</code> is a parameter which can be used as <code>add n/John Doe</code>.</p>
-</li>
-<li>
-<p>Items in square brackets are optional e.g <code>n/NAME [t/TAG]</code> can be used as <code>n/John Doe t/friend</code> or as <code>n/John Doe</code>.</p>
-</li>
-<li>
-<p>Items with <code>…</code>​ after them can be used multiple times including zero times e.g. <code>[t/TAG]&#8230;&#8203;</code> can be used as <code>&#160;</code> (i.e. 0 times), <code>t/friend</code>, <code>t/friend t/family</code> etc.</p>
-</li>
-<li>
-<p>Parameters can be in any order e.g. if the command specifies <code>n/NAME p/PHONE_NUMBER</code>, <code>p/PHONE_NUMBER n/NAME</code> is also acceptable.</p>
-</li>
-</ul>
-</div>
+<div class="paragraph">
+<p>Format: <code>login USERNAME PASSWORD</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="viewing-help-code-help-code"><a class="link" href="#viewing-help-code-help-code">3.1. Viewing help : <code>help</code></a></h3>
+<h3 id="help"><a class="link" href="#help">4.2. Help</a></h3>
+<div class="paragraph">
+<p>Displays the help text for the usage of all available commands.</p>
+</div>
 <div class="paragraph">
 <p>Format: <code>help</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="adding-a-person-code-add-code"><a class="link" href="#adding-a-person-code-add-code">3.2. Adding a person: <code>add</code></a></h3>
+<h3 id="adding-a-person-add"><a class="link" href="#adding-a-person-add">4.3. Adding a person: add</a></h3>
 <div class="paragraph">
-<p>Adds a person to the address book<br>
-Format: <code>add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]&#8230;&#8203;</code></p>
+<p>Adds a person to the application’s personnel data records</p>
 </div>
-<div class="admonitionblock tip">
-<table>
+<div class="paragraph">
+<p>Format: <code>add PARAMETERS [t/TAG] …</code></p>
+</div>
+<div class="paragraph">
+<p>Parameters:</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<tbody>
 <tr>
-<td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
-</td>
-<td class="content">
-A person can have any number of tags (including 0)
-</td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">n/NAME</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s/SEX</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">p/PHONE_NUMBER</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">e/EMAIL</p></td>
 </tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">a/ADDRESS</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ic/NRIC</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">age/AGE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">dob/DATE_OF_BIRTH_DDMMYYYY</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">da/DRUG_ALLERGY</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">nokn/NEXT_OF_KIN_NAME</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">nokp/NEXT_OF_KIN_PHONE_NUMBER</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">nokr/NEXT_OF_KIN_RELATION</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">noka/NEXT_OF_KIN_ADDRESS</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+</tbody>
 </table>
+<div class="paragraph">
+<p>A person can have any number of tags.</p>
+</div>
+<div class="paragraph">
+<p>Note: If a person’s next of kin lives at the same address, use <code>same</code> to
+indicate</p>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -153,133 +209,33 @@ A person can have any number of tags (including 0)
 <div class="ulist">
 <ul>
 <li>
-<p><code>add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01</code></p>
-</li>
-<li>
-<p><code>add n/Betsy Crowe t/friend e/betsycrowe@example.com a/Newgate Prison p/1234567 t/criminal</code></p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="listing-all-persons-code-list-code"><a class="link" href="#listing-all-persons-code-list-code">3.3. Listing all persons : <code>list</code></a></h3>
-<div class="paragraph">
-<p>Shows a list of all persons in the address book.<br>
-Format: <code>list</code></p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="editing-a-person-code-edit-code"><a class="link" href="#editing-a-person-code-edit-code">3.4. Editing a person : <code>edit</code></a></h3>
-<div class="paragraph">
-<p>Edits an existing person in the address book.<br>
-Format: <code>edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]&#8230;&#8203;</code></p>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>Edits the person at the specified <code>INDEX</code>. The index refers to the index number shown in the displayed person list. The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
-</li>
-<li>
-<p>At least one of the optional fields must be provided.</p>
-</li>
-<li>
-<p>Existing values will be updated to the input values.</p>
-</li>
-<li>
-<p>When editing tags, the existing tags of the person will be removed i.e adding of tags is not cumulative.</p>
-</li>
-<li>
-<p>You can remove all the person&#8217;s tags by typing <code>t/</code> without specifying any tags after it.</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>edit 1 p/91234567 e/johndoe@example.com</code><br>
-Edits the phone number and email address of the 1st person to be <code>91234567</code> and <code>johndoe@example.com</code> respectively.</p>
-</li>
-<li>
-<p><code>edit 2 n/Betsy Crower t/</code><br>
-Edits the name of the 2nd person to be <code>Betsy Crower</code> and clears all existing tags.</p>
+<p><code>add n/John Choo p/98425871 e/jonC@example.com a/IDA street, block 13,
+#02-05 ic/S1234567H age/32 dob/26021987 nokn/Jacky Choo nokp/84875215
+nokr/Father noka/same</code></p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect2">
-<h3 id="locating-persons-by-name-code-find-code"><a class="link" href="#locating-persons-by-name-code-find-code">3.5. Locating persons by name: <code>find</code></a></h3>
+<h3 id="deleting-a-person-delete"><a class="link" href="#deleting-a-person-delete">4.4. Deleting a person: delete</a></h3>
 <div class="paragraph">
-<p>Finds persons whose names contain any of the given keywords.<br>
-Format: <code>find KEYWORD [MORE_KEYWORDS]</code></p>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>The search is case insensitive. e.g <code>hans</code> will match <code>Hans</code></p>
-</li>
-<li>
-<p>The order of the keywords does not matter. e.g. <code>Hans Bo</code> will match <code>Bo Hans</code></p>
-</li>
-<li>
-<p>Only the name is searched.</p>
-</li>
-<li>
-<p>Only full words will be matched e.g. <code>Han</code> will not match <code>Hans</code></p>
-</li>
-<li>
-<p>Persons matching at least one keyword will be returned (i.e. <code>OR</code> search). e.g. <code>Hans Bo</code> will return <code>Hans Gruber</code>, <code>Bo Yang</code></p>
-</li>
-</ul>
-</div>
-</div>
+<p>Deletes the specified person from the personnel data records.</p>
 </div>
 <div class="paragraph">
-<p>Examples:</p>
+<p>Format: delete INDEX</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>find John</code><br>
-Returns <code>john</code> and <code>John Doe</code></p>
-</li>
-<li>
-<p><code>find Betsy Tim John</code><br>
-Returns any person having names <code>Betsy</code>, <code>Tim</code>, or <code>John</code></p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="deleting-a-person-code-delete-code"><a class="link" href="#deleting-a-person-code-delete-code">3.6. Deleting a person : <code>delete</code></a></h3>
-<div class="paragraph">
-<p>Deletes the specified person from the address book.<br>
-Format: <code>delete INDEX</code></p>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>Deletes the person at the specified <code>INDEX</code>.</p>
+<p>Deletes the person at the specified index</p>
 </li>
 <li>
 <p>The index refers to the index number shown in the displayed person list.</p>
 </li>
 <li>
-<p>The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
+<p>The given index must be a positive integer (e.g 1, 2 or 3…)</p>
 </li>
 </ul>
-</div>
-</div>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -287,99 +243,586 @@ Format: <code>delete INDEX</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>list</code><br>
-<code>delete 2</code><br>
-Deletes the 2nd person in the address book.</p>
+<p><code>list<br>
+delete 1</code><br>
+Deletes the 1st person from the displayed list</p>
 </li>
 <li>
-<p><code>find Betsy</code><br>
-<code>delete 1</code><br>
-Deletes the 1st person in the results of the <code>find</code> command.</p>
+<p><code>view John<br>
+delete 1</code><br>
+Deletes the 2nd person found using the view command</p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect2">
-<h3 id="selecting-a-person-code-select-code"><a class="link" href="#selecting-a-person-code-select-code">3.7. Selecting a person : <code>select</code></a></h3>
+<h3 id="editing-a-person-s-data-edit"><a class="link" href="#editing-a-person-s-data-edit">4.5. Editing a person’s data: edit</a></h3>
 <div class="paragraph">
-<p>Selects the person identified by the index number used in the displayed person list.<br>
-Format: <code>select INDEX</code></p>
+<p>Edits data from an existing person</p>
 </div>
-<div class="sidebarblock">
+<div class="paragraph">
+<p>Format: <code>edit INDEX</code></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Goes into edit mode for the person at the specified index shown from
+list or view command. Must be a positive integer (e.g 1, 2 or 3)</p>
+</li>
+<li>
+<p>Input the field followed by the new value to replace the existing data</p>
+</li>
+<li>
+<p>Multiple fields can be edited in a single input or across multiple
+inputs</p>
+</li>
+<li>
+<p>When editing tags, the existing tags of the person will be removed i.e
+adding of tags is not cumulative</p>
+</li>
+<li>
+<p>All tags can be removed by keying in t/ without specifying any tags
+following it</p>
+</li>
+<li>
+<p>Exit the edit mode by entering done</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>list<br>
+edit 1<br>
+p/12345<br>
+e/newemail@gmail.com<br>
+done</code><br>
+Edits the phone number and email of the first person listed to become
+12345 and <a href="mailto:newemail@gmail.com">newemail@gmail.com</a> respectively across 2 inputs</p>
+</li>
+<li>
+<p><code>view Betsy<br>
+edit 2<br>
+p/987654 e/mymaill@gmail.com<br>
+done</code><br>
+Edits the phone number and email of the first person listed to become
+987654 and <a href="mailto:mymaill@gmail.com">mymaill@gmail.com</a> respectively with a single input</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="copying-a-person-s-data-copy"><a class="link" href="#copying-a-person-s-data-copy">4.6. Copying a person’s data: copy</a></h3>
+<div class="paragraph">
+<p>Makes an exact copy of a person’s data and adds it to the personnel data
+records. This is implemented in the case that multiple people share
+similar details.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>copy INDEX</code></p>
+</div>
+<div class="paragraph">
+<p>Note: If the copied entry is not modified before exiting the program,
+there will be a notification.</p>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>copy 3</code><br>
+Makes a copy of the person at index 3 and inserts it at the bottom of
+the current personnel records with a copy tag.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="record-access-a-person-s-dental-records"><a class="link" href="#record-access-a-person-s-dental-records">4.7. Record: Access a person’s dental records</a></h3>
+<div class="sect3">
+<h4 id="record-add"><a class="link" href="#record-add">4.7.1. record add</a></h4>
+<div class="paragraph">
+<p>Adds a new dental record to the program’s medical dental records</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>record add n/NRIC d/DATE_DDMMYYYY t/TIME_HHMM p/PROCEDURE
+doc/SERVING_DENTIST det/DETAILS</code></p>
+</div>
+<div class="paragraph">
+<p>Example
+*  <code>record add n/S1234567H d/10022019 t/1705 p/Cleaning doc/Kyler det/Mouth
+was noticeably smelly, might have halitosis</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="record-delete"><a class="link" href="#record-delete">4.7.2. record delete</a></h4>
+<div class="paragraph">
+<p>Format: <code>record delete n/NRIC INDEX</code></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Deletes the person’s dental record at the specified index</p>
+</li>
+<li>
+<p>The index refers to the index number shown in the displayed dental
+record list.</p>
+</li>
+<li>
+<p>The given index must be a positive integer (e.g 1, 2 or 3…)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>view dental Jon</code><br>
+<code>record delete n/NRIC 1</code><br>
+Deletes the 1st record from the displayed list</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="record-edit"><a class="link" href="#record-edit">4.7.3. record edit</a></h4>
+<div class="paragraph">
+<p>Edits a person’s dental record.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>record edit n/NRIC INDEX</code></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Goes into record edit mode for the specified person at the specified
+index shown from list or view command. Must be a positive integer (e.g
+1, 2 or 3)</p>
+</li>
+<li>
+<p>Input the field followed by the new value to replace the existing data</p>
+</li>
+<li>
+<p>Multiple fields can be edited in a single input or across multiple
+inputs</p>
+</li>
+<li>
+<p>When editing tags, the existing tags of the person will be removed i.e
+adding of tags is not cumulative</p>
+</li>
+<li>
+<p>All tags can be removed by keying in t/ without specifying any tags
+following it</p>
+</li>
+<li>
+<p>Exit the edit mode by entering done</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>view dental n/Jon<br>
+record edit n/S1234567H 1<br>
+doc/Debang<br>
+det/new details<br>
+done</code><br>
+Edits the first dental record under the patient Jon and replaces the old
+doctor and detail fields with the new Debang and new details data.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="record-copy"><a class="link" href="#record-copy">4.7.4. record copy</a></h4>
+<div class="paragraph">
+<p>Makes an exact copy of a person’s dental record</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>record copy n/NRIC INDEX</code></p>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>record copy n/S1234567H 2</code><br>
+Makes a copy of the person’s dental record at index 2 and inserts it at
+the bottom of the current dental records with a copy tag</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="teeth"><a class="link" href="#teeth">4.8. Teeth</a></h3>
+<div class="sect3">
+<h4 id="brief-description"><a class="link" href="#brief-description">4.8.1. Brief Description</a></h4>
+<div class="paragraph">
+<p>The OurTeeth application complies with the most popular standard of the
+three the Dental Numbering Systems utilised in the dentistry field - The
+Universal Numbering System.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="the-universal-numbering-system"><a class="link" href="#the-universal-numbering-system">4.8.2. The Universal Numbering System</a></h4>
+<div class="imageblock">
 <div class="content">
+<img src="images/images/image1.png" alt="image" width="200" height="294">
+</div>
+</div>
+<div class="paragraph">
+<p>The uppercase letters A through T are used for primary teeth and the
+numbers 1 - 32 are used for permanent teeth. The tooth designated "1" is
+the maxillary right third molar ("wisdom tooth") and the count continues
+along the upper teeth to the left side. Then the count begins at the
+mandibular left third molar, designated number 17, and continues along
+the bottom teeth to the right side. Each tooth has a unique number or
+letter, allowing for easier use on keyboards.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="creating-and-editing-teeth-layout"><a class="link" href="#creating-and-editing-teeth-layout">4.8.3. Creating and Editing Teeth Layout</a></h4>
+<div class="paragraph">
+<p>There are two templates provided by the application: primary and
+permanent.</p>
+</div>
+<div class="paragraph">
+<p>All primary or permanent teeth in template will all be present and
+healthy by default.</p>
+</div>
 <div class="ulist">
 <ul>
 <li>
-<p>Selects the person and loads the Google search page the person at the specified <code>INDEX</code>.</p>
+<p>To create a new teeth layout for patient:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>teeth add n/NRIC &lt;Template&gt;</code></p>
 </li>
 <li>
-<p>The index refers to the index number shown in the displayed person list.</p>
+<p>Note that if a teeth layout already exist, a warning will be thrown to
+confirm the user’s overwriting intention</p>
+</li>
+</ul>
+</div>
 </li>
 <li>
-<p>The index <strong>must be a positive integer</strong> <code>1, 2, 3, &#8230;&#8203;</code></p>
+<p>To edit a new specific tooth:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>teeth edit n/NRIC t/TEETH_LABEL s/STATUS -d/DESCRIPTION</code></p>
+</li>
+<li>
+<p>Valid &lt;Teeth Label&gt; are letters A through T (case-insensitive, for
+primary teeth), and numbers 1 - 32 (for permanent teeth)</p>
+</li>
+<li>
+<p>Note that if a teeth layout does not exist, a new layout will be created
+based on the teeth label group used, before the edit is applied on the
+newly created teeth layout.</p>
+</li>
+<li>
+<p>&lt;Status&gt; reflects overall health of the indicated tooth, and valid
+&lt;Status&gt; are “healthy”, “absent”, “treatment” and “review”</p>
+</li>
+<li>
+<p>&lt;Description&gt; is an optional field to present dentists with a feature to
+indicate personalised note describing more detail on the patient’s teeth
+health.</p>
+</li>
+</ul>
+</div>
 </li>
 </ul>
 </div>
 </div>
 </div>
+<div class="sect2">
+<h3 id="export"><a class="link" href="#export">4.9. Export</a></h3>
+<div class="paragraph">
+<p>Exports the entire records into the specified file path with the
+specified file name.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>export FILE_PATH FILE_NAME</code></p>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>export /mnt/ext_drive/ clinicRecords.txt</code><br>
+Creates a file named clinicRecords.txt in the /mnt/ext_drive/ folder</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="import"><a class="link" href="#import">4.10. Import</a></h3>
+<div class="paragraph">
+<p>Imports data into the program from the specified file path and
+overwrites current data.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>import FILE_PATH [append]</code></p>
+</div>
+<div class="paragraph">
+<p>Note: The optional “append” adds the file data onto the current records
+rather than overwriting.</p>
+</div>
 <div class="paragraph">
 <p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>import /mnt/sample/newData</code><br>
+Replaces the current records with the ones in the newData file</p>
+</li>
+<li>
+<p><code>import /mnt/sample/extraData append</code><br>
+Appends the records within extraData onto the current program’s records.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="list"><a class="link" href="#list">4.11. List</a></h3>
+<div class="paragraph">
+<p>Shows a list of all personnel or medical stored in the application</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>list [dental]</code></p>
+</div>
+<div class="paragraph">
+<p>Command shows personnel details by default, add dental to see dental
+records.</p>
+</div>
+<div class="paragraph">
+<p>Example:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
 <p><code>list</code><br>
-<code>select 2</code><br>
-Selects the 2nd person in the address book.</p>
+Shows details of all patients</p>
 </li>
 <li>
-<p><code>find Betsy</code><br>
-<code>select 1</code><br>
-Selects the 1st person in the results of the <code>find</code> command.</p>
+<p><code>list dental</code><br>
+Shows details of patients’ dental records</p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect2">
-<h3 id="listing-entered-commands-code-history-code"><a class="link" href="#listing-entered-commands-code-history-code">3.8. Listing entered commands : <code>history</code></a></h3>
+<h3 id="find"><a class="link" href="#find">4.12. Find</a></h3>
 <div class="paragraph">
-<p>Lists all the commands that you have entered in reverse chronological order.<br>
-Format: <code>history</code></p>
+<p>Shows persons whose data contain any of the given keywords.</p>
 </div>
-<div class="admonitionblock note">
-<table>
+<div class="paragraph">
+<p>Format: <code>find [dental] KEYWORD [MORE_KEYWORDS]</code></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Add “dental” to search dental records instead</p>
+</li>
+<li>
+<p>Search is case insensitive</p>
+</li>
+<li>
+<p>Order of keywords does not matter</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>find Yishun</code><br>
+Show all the people that live in Yishun</p>
+</li>
+<li>
+<p><code>find dental cleaning</code><br>
+Shows all the dental records with cleaning</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="sort"><a class="link" href="#sort">4.13. Sort</a></h3>
+<div class="paragraph">
+<p>Sorts the records by an input parameter in an input order.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>sort PARAM ORDER</code></p>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
 <tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>Pressing the <kbd>&uarr;</kbd> and <kbd>&darr;</kbd> arrows will display the previous and next input respectively in the command box.</p>
-</div>
-</td>
+<th class="tableblock halign-left valign-top"><strong>ID</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Name</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Age</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Last Modified</strong></th>
 </tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Alice</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">19</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">03/07/2003</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Clara</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">12</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">05/02/2021</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Bob</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">24</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">11/02/2019</p></td>
+</tr>
+</tbody>
+</table>
+<div class="ulist">
+<ul>
+<li>
+<p>sort name descend</p>
+</li>
+</ul>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top"><strong>ID</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Name</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Age</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Last Modified</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Clara</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">12</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">05/02/2021</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Bob</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">24</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">11/02/2019</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Alice</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">19</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">03/07/2003</p></td>
+</tr>
+</tbody>
+</table>
+<div class="ulist">
+<ul>
+<li>
+<p>sort age ascend</p>
+</li>
+</ul>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top"><strong>ID</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Name</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Age</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Last Modified</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Clara</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">12</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">05/02/2021</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Alice</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">19</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">03/07/2003</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Bob</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">24</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">11/02/2019</p></td>
+</tr>
+</tbody>
 </table>
 </div>
+<div class="sect2">
+<h3 id="history"><a class="link" href="#history">4.14. History</a></h3>
+<div class="paragraph">
+<p>Lists all the commands that have been entered since starting the
+application in reverse chronological order</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>history</code></p>
+</div>
 </div>
 <div class="sect2">
-<h3 id="undoing-previous-command-code-undo-code"><a class="link" href="#undoing-previous-command-code-undo-code">3.9. Undoing previous command : <code>undo</code></a></h3>
+<h3 id="undo"><a class="link" href="#undo">4.15. Undo</a></h3>
 <div class="paragraph">
-<p>Restores the address book to the state before the previous <em>undoable</em> command was executed.<br>
-Format: <code>undo</code></p>
+<p>Restores data to the state before the previous undoable command was
+executed.</p>
 </div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
 <div class="paragraph">
-<p>Undoable commands: those commands that modify the address book&#8217;s content (<code>add</code>, <code>delete</code>, <code>edit</code> and <code>clear</code>).</p>
+<p>Format: <code>undo</code></p>
 </div>
-</td>
-</tr>
-</table>
+<div class="ulist">
+<ul>
+<li>
+<p>The following commands are affected by undo: add edit delete and clear</p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -387,30 +830,33 @@ Format: <code>undo</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>delete 1</code><br>
-<code>list</code><br>
-<code>undo</code> (reverses the <code>delete 1</code> command)<br></p>
+<p><code>delete 1<br>
+list<br>
+undo</code> (reverses the delete 1 command)</p>
 </li>
 <li>
-<p><code>select 1</code><br>
-<code>list</code><br>
-<code>undo</code><br>
-The <code>undo</code> command fails as there are no undoable commands executed previously.</p>
+<p><code>select 1<br>
+list<br>
+undo</code><br>
+The undo command fails as there are no undoable commands executed
+previously.</p>
 </li>
 <li>
-<p><code>delete 1</code><br>
-<code>clear</code><br>
-<code>undo</code> (reverses the <code>clear</code> command)<br>
-<code>undo</code> (reverses the <code>delete 1</code> command)<br></p>
+<p><code>delete 1<br>
+clear<br>
+undo</code> (reverses the clear command)<br>
+<code>undo</code> (reverses the delete 1 command)</p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect2">
-<h3 id="redoing-the-previously-undone-command-code-redo-code"><a class="link" href="#redoing-the-previously-undone-command-code-redo-code">3.10. Redoing the previously undone command : <code>redo</code></a></h3>
+<h3 id="redo"><a class="link" href="#redo">4.16. Redo</a></h3>
 <div class="paragraph">
-<p>Reverses the most recent <code>undo</code> command.<br>
-Format: <code>redo</code></p>
+<p>Reverses the most recent undo command</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>redo</code></p>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -418,145 +864,204 @@ Format: <code>redo</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>delete 1</code><br>
-<code>undo</code> (reverses the <code>delete 1</code> command)<br>
-<code>redo</code> (reapplies the <code>delete 1</code> command)<br></p>
+<p><code>delete 1<br>
+undo</code> (reverses the delete 1 command)<br>
+<code>redo</code> (reapplies the delete 1 command)</p>
 </li>
 <li>
-<p><code>delete 1</code><br>
-<code>redo</code><br>
-The <code>redo</code> command fails as there are no <code>undo</code> commands executed previously.</p>
+<p><code>delete 1<br>
+redo</code><br>
+The redo command fails as there are no undo commands executed
+previously.</p>
 </li>
 <li>
-<p><code>delete 1</code><br>
-<code>clear</code><br>
-<code>undo</code> (reverses the <code>clear</code> command)<br>
-<code>undo</code> (reverses the <code>delete 1</code> command)<br>
-<code>redo</code> (reapplies the <code>delete 1</code> command)<br>
-<code>redo</code> (reapplies the <code>clear</code> command)<br></p>
+<p><code>delete 1<br>
+clear<br>
+undo</code> (reverses the clear command)<br>
+<code>undo</code> (reverses the delete 1 command)<br>
+<code>redo</code> (reapplies the delete 1 command)<br>
+<code>redo</code> (reapplies the clear command)</p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect2">
-<h3 id="clearing-all-entries-code-clear-code"><a class="link" href="#clearing-all-entries-code-clear-code">3.11. Clearing all entries : <code>clear</code></a></h3>
+<h3 id="clear"><a class="link" href="#clear">4.17. Clear</a></h3>
 <div class="paragraph">
-<p>Clears all entries from the address book.<br>
-Format: <code>clear</code></p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="importing-records-code-import-code"><a class="link" href="#importing-records-code-import-code">3.12. Importing records: <code>import</code></a></h3>
-<div class="paragraph">
-<p>Reads all entries from a specified text file and overwrites the address book.<br>
-Format: <code>import FILENAME</code></p>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
+<p>Clears all personnel data and records from the application</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>import records1.json</code><br>
-Reads all entries from a records1.json and overwrites the address book.<br></p>
+<p>Will prompt the user to confirm</p>
 </li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="exporting-records-code-export-code"><a class="link" href="#exporting-records-code-export-code">3.13. Exporting records: <code>export</code></a></h3>
-<div class="paragraph">
-<p>Writes all entries from the address book to a specified text file.<br>
-If no file exists, a new one will be created.
-Format: <code>export FILENAME</code></p>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
 <li>
-<p><code>Export records2.json</code><br>
-Writes all entries from the address book to records2.json.<br></p>
+<p>Input <code>y</code> to proceed to the clear all records or <code>n</code> to abort</p>
 </li>
 </ul>
 </div>
-</div>
-<div class="sect2">
-<h3 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">3.14. Exiting the program : <code>exit</code></a></h3>
 <div class="paragraph">
-<p>Exits the program.<br>
-Format: <code>exit</code></p>
+<p>Format: <code>clear</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="saving-the-data"><a class="link" href="#saving-the-data">3.15. Saving the data</a></h3>
+<h3 id="exit"><a class="link" href="#exit">4.18. Exit</a></h3>
 <div class="paragraph">
-<p>Address book data are saved in the hard disk automatically after any command that changes the data.<br>
-There is no need to save manually.</p>
+<p>Exits the program</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>exit</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="encrypting-data-files-code-coming-in-v2-0-code"><a class="link" href="#encrypting-data-files-code-coming-in-v2-0-code">3.16. Encrypting data files <code>[coming in v2.0]</code></a></h3>
+<h3 id="appointments-coming-in-v2-0"><a class="link" href="#appointments-coming-in-v2-0">4.19. Appointments [Coming in v2.0]</a></h3>
 <div class="paragraph">
-<p><em>{explain how the user can enable/disable data encryption}</em></p>
+<p>Schedule patient appointments.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="cloud-coming-in-v2-0"><a class="link" href="#cloud-coming-in-v2-0">4.20. Cloud [Coming in v2.0]</a></h3>
+<div class="paragraph">
+<p>Synchronises the data stored with the cloud database</p>
 </div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="faq"><a class="link" href="#faq">4. FAQ</a></h2>
+<h2 id="cloud-functionality-coming-in-v2-0"><a class="link" href="#cloud-functionality-coming-in-v2-0">5. Cloud Functionality [Coming in v2.0]</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p><strong>Q</strong>: How do I transfer my data to another Computer?<br>
-<strong>A</strong>: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous Address Book folder.</p>
+<p>To increase data redundancy and reduce the risk of data being lost, we
+will allow users to synchronise their data with a cloud account. From
+there, should the worst happen and the user’s local data be lost, it can
+be downloaded from the cloud.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="command-summary"><a class="link" href="#command-summary">5. Command Summary</a></h2>
+<h2 id="spell-checker-functionality-coming-in-v2-0"><a class="link" href="#spell-checker-functionality-coming-in-v2-0">6. Spell-Checker Functionality [Coming in v2.0]</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Upon keying in an improperly typed command it will automatically correct
+it (e.g. sirt to sort) and run the program.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="frequently-asked-questions-faq"><a class="link" href="#frequently-asked-questions-faq">7. Frequently Asked Questions (FAQ)</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>Q</strong>: How do I transfer my data to another Computer?</p>
+</div>
+<div class="paragraph">
+<p><strong>A</strong>: Install the app in the other computer and overwrite the empty data
+file it creates with the file that contains the data of your previous
+Address Book folder. Alternatively, upload your data to the cloud and
+download it from there.</p>
+</div>
+<div class="paragraph">
+<p><strong>Q</strong>: How can I be sure my patient’s records are secure?</p>
+</div>
+<div class="paragraph">
+<p><strong>A</strong>: The application’s login feature ensures only that particular user
+will be able to access his or her own patients. Records of other users
+will be encrypted and unviewable unless one logs in.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="command-summary"><a class="link" href="#command-summary">8. Command Summary</a></h2>
 <div class="sectionbody">
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Add</strong> <code>add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]&#8230;&#8203;</code><br>
-e.g. <code>add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague</code></p>
+<p><strong>Add</strong> : add PARAMETERS <strong class="t/TAG">…​</strong><br>
+e.g. <code>add n/John Choo p/98425871 e/jonC@example.com a/IDA street, block
+13, #02-05 ic/S1234567H age/32 dob/26021987 nokn/Jacky Choo
+nokp/84875215 nokr/Father noka/same</code></p>
 </li>
 <li>
 <p><strong>Clear</strong> : <code>clear</code></p>
+</li>
+<li>
+<p><strong>Copy</strong> : <code>copy INDEX</code><br>
+e.g. <code>copy 3</code></p>
 </li>
 <li>
 <p><strong>Delete</strong> : <code>delete INDEX</code><br>
 e.g. <code>delete 3</code></p>
 </li>
 <li>
-<p><strong>Edit</strong> : <code>edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]&#8230;&#8203;</code><br>
-e.g. <code>edit 2 n/James Lee e/jameslee@example.com</code></p>
+<p><strong>Edit</strong> : <code>edit INDEX</code><br>
+e.g. <code>edit 2<br>
+p/12345<br>
+e/newemail@gmail.com<br>
+done</code></p>
 </li>
 <li>
-<p><strong>Find</strong> : <code>find KEYWORD [MORE_KEYWORDS]</code><br>
-e.g. <code>find James Jake</code></p>
+<p><strong>Exit</strong> : <code>exit</code></p>
 </li>
 <li>
-<p><strong>List</strong> : <code>list</code></p>
+<p><strong>Export</strong> : <code>export FILE_PATH FILE_NAME</code><br>
+e.g. <code>export /mnt/ext_drive/ clinicRecords.txt</code></p>
+</li>
+<li>
+<p><strong>Find</strong> : <code>find [dental] KEYWORD [MORE_KEYWORDS]</code><br>
+e.g. <code>find yishun</code></p>
+</li>
+<li>
+<p><strong>List</strong> : <code>list [dental]</code></p>
+</li>
+<li>
+<p><strong>Login</strong> : <code>login USERNAME PASSWORD</code><br>
+e.g <code>login kthSIM cavities!2</code></p>
 </li>
 <li>
 <p><strong>Help</strong> : <code>help</code></p>
 </li>
 <li>
-<p><strong>Select</strong> : <code>select INDEX</code><br>
-e.g.<code>select 2</code></p>
-</li>
-<li>
 <p><strong>History</strong> : <code>history</code></p>
 </li>
 <li>
-<p><strong>Undo</strong> : <code>undo</code></p>
+<p><strong>Import</strong> : <code>import FILE_PATH [append]</code><br>
+e.g. <code>import /mnt/sample/newData</code></p>
+</li>
+<li>
+<p><strong>Record Add</strong> : <code>record add n/NRIC d/DATE_DDMMYYYY t/TIME_HHMM p/PROCEDURE
+doc/SERVING_DENTIST det/DETAILS</code><br>
+e.g. <code>record add n/S1234567H d/10022019 t/1705 p/Cleaning doc/Kyler
+det/Mouth was noticeably foul, might have halitosis</code></p>
+</li>
+<li>
+<p><strong>Record Delete</strong> : <code>record delete n/NRIC INDEX</code><br>
+E.g. <code>record delete n/S1235467H 4</code></p>
+</li>
+<li>
+<p><strong>Record Edit</strong> : <code>record edit n/NRIC INDEX</code><br>
+E.g. <code>record edit n/S1234657H 3<br>
+doc/Debang<br>
+det/new details<br>
+Done</code></p>
+</li>
+<li>
+<p><strong>Record Copy</strong> : <code>record copy n/NRIC INDEX</code><br>
+E.g. <code>record copy n/S1235467H 2</code></p>
 </li>
 <li>
 <p><strong>Redo</strong> : <code>redo</code></p>
 </li>
+<li>
+<p><strong>Sort</strong> : <code>sort PARAM ORDER</code><br>
+E.g. <code>sort name ascend</code> or <code>sort age descend</code></p>
+</li>
+<li>
+<p><strong>Teeth</strong> : <code>teeth add &lt;Template&gt;</code><br>
+E.g. <code>teeth add primary</code></p>
+</li>
+<li>
+<p><strong>Undo</strong> : <code>undo</code></p>
+</li>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-03-04 09:25:43 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-03-04 13:37:23 UTC</div></div></div></body></html>
