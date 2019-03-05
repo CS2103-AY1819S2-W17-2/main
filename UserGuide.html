@@ -25,8 +25,8 @@
 <li><a href="#copying-a-person-s-data-copy">4.6. Copying a person’s data: copy</a></li>
 <li><a href="#record-access-a-person-s-dental-records">4.7. Record: Access a person’s dental records</a></li>
 <li><a href="#teeth">4.8. Teeth</a></li>
-<li><a href="#export">4.9. Export</a></li>
-<li><a href="#import">4.10. Import</a></li>
+<li><a href="#importing-records-code-import-code">4.9. Importing records: <code>import</code></a></li>
+<li><a href="#exporting-records-code-export-code">4.10. Exporting records: <code>export</code></a></li>
 <li><a href="#list">4.11. List</a></li>
 <li><a href="#find">4.12. Find</a></li>
 <li><a href="#sort">4.13. Sort</a></li>
@@ -478,7 +478,7 @@ Universal Numbering System.</p>
 <h4 id="the-universal-numbering-system"><a class="link" href="#the-universal-numbering-system">4.8.2. The Universal Numbering System</a></h4>
 <div class="imageblock">
 <div class="content">
-<img src="images/images/image1.png" alt="image" width="200" height="294">
+<img src="images/image1.png" alt="image1" width="200">
 </div>
 </div>
 <div class="paragraph">
@@ -550,38 +550,10 @@ health.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="export"><a class="link" href="#export">4.9. Export</a></h3>
+<h3 id="importing-records-code-import-code"><a class="link" href="#importing-records-code-import-code">4.9. Importing records: <code>import</code></a></h3>
 <div class="paragraph">
-<p>Exports the entire records into the specified file path with the
-specified file name.</p>
-</div>
-<div class="paragraph">
-<p>Format: <code>export FILE_PATH FILE_NAME</code></p>
-</div>
-<div class="paragraph">
-<p>Example:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>export /mnt/ext_drive/ clinicRecords.txt</code><br>
-Creates a file named clinicRecords.txt in the /mnt/ext_drive/ folder</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="import"><a class="link" href="#import">4.10. Import</a></h3>
-<div class="paragraph">
-<p>Imports data into the program from the specified file path and
-overwrites current data.</p>
-</div>
-<div class="paragraph">
-<p>Format: <code>import FILE_PATH [append]</code></p>
-</div>
-<div class="paragraph">
-<p>Note: The optional “append” adds the file data onto the current records
-rather than overwriting.</p>
+<p>Reads all entries from a specified text file and overwrites the address book.<br>
+Format: <code>import FILENAME</code></p>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -589,12 +561,27 @@ rather than overwriting.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>import /mnt/sample/newData</code><br>
-Replaces the current records with the ones in the newData file</p>
+<p><code>import records1.json</code><br>
+Reads all entries from a records1.json and overwrites the address book.<br></p>
 </li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="exporting-records-code-export-code"><a class="link" href="#exporting-records-code-export-code">4.10. Exporting records: <code>export</code></a></h3>
+<div class="paragraph">
+<p>Writes all entries from the address book to a specified text file.<br>
+If no file exists, a new one will be created.
+Format: <code>export FILENAME</code></p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
 <li>
-<p><code>import /mnt/sample/extraData append</code><br>
-Appends the records within extraData onto the current program’s records.</p>
+<p><code>Export records2.json</code><br>
+Writes all entries from the address book to records2.json.<br></p>
 </li>
 </ul>
 </div>
@@ -1064,4 +1051,4 @@ E.g. <code>teeth add primary</code></p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-03-04 14:25:51 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-03-05 03:31:46 UTC</div></div></div></body></html>
