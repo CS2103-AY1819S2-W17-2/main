@@ -6,7 +6,7 @@
 <p>By: <code>Team W17-2</code>      Since: <code>Feb 2019</code>      Licence: <code>MIT</code></p>
 </div>
 <div class="paragraph">
-<p>Last Updated: 2/12/2019 21:35:35</p>
+<p>Last Updated: 2/19/2019 15:35:35</p>
 </div>
 </div>
 <div id="toc" class="toc">
@@ -25,19 +25,22 @@
 <li><a href="#copying-a-person-s-data-copy">4.6. Copying a person’s data: copy</a></li>
 <li><a href="#record-access-a-person-s-dental-records">4.7. Record: Access a person’s dental records</a></li>
 <li><a href="#teeth">4.8. Teeth</a></li>
-<li><a href="#importing-records-code-import-code">4.9. Importing records: <code>import</code></a></li>
-<li><a href="#exporting-records-code-export-code">4.10. Exporting records: <code>export</code></a></li>
-<li><a href="#list">4.11. List</a></li>
-<li><a href="#find">4.12. Find</a></li>
-<li><a href="#sort">4.13. Sort</a></li>
-<li><a href="#history">4.14. History</a></li>
-<li><a href="#undo">4.15. Undo</a></li>
-<li><a href="#redo">4.16. Redo</a></li>
-<li><a href="#clear">4.17. Clear</a></li>
-<li><a href="#exit">4.18. Exit</a></li>
-<li><a href="#exit-anyway">4.19. Exit anyway</a></li>
-<li><a href="#appointments-coming-in-v2-0">4.20. Appointments [Coming in v2.0]</a></li>
-<li><a href="#cloud-coming-in-v2-0">4.21. Cloud [Coming in v2.0]</a></li>
+<li><a href="#open">4.9. Open</a></li>
+<li><a href="#save">4.10. Save</a></li>
+<li><a href="#import">4.11. Import</a></li>
+<li><a href="#export">4.12. Export</a></li>
+<li><a href="#list">4.13. List</a></li>
+<li><a href="#find">4.14. Find</a></li>
+<li><a href="#sort">4.15. Sort</a></li>
+<li><a href="#stat">4.16. Stat</a></li>
+<li><a href="#history">4.17. History</a></li>
+<li><a href="#undo">4.18. Undo</a></li>
+<li><a href="#redo">4.19. Redo</a></li>
+<li><a href="#clear">4.20. Clear</a></li>
+<li><a href="#exit">4.21. Exit</a></li>
+<li><a href="#exit-anyway">4.22. Exit anyway</a></li>
+<li><a href="#appointments-coming-in-v2-0">4.23. Appointments [Coming in v2.0]</a></li>
+<li><a href="#cloud-coming-in-v2-0">4.24. Cloud [Coming in v2.0]</a></li>
 </ul>
 </li>
 <li><a href="#cloud-functionality-coming-in-v2-0">5. Cloud Functionality [Coming in v2.0]</a></li>
@@ -556,10 +559,13 @@ health.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="importing-records-code-import-code"><a class="link" href="#importing-records-code-import-code">4.9. Importing records: <code>import</code></a></h3>
+<h3 id="open"><a class="link" href="#open">4.9. Open</a></h3>
 <div class="paragraph">
-<p>Reads all entries from a specified text file and overwrites the address book.<br>
-Format: <code>import FILENAME</code></p>
+<p>Opens the file in the specified file path and overwrites the current records.
+** Note that 'open' always searches inside the data folder.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>open FILE_PATH</code></p>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -567,24 +573,106 @@ Format: <code>import FILENAME</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>import records1.json</code><br>
-Reads all entries from a records1.json and overwrites the address book.<br></p>
+<p><code>open records1.json</code><br>
+Replaces the current records with the records in "records1.json".</p>
+</li>
+<li>
+<p><code>open february\records2.json</code><br>
+Replaces the current records with the records in "records2.json" found in the "february" folder.</p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect2">
-<h3 id="exporting-records-code-export-code"><a class="link" href="#exporting-records-code-export-code">4.10. Exporting records: <code>export</code></a></h3>
+<h3 id="save"><a class="link" href="#save">4.10. Save</a></h3>
 <div class="paragraph">
-<p>Writes all entries from the address book to a specified text file.<br>
-If no file exists, a new one will be created.
-Format: <code>export FILENAME</code></p>
+<p>Saves the current records to the specified filepath.
+** Note that 'save' always saves inside the data folder. If no such filepath exists,
+it will be created. Otherwise, it will overwrite the existing file.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>save FILE_PATH</code></p>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
 </div>
 <div class="ulist">
 <ul>
+<li>
+<p><code>save records1.json</code><br>
+Saves the current records to "records1.json".</p>
+</li>
+<li>
+<p><code>save february\records2.json</code><br>
+Saves the current records to "records1.json" found in the "february" folder.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="import"><a class="link" href="#import">4.11. Import</a></h3>
+<div class="paragraph">
+<p>Opens the file in the specified file path and adds the specified patients to the current records.
+** Note that 'import' always searches inside the data folder.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>import FILE_PATH INDEX_RANGE</code></p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>import records1.json 1</code><br>
+Adds patient 1 from "records1.json" to the current records.</p>
+</li>
+<li>
+<p><code>import february\records1.json 1</code><br>
+Adds patient 1 from "records1.json" found in the "february" folder to the current records.</p>
+</li>
+<li>
+<p><code>import records1.json 1,4</code><br>
+Adds patient 1 and patient 4 from "records1.json" to the current records.</p>
+</li>
+<li>
+<p><code>import records1.json 1-4</code><br>
+Adds patient 1 to patient 4 from "records1.json" to the current records.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="export"><a class="link" href="#export">4.12. Export</a></h3>
+<div class="paragraph">
+<p>Saves the specified patients in the current records to the specified filepath.
+** Note that 'export' always saves inside the data folder. If no such filepath exists,
+it will be created. Otherwise, it will overwrite the existing file.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>export FILE_PATH INDEX_RANGE</code></p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>export records1.json 1</code><br>
+Saves patient 1 from the current records to "records1.json".</p>
+</li>
+<li>
+<p><code>export february\records1.json 1</code><br>
+Saves patient 1 from the current records to "records1.json" found in the "february" folder.</p>
+</li>
+<li>
+<p><code>export records1.json 1,4</code><br>
+Saves patient 1 and patient 4 from the current records to "records1.json".</p>
+</li>
+<li>
+<p><code>export records1.json 1-4</code><br>
+Saves patient 1 to patient 4 from the current records to "records1.json".</p>
+</li>
 <li>
 <p><code>Export records2.json</code><br>
 Writes all entries from the address book to records2.json.<br></p>
@@ -593,7 +681,7 @@ Writes all entries from the address book to records2.json.<br></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="list"><a class="link" href="#list">4.11. List</a></h3>
+<h3 id="list"><a class="link" href="#list">4.13. List</a></h3>
 <div class="paragraph">
 <p>Shows a list of all personnel or medical stored in the application</p>
 </div>
@@ -621,12 +709,12 @@ Shows details of patients’ dental records</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="find"><a class="link" href="#find">4.12. Find</a></h3>
+<h3 id="find"><a class="link" href="#find">4.14. Find</a></h3>
 <div class="paragraph">
-<p>Shows persons whose data contain any of the given keywords.</p>
+<p>Shows patients whose data contains any of the given keywords according to a specified paramter.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code>find [dental] KEYWORD [MORE_KEYWORDS]</code></p>
+<p>Format: <code>find [dental] PREFIX/KEYWORD [MORE_KEYWORDS]</code></p>
 </div>
 <div class="ulist">
 <ul>
@@ -647,8 +735,8 @@ Shows details of patients’ dental records</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>find Yishun</code><br>
-Show all the people that live in Yishun</p>
+<p><code>find a/Yishun</code><br>
+Show all the people with an address containing the keyword Yishun</p>
 </li>
 <li>
 <p><code>find dental cleaning</code><br>
@@ -658,7 +746,7 @@ Shows all the dental records with cleaning</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="sort"><a class="link" href="#sort">4.13. Sort</a></h3>
+<h3 id="sort"><a class="link" href="#sort">4.15. Sort</a></h3>
 <div class="paragraph">
 <p>Sorts the records by an input parameter in an input order.</p>
 </div>
@@ -707,7 +795,7 @@ Shows all the dental records with cleaning</p>
 <div class="ulist">
 <ul>
 <li>
-<p>sort name descend</p>
+<p>sort name desc</p>
 </li>
 </ul>
 </div>
@@ -750,7 +838,7 @@ Shows all the dental records with cleaning</p>
 <div class="ulist">
 <ul>
 <li>
-<p>sort age ascend</p>
+<p>sort age asce</p>
 </li>
 </ul>
 </div>
@@ -792,7 +880,16 @@ Shows all the dental records with cleaning</p>
 </table>
 </div>
 <div class="sect2">
-<h3 id="history"><a class="link" href="#history">4.14. History</a></h3>
+<h3 id="stat"><a class="link" href="#stat">4.16. Stat</a></h3>
+<div class="paragraph">
+<p>Generates a statistics report based on the specified patient&#8217;s data.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>stat INDEX</code></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="history"><a class="link" href="#history">4.17. History</a></h3>
 <div class="paragraph">
 <p>Lists all the commands that have been entered since starting the
 application in reverse chronological order</p>
@@ -802,7 +899,7 @@ application in reverse chronological order</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="undo"><a class="link" href="#undo">4.15. Undo</a></h3>
+<h3 id="undo"><a class="link" href="#undo">4.18. Undo</a></h3>
 <div class="paragraph">
 <p>Restores data to the state before the previous undoable command was
 executed.</p>
@@ -844,7 +941,7 @@ undo</code> (reverses the clear command)<br>
 </div>
 </div>
 <div class="sect2">
-<h3 id="redo"><a class="link" href="#redo">4.16. Redo</a></h3>
+<h3 id="redo"><a class="link" href="#redo">4.19. Redo</a></h3>
 <div class="paragraph">
 <p>Reverses the most recent undo command</p>
 </div>
@@ -879,7 +976,7 @@ undo</code> (reverses the clear command)<br>
 </div>
 </div>
 <div class="sect2">
-<h3 id="clear"><a class="link" href="#clear">4.17. Clear</a></h3>
+<h3 id="clear"><a class="link" href="#clear">4.20. Clear</a></h3>
 <div class="paragraph">
 <p>Clears all personnel data and records from the application</p>
 </div>
@@ -898,7 +995,7 @@ undo</code> (reverses the clear command)<br>
 </div>
 </div>
 <div class="sect2">
-<h3 id="exit"><a class="link" href="#exit">4.18. Exit</a></h3>
+<h3 id="exit"><a class="link" href="#exit">4.21. Exit</a></h3>
 <div class="paragraph">
 <p>Exits the program. You won&#8217;t be able to exit if copies exist</p>
 </div>
@@ -907,7 +1004,7 @@ undo</code> (reverses the clear command)<br>
 </div>
 </div>
 <div class="sect2">
-<h3 id="exit-anyway"><a class="link" href="#exit-anyway">4.19. Exit anyway</a></h3>
+<h3 id="exit-anyway"><a class="link" href="#exit-anyway">4.22. Exit anyway</a></h3>
 <div class="paragraph">
 <p>Exits the program. You can exit under no circumstances</p>
 </div>
@@ -916,13 +1013,13 @@ undo</code> (reverses the clear command)<br>
 </div>
 </div>
 <div class="sect2">
-<h3 id="appointments-coming-in-v2-0"><a class="link" href="#appointments-coming-in-v2-0">4.20. Appointments [Coming in v2.0]</a></h3>
+<h3 id="appointments-coming-in-v2-0"><a class="link" href="#appointments-coming-in-v2-0">4.23. Appointments [Coming in v2.0]</a></h3>
 <div class="paragraph">
 <p>Schedule patient appointments.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="cloud-coming-in-v2-0"><a class="link" href="#cloud-coming-in-v2-0">4.21. Cloud [Coming in v2.0]</a></h3>
+<h3 id="cloud-coming-in-v2-0"><a class="link" href="#cloud-coming-in-v2-0">4.24. Cloud [Coming in v2.0]</a></h3>
 <div class="paragraph">
 <p>Synchronises the data stored with the cloud database</p>
 </div>
@@ -1066,4 +1163,4 @@ E.g. <code>teeth add primary</code></p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-03-19 15:39:29 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-03-20 06:19:07 UTC</div></div></div></body></html>
