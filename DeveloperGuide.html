@@ -1,6 +1,6 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]--><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Asciidoctor 1.5.6.1"><title>OurTeeth - Developer Guide</title><link rel="stylesheet" href="stylesheets/gh-pages.css">
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]--><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Asciidoctor 1.5.6.1"><title>TeethHub - Developer Guide</title><link rel="stylesheet" href="stylesheets/gh-pages.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="seedu-header"><nav class="navbar navbar-lg navbar-light bg-lighter"><div class="container"><a class="navbar-brand" href="https://se-edu.github.io/"><img src="images/SeEduLogo.png" alt="SE-EDU"></a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level1">AB-1</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level2">AB-2</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level3">AB-3</a></li><li class="nav-item"><a class="nav-link active" href="index.html">AB-4</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/collate">Collate</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/se-book">Book</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/learningresources">Resources</a></li></ul></div></nav></div><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="index.html">AddressBook-Level4</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link active" href="DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link" href="LearningOutcomes.html">LOs</a></li><li class="nav-item"><a class="nav-link" href="AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/se-edu/addressbook-level4"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>OurTeeth - Developer Guide</h1></div><div id="content"><div id="preamble">
+<link rel="stylesheet" href="stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="seedu-header"><nav class="navbar navbar-lg navbar-light bg-lighter"><div class="container"><a class="navbar-brand" href="https://se-edu.github.io/"><img src="images/SeEduLogo.png" alt="SE-EDU"></a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level1">AB-1</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level2">AB-2</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level3">AB-3</a></li><li class="nav-item"><a class="nav-link active" href="index.html">AB-4</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/collate">Collate</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/se-book">Book</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/learningresources">Resources</a></li></ul></div></nav></div><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="index.html">AddressBook-Level4</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link active" href="DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link" href="LearningOutcomes.html">LOs</a></li><li class="nav-item"><a class="nav-link" href="AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/se-edu/addressbook-level4"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>TeethHub - Developer Guide</h1></div><div id="content"><div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
 <p>By: <code>Team W17-2</code>      Since: <code>14 Mar 2019</code>      Licence: <code>MIT</code></p>
@@ -77,8 +77,10 @@
 <li><a href="#instructions-for-manual-testing">Appendix H: Instructions for Manual Testing</a>
 <ul class="sectlevel2">
 <li><a href="#launch-and-shutdown">H.1. Launch and Shutdown</a></li>
-<li><a href="#deleting-a-person">H.2. Deleting a person</a></li>
-<li><a href="#saving-data">H.3. Saving data</a></li>
+<li><a href="#patient-and-record-lists">H.2. Patient and Record lists</a></li>
+<li><a href="#deleting-a-patient">H.3. Deleting a patient</a></li>
+<li><a href="#deleting-a-dental-record">H.4. Deleting a dental record</a></li>
+<li><a href="#saving-data">H.5. Saving data</a></li>
 </ul>
 </li>
 </ul>
@@ -131,7 +133,7 @@ Do not disable them. If you have disabled them, go to <code>File</code> &gt; <co
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Fork this repo, and clone the fork to your computer</p>
+<p>Fork this repository, and clone the fork to your computer</p>
 </li>
 <li>
 <p>Open IntelliJ (if you are not in the welcome screen, click <code>File</code> &gt; <code>Close Project</code> to close the existing project dialog first)</p>
@@ -234,7 +236,7 @@ This will generate all resources required by the application and tests.</p>
 <div class="sect3">
 <h4 id="updating-documentation-to-match-your-fork"><a class="link" href="#updating-documentation-to-match-your-fork">1.4.2. Updating documentation to match your fork</a></h4>
 <div class="paragraph">
-<p>After forking the repo, the documentation will still have the SE-EDU branding and refer to the <code>se-edu/addressbook-level4</code> repo.</p>
+<p>After forking the repository, the documentation will still have the SE-EDU branding and refer to the <code>se-edu/addressbook-level4</code> repository.</p>
 </div>
 <div class="paragraph">
 <p>If you plan to develop this fork as a separate product (i.e. instead of contributing to <code>se-edu/addressbook-level4</code>), you should do the following:</p>
@@ -1193,7 +1195,7 @@ e.g. <code>seedu.address.logic.LogicManagerTest</code></p>
 <p>Generate a JAR file <a href="UsingGradle.html#creating-the-jar-file">using Gradle</a>.</p>
 </li>
 <li>
-<p>Tag the repo with the version number. e.g. <code>v0.1</code></p>
+<p>Tag the repository with the version number. e.g. <code>v0.1</code></p>
 </li>
 <li>
 <p><a href="https://help.github.com/articles/creating-releases/">Create a new release using GitHub</a> and upload the JAR file you created.</p>
@@ -1209,7 +1211,7 @@ e.g. <code>seedu.address.logic.LogicManagerTest</code></p>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
-<p>Include those libraries in the repo (this bloats the repo size)</p>
+<p>Include those libraries in the repository (this bloats the repository size)</p>
 </li>
 <li>
 <p>Require developers to download those libraries manually (this creates extra work for developers)</p>
@@ -2015,6 +2017,42 @@ teeth condition better</p></td>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">isolate other patients' information</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">focus on the current patient in my clinic</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">view my patients' dental records</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">understand and keep track of my patients' teeth health history</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">add a new dental record</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">store diagnosis and treatments of my patients during their dental sessions</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">delete a dental record</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">remove records that have become redundant or irrelevant</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">edit a dental record</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">correct or modify descriptions of dental records that I have already added</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">clear all dental records of a patient</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">protect the privacy of my patients if they require me to</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">add a new task</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">keep track of what I need to do</p></td>
 </tr>
@@ -2303,26 +2341,69 @@ Expected: The most recent window size and location is retained.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="deleting-a-person"><a class="link" href="#deleting-a-person">H.2. Deleting a person</a></h3>
+<h3 id="patient-and-record-lists"><a class="link" href="#patient-and-record-lists">H.2. Patient and Record lists</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Deleting a person while all persons are listed</p>
+<p>Switching of UI elements when <code>goto</code> command is run</p>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
-<p>Prerequisites: List all persons using the <code>list</code> command. Multiple persons in the list.</p>
+<p>Prerequisites: List all patients using the <code>list</code> command. At least one patient should be displayed in the list.</p>
+</li>
+<li>
+<p>Test case: <code>goto 1</code> (Patient of index 1)<br>
+Expected: The patient list GUI is replaced by the record list GUI. Displays dental records of patient specified by index. The window size may not be optimum. Use the command: <code>back</code> to revert to the patient list.</p>
+</li>
+<li>
+<p>Test case: <code>back</code><br>
+Expected: No GUI elements changed. Error details shown in the status message. Status bar remains the same.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Switching of UI elements when <code>back</code> command is run</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: Run the <code>goto 1</code> command. GUI displays dental record list.</p>
+</li>
+<li>
+<p>Test case: <code>back</code><br>
+Expected: Shows the GUI with a set of sample patients. An alert box prompts for confirmation. The window size may not be optimum. Use the command: <code>goto 1</code> to revert to the dental record list.</p>
+</li>
+<li>
+<p>Test case: <code>goto</code><br>
+Expected: No GUI elements changed. Error details shown in the status message. Status bar remains the same.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="deleting-a-patient"><a class="link" href="#deleting-a-patient">H.3. Deleting a patient</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Deleting a patient while all patients are listed</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: List all patients using the <code>list</code> command. Multiple patients should be displayed in the list.</p>
 </li>
 <li>
 <p>Test case: <code>delete 1</code><br>
-Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.</p>
+Expected: First patient is deleted from the list. Details of the deleted patient shown in the status message. Timestamp in the status bar is updated.</p>
 </li>
 <li>
 <p>Test case: <code>delete 0</code><br>
-Expected: No person is deleted. Error details shown in the status message. Status bar remains the same.</p>
+Expected: No patient is deleted. Error details shown in the status message. Status bar remains the same.</p>
 </li>
 <li>
-<p>Other incorrect delete commands to try: <code>delete</code>, <code>delete x</code> (where x is larger than the list size) <em>{give more}</em><br>
+<p>Other incorrect delete commands to try: <code>delete</code>, <code>delete x</code> (where x is larger than the list size), <code>delete y</code> (where y is a negative number), <code>delete z</code> (where z is not an integer)<br>
 Expected: Similar to previous.</p>
 </li>
 </ol>
@@ -2330,12 +2411,38 @@ Expected: Similar to previous.</p>
 </li>
 </ol>
 </div>
-<div class="paragraph">
-<p><em>{ more test cases &#8230;&#8203; }</em></p>
+</div>
+<div class="sect2">
+<h3 id="deleting-a-dental-record"><a class="link" href="#deleting-a-dental-record">H.4. Deleting a dental record</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Deleting a record while all dental records of a patient are listed</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: List all dental records of a patient using the <code>goto x</code> command (x refers to the index of the patient to be tested). Multiple dental records should be displayed in the list.</p>
+</li>
+<li>
+<p>Test case: <code>recorddelete 1</code><br>
+Expected: First dental record is deleted from the list. Details of the deleted dental record is shown in the status message. Timestamp in the status bar is updated.</p>
+</li>
+<li>
+<p>Test case: <code>recorddelete 0</code><br>
+Expected: No record is deleted. Error details shown in the status message. Status bar remains the same.</p>
+</li>
+<li>
+<p>Other incorrect recorddelete commands to try: <code>recorddelete</code>, <code>record delete</code>, <code>recorddelete x</code> (where x is larger than the list size), <code>recorddelete y</code> (where y is a negative number), <code>recorddelete z</code> (where z is not an integer)<br>
+Expected: Similar to previous.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
 </div>
 </div>
 <div class="sect2">
-<h3 id="saving-data"><a class="link" href="#saving-data">H.3. Saving data</a></h3>
+<h3 id="saving-data"><a class="link" href="#saving-data">H.5. Saving data</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -2355,4 +2462,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-02 15:10:11 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-02 15:18:02 UTC</div></div></div></body></html>
