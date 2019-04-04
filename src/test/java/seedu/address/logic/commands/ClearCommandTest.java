@@ -21,7 +21,8 @@ public class ClearCommandTest {
         Model expectedModel = new ModelManager();
         expectedModel.commitAddressBook();
 
-        assertCommandSuccess(new PatientClearCommand(), model, commandHistory, PatientClearCommand.MESSAGE_SUCCESS, expectedModel);
+        assertCommandSuccess(new PatientClearCommand(), model, commandHistory,
+            PatientClearCommand.MESSAGE_SUCCESS, expectedModel);
     }
 
     @Test
@@ -31,7 +32,8 @@ public class ClearCommandTest {
         expectedModel.setAddressBook(new AddressBook());
         expectedModel.commitAddressBook();
 
-        assertCommandSuccess(new PatientClearCommand(), model, commandHistory, PatientClearCommand.MESSAGE_SUCCESS, expectedModel);
+        assertCommandSuccess(new PatientClearCommand(), model, commandHistory,
+            PatientClearCommand.MESSAGE_SUCCESS, expectedModel);
     }
 
 }
