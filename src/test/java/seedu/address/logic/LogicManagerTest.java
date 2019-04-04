@@ -67,7 +67,7 @@ public class LogicManagerTest {
 
     @Test
     public void execute_commandExecutionError_throwsCommandException() {
-        String patientDeleteCommand = "delete 9";
+        String patientDeleteCommand = "pdelete 9";
         assertCommandException(patientDeleteCommand, MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
         assertHistoryCorrect(patientDeleteCommand);
     }
@@ -150,6 +150,7 @@ public class LogicManagerTest {
                                            String expectedMessage, Model expectedModel) {
 
         try {
+            System.out.println(inputCommand);
             CommandResult result = logic.execute(inputCommand);
             assertEquals(expectedException, null);
             assertEquals(expectedMessage, result.getFeedbackToUser());
