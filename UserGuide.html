@@ -70,8 +70,9 @@
 <li><a href="#taskedit">4.7.2. taskedit</a></li>
 <li><a href="#taskdelete">4.7.3. taskdelete</a></li>
 <li><a href="#tasklist">4.7.4. tasklist</a></li>
-<li><a href="#taskdone">4.7.5. taskdone</a></li>
-<li><a href="#taskcal">4.7.6. taskcal</a></li>
+<li><a href="#tasksort">4.7.5. tasksort</a></li>
+<li><a href="#taskdone">4.7.6. taskdone</a></li>
+<li><a href="#taskcal">4.7.7. taskcal</a></li>
 </ul>
 </li>
 <li><a href="#viewing-and-locating-information">4.8. Viewing and Locating Information</a>
@@ -1445,7 +1446,25 @@ along with their format and restrictions</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="taskdone"><a class="link" href="#taskdone">4.7.5. taskdone</a></h4>
+<h4 id="tasksort"><a class="link" href="#tasksort">4.7.5. tasksort</a></h4>
+<div class="paragraph">
+<p>Sort the tasks ascendingly or descendingly in some order.</p>
+</div>
+<div class="paragraph">
+<p>Format : 'tasksort priority/startime/endtime [asc/desc]'</p>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="paragraph">
+<p>*<code>tasksort priority</code></p>
+</div>
+<div class="paragraph">
+<p>*<code>tasksort starttime desc</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="taskdone"><a class="link" href="#taskdone">4.7.6. taskdone</a></h4>
 <div class="paragraph">
 <p>Sets a task to <code><span class="green">complete</span></code>, marking the completion of the task.
 Executing this command on a patient that has a patient linked to it will automatically add a record to the patient.</p>
@@ -1455,7 +1474,7 @@ Executing this command on a patient that has a patient linked to it will automat
 </div>
 </div>
 <div class="sect3">
-<h4 id="taskcal"><a class="link" href="#taskcal">4.7.6. taskcal</a></h4>
+<h4 id="taskcal"><a class="link" href="#taskcal">4.7.7. taskcal</a></h4>
 <div class="paragraph">
 <p>Creates a popup window with a list of tasks on the left hand side of the window and a calendar on the right hand side.
 There will also be a command box below the calendar, allowing you to execute task commands from this window as well.</p>
@@ -1879,6 +1898,10 @@ e.g. <code>taskedit 1 ti/Tooth extraction for Alex pri/HIGH</code></p>
 e.g. <code>taskdelete 1</code></p>
 </li>
 <li>
+<p>*Tasksort <code>tasksort starttime/endtime/priority [asc/desc]</code>
+e.g. <code>tasksort endtime</code></p>
+</li>
+<li>
 <p><strong>Teeth</strong> : <code>teeth patientadd &lt;Template&gt;</code><br>
 e.g. <code>teeth patientadd primary</code></p>
 </li>
@@ -1888,4 +1911,4 @@ e.g. <code>teeth patientadd primary</code></p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-07 11:37:44 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-07 11:55:40 UTC</div></div></div></body></html>
