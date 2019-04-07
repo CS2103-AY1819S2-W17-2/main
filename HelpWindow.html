@@ -21,13 +21,12 @@
 <li><a href="#general-commands">4.2. General Commands</a>
 <ul class="sectlevel3">
 <li><a href="#help">4.2.1. help</a></li>
-<li><a href="#dentist">4.2.2. dentist</a></li>
-<li><a href="#history">4.2.3. history</a></li>
-<li><a href="#undo">4.2.4. undo</a></li>
-<li><a href="#redo">4.2.5. redo</a></li>
-<li><a href="#sort">4.2.6. sort</a></li>
-<li><a href="#stat">4.2.7. stat</a></li>
-<li><a href="#exit">4.2.8. exit</a></li>
+<li><a href="#history">4.2.2. history</a></li>
+<li><a href="#undo">4.2.3. undo</a></li>
+<li><a href="#redo">4.2.4. redo</a></li>
+<li><a href="#sort">4.2.5. sort</a></li>
+<li><a href="#stat">4.2.6. stat</a></li>
+<li><a href="#exit">4.2.7. exit</a></li>
 </ul>
 </li>
 <li><a href="#file-management">4.3. File Management</a>
@@ -73,14 +72,6 @@
 <li><a href="#tasksort">4.7.5. tasksort</a></li>
 <li><a href="#taskdone">4.7.6. taskdone</a></li>
 <li><a href="#taskcal">4.7.7. taskcal</a></li>
-</ul>
-</li>
-<li><a href="#viewing-and-locating-information">4.8. Viewing and Locating Information</a>
-<ul class="sectlevel3">
-<li><a href="#list">4.8.1. list</a></li>
-<li><a href="#find">4.8.2. find</a></li>
-<li><a href="#sort-2">4.8.3. sort</a></li>
-<li><a href="#stat-2">4.8.4. stat</a></li>
 </ul>
 </li>
 </ul>
@@ -252,26 +243,7 @@ a parameter which can be used as patientadd n/John Doe.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="dentist"><a class="link" href="#dentist">4.2.2. dentist</a></h4>
-<div class="paragraph">
-<p>You can specify the name you want to reflect in your patients' dental record when you create them.</p>
-</div>
-<div class="paragraph">
-<p>Format: <code>dentist n/YOUR_NAME</code></p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>If there is no dentist name specified, the program will prompt you to enter one.</p>
-</li>
-<li>
-<p>This should only happen once, during the first startup of the application.</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect3">
-<h4 id="history"><a class="link" href="#history">4.2.3. history</a></h4>
+<h4 id="history"><a class="link" href="#history">4.2.2. history</a></h4>
 <div class="paragraph">
 <p>Lists all the commands that have been entered since starting the
 application in reverse chronological order.</p>
@@ -281,7 +253,7 @@ application in reverse chronological order.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="undo"><a class="link" href="#undo">4.2.4. undo</a></h4>
+<h4 id="undo"><a class="link" href="#undo">4.2.3. undo</a></h4>
 <div class="paragraph">
 <p>Undo the latest command.</p>
 </div>
@@ -313,7 +285,7 @@ The undo command fails as there are no undo-able commands executed previously.</
 </div>
 </div>
 <div class="sect3">
-<h4 id="redo"><a class="link" href="#redo">4.2.5. redo</a></h4>
+<h4 id="redo"><a class="link" href="#redo">4.2.4. redo</a></h4>
 <div class="paragraph">
 <p>Reverses the most recent undo command.</p>
 </div>
@@ -348,20 +320,31 @@ previously.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="sort"><a class="link" href="#sort">4.2.6. sort</a></h4>
+<h4 id="sort"><a class="link" href="#sort">4.2.5. sort</a></h4>
 <div class="paragraph">
 <p>Sorts the records by an input parameter in an input order.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code>sort PARAM ORDER</code></p>
+<p>Format: <code>sort PARAM [ORDER]</code></p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>valid PARAM options: address, date of birth, email, name, nric, phone, sex</p>
+<p>valid PARAM options in patient mode: address, dob, email, name, nric, phone, sex,
+drug, kinN, kinR, kinP, kinA, desc.</p>
+</li>
+<li>
+<p>valid PARAM options in record mode: desc, date, procedure.</p>
 </li>
 <li>
 <p>valid ORDER options: asce, desc</p>
+<div class="ulist">
+<ul>
+<li>
+<p>default ORDER if unspecified is ascending</p>
+</li>
+</ul>
+</div>
 </li>
 </ul>
 </div>
@@ -370,110 +353,142 @@ previously.</p>
 </div>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 25%;">
-<col style="width: 25%;">
-<col style="width: 25%;">
-<col style="width: 25%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
 </colgroup>
 <thead>
 <tr>
 <th class="tableblock halign-left valign-top"><strong>ID</strong></th>
 <th class="tableblock halign-left valign-top"><strong>Name</strong></th>
-<th class="tableblock halign-left valign-top"><strong>Age</strong></th>
-<th class="tableblock halign-left valign-top"><strong>Last Modified</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Sex</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Phone</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Date of Birth</strong></th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Alice</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">19</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">84521666</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">03/07/2003</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Clara</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">12</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">05/02/2021</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Bob</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">24</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">96545555</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">11/02/2019</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>ID</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Name</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Age</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Last Modified</strong></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Clara</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">12</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">05/02/2021</p></td>
-</tr>
-<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Bob</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">24</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">11/02/2019</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Alice</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">19</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">03/07/2003</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Clara</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">F</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">98989898</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">05/02/2021</p></td>
 </tr>
 </tbody>
 </table>
 <div class="ulist">
 <ul>
 <li>
-<p>sort age asce</p>
+<p>sort sex</p>
 </li>
 </ul>
 </div>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 25%;">
-<col style="width: 25%;">
-<col style="width: 25%;">
-<col style="width: 25%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
 </colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top"><strong>ID</strong></th>
-<th class="tableblock halign-left valign-top"><strong>Name</strong></th>
-<th class="tableblock halign-left valign-top"><strong>Age</strong></th>
-<th class="tableblock halign-left valign-top"><strong>Last Modified</strong></th>
-</tr>
-</thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Clara</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">12</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">05/02/2021</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>ID</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Name</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Sex</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Phone</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Date of Birth</strong></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Clara</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">F</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">98989898</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">05/02/2021</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Alice</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">19</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">84521666</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">03/07/2003</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Bob</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">24</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">96545555</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">11/02/2019</p></td>
+</tr>
+</tbody>
+</table>
+<div class="ulist">
+<ul>
+<li>
+<p>sort dob desc</p>
+</li>
+</ul>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top"><strong>ID</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Name</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Sex</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Phone</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Date of Birth</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Clara</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">F</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">98989898</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">05/02/2021</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Bob</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">96545555</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">11/02/2019</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Alice</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">84521666</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">03/07/2003</p></td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="sect3">
-<h4 id="stat"><a class="link" href="#stat">4.2.7. stat</a></h4>
+<h4 id="stat"><a class="link" href="#stat">4.2.6. stat</a></h4>
 <div class="paragraph">
 <p>Generates a statistics report based on the specified patient&#8217;s data.</p>
 </div>
@@ -482,7 +497,7 @@ previously.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="exit"><a class="link" href="#exit">4.2.8. exit</a></h4>
+<h4 id="exit"><a class="link" href="#exit">4.2.7. exit</a></h4>
 <div class="paragraph">
 <p>Exits the program. You won&#8217;t be able to exit if copies exist.</p>
 </div>
@@ -745,9 +760,8 @@ Writes all entries from the address book to data1.json.<br></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>patientadd n/John Choo p/98425871 e/jonC@example.com a/IDA street block 13
-#02-05 ic/S1234567H age/32 dob/26021987 nokn/Jacky Choo nokp/84875215
-nokr/Father noka/same</code></p>
+<p><code>patientadd n/John Choo sex/M p/98425871 e/jonC@example.com a/IDA street block 13
+#02-05 ic/S1234567H dob/26-02-1987 nokn/Jacky Choo nokp/84875215 nokr/Father noka/same</code></p>
 </li>
 </ul>
 </div>
@@ -796,33 +810,46 @@ Deletes the patient shown with index 2 found using the find command.</p>
 <p>Edits data from an existing patient.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code>patientedit INDEX</code> or <code>pedit INDEX</code></p>
+<p>Format: <code>patientedit INDEX [PREFIX/KEYWORDS]</code> or <code>pedit INDEX [PREFIX/KEYWORDS]</code></p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Goes into patientedit mode for the patient at the specified index shown from
-list or find command. Must be a positive integer (e.g 1, 2 or 3).</p>
+<p>Edits the patient at the specified index shown from list or find command.
+Must be a positive integer (e.g 1, 2 or 3).</p>
 </li>
 <li>
-<p>Input the field followed by the new value to replace the existing data.</p>
+<p>Input the prefix followed by the new value to replace the existing data.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>The full list of possible prefixes can be found in <a href="#breakdown-of-attributes-used-within-teethhub">Section 4.1, &#8220;Breakdown of attributes used within TeethHub&#8221;</a></p>
+</li>
+</ul>
+</div>
 </li>
 <li>
 <p>Multiple fields can be edited in a single input or across multiple
 inputs.</p>
 </li>
 <li>
-<p>When editing tags, the existing tags of the patient will be removed i.e
-adding of tags is not cumulative.</p>
-</li>
-<li>
-<p>All tags can be removed by keying in t/ without specifying any tags
-following it.</p>
-</li>
-<li>
-<p>Exit the patientedit mode by entering done.</p>
+<p>Note that tags <strong>cannot</strong> be editted as they are automatically generated.</p>
 </li>
 </ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>After editting a patient, <code>plist</code> is automatically executed as well!</p>
+</div>
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
 <p>Example:</p>
@@ -831,18 +858,14 @@ following it.</p>
 <ul>
 <li>
 <p><code><a href="#patientlist">patientlist</a></code><br>
-<code>patientedit 1</code><br>
-<code>p/12345</code><br>
-<code>e/newemail@gmail.com</code><br>
-<code>done</code><br>
+<code>patientedit 1 e/newemail@gmail.com</code><br>
+<code>patientedit 1 p/12345</code><br>
 Edits the phone number and email of the first patient listed to become
 12345 and <a href="mailto:newemail@gmail.com">newemail@gmail.com</a> respectively across 2 inputs.</p>
 </li>
 <li>
 <p><code><a href="#patientfind">patientfind</a> Betsy</code><br>
-<code>patientedit 2</code><br>
-<code>p/987654 e/mymail@gmail.com</code><br>
-<code>done</code><br>
+<code>patientedit 2 p/987654 e/mymail@gmail.com</code><br>
 Edits the phone number and email of the first patient listed to become
 987654 and <a href="mailto:mymail@gmail.com">mymail@gmail.com</a> respectively with a single input.</p>
 </li>
@@ -1164,7 +1187,7 @@ letter, allowing for easier use on keyboards.</p>
 <p><code><a href="#goto">goto</a> 1</code> - Specifies patient 1 to edit his or her teeth status. Enters the record edit mode.</p>
 </li>
 <li>
-<p><code>teethedit t/TEETH_LABEL s/STATUS</code> - Edits the status of the indicated tooth of patient.</p>
+<p><code>teethedit TEETH_LABEL s/STATUS</code> - Edits the status of the indicated tooth of patient.</p>
 </li>
 <li>
 <p><code>back</code> - Exits the record edit mode, and returns to the patient list.</p>
@@ -1496,270 +1519,6 @@ command box <code>e.g. 30-03-2019</code> and that day will be selected.</p>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="viewing-and-locating-information"><a class="link" href="#viewing-and-locating-information">4.8. Viewing and Locating Information</a></h3>
-<div class="paragraph">
-<p>The commands listed below deal with displaying and finding data for you to view.
-They do not deal with the adding or modification of any information currently already
-stored within the program.</p>
-</div>
-<div class="sect3">
-<h4 id="list"><a class="link" href="#list">4.8.1. list</a></h4>
-<div class="paragraph">
-<p>Shows a list of all patients or medical stored in TeethHub.</p>
-</div>
-<div class="paragraph">
-<p>Format: <code>list [dental]</code></p>
-</div>
-<div class="paragraph">
-<p>Command shows patient details by default, add dental to see dental records.</p>
-</div>
-<div class="paragraph">
-<p>Example:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>list</code><br>
-Shows details of all patients.</p>
-</li>
-<li>
-<p><code>list dental</code><br>
-Shows details of patient&#8217;s dental records.</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect3">
-<h4 id="find"><a class="link" href="#find">4.8.2. find</a></h4>
-<div class="paragraph">
-<p>Shows patients whose data contains any of the given keywords according to a specified parameter.</p>
-</div>
-<div class="paragraph">
-<p>Format: <code>find [CASE_SENSITIVITY] [AND OPERATOR] PREFIX/KEYWORD [MORE PREFIX/KEYWORD]</code></p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Case sensitivity can be toggled by specifying "CS" before the keywords,
-default behavior ignores case sensitivity</p>
-</li>
-<li>
-<p>AND Operator can be toggled by specifying "AND" before the keywords,
-default behaviour is OR.</p>
-</li>
-<li>
-<p>Order of Prefix/keywords does not matter.</p>
-</li>
-<li>
-<p>Valid <code>Prefix</code> values: See <a href="#breakdown-of-attributes-used-within-teethhub">Section 4.1, &#8220;Breakdown of attributes used within TeethHub&#8221;</a></p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Example:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>find a/Yishun</code><br>
-Show all the people with an address containing the keyword Yishun.</p>
-</li>
-<li>
-<p><code>find a/Yishun e/yahoo.com</code><br>
-Show all the people with an address containing either the keyword Yishun
-or have an email address containing yahoo.com .</p>
-</li>
-<li>
-<p><code>find CS sex/M da/PANadol</code><br>
-Shows all the people with either a sex listed as M or have their drug allergy listed as PANadol
-in the exact given letter case.</p>
-</li>
-<li>
-<p><code>find AND CS n/Alex p/9475</code><br>
-Show all the people with both a name containing Alex and a phone number containing 9475.</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect3">
-<h4 id="sort-2"><a class="link" href="#sort-2">4.8.3. sort</a></h4>
-<div class="paragraph">
-<p>Sorts the records by an input parameter in an input order.</p>
-</div>
-<div class="paragraph">
-<p>Format: <code>sort PARAM [ORDER]</code></p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>valid PARAM options in patient mode: address, dob, email, name, nric, phone, sex,
-drug, kinN, kinR, kinP, kinA, desc.</p>
-</li>
-<li>
-<p>valid PARAM options in record mode: desc, date, procedure.</p>
-</li>
-<li>
-<p>valid ORDER options: asce, desc</p>
-<div class="ulist">
-<ul>
-<li>
-<p>default ORDER if unspecified is ascending</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Example:</p>
-</div>
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 20%;">
-<col style="width: 20%;">
-<col style="width: 20%;">
-<col style="width: 20%;">
-<col style="width: 20%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top"><strong>ID</strong></th>
-<th class="tableblock halign-left valign-top"><strong>Name</strong></th>
-<th class="tableblock halign-left valign-top"><strong>Sex</strong></th>
-<th class="tableblock halign-left valign-top"><strong>Phone</strong></th>
-<th class="tableblock halign-left valign-top"><strong>Date of Birth</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Alice</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">84521666</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">03/07/2003</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Bob</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">96545555</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">11/02/2019</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Clara</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">F</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">98989898</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">05/02/2021</p></td>
-</tr>
-</tbody>
-</table>
-<div class="ulist">
-<ul>
-<li>
-<p>sort sex</p>
-</li>
-</ul>
-</div>
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 20%;">
-<col style="width: 20%;">
-<col style="width: 20%;">
-<col style="width: 20%;">
-<col style="width: 20%;">
-</colgroup>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>ID</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Name</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Sex</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Phone</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Date of Birth</strong></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Clara</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">F</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">98989898</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">05/02/2021</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Alice</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">84521666</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">03/07/2003</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Bob</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">96545555</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">11/02/2019</p></td>
-</tr>
-</tbody>
-</table>
-<div class="ulist">
-<ul>
-<li>
-<p>sort dob desc</p>
-</li>
-</ul>
-</div>
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 20%;">
-<col style="width: 20%;">
-<col style="width: 20%;">
-<col style="width: 20%;">
-<col style="width: 20%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top"><strong>ID</strong></th>
-<th class="tableblock halign-left valign-top"><strong>Name</strong></th>
-<th class="tableblock halign-left valign-top"><strong>Sex</strong></th>
-<th class="tableblock halign-left valign-top"><strong>Phone</strong></th>
-<th class="tableblock halign-left valign-top"><strong>Date of Birth</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Clara</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">F</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">98989898</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">05/02/2021</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Bob</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">96545555</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">11/02/2019</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Alice</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">84521666</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">03/07/2003</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="sect3">
-<h4 id="stat-2"><a class="link" href="#stat-2">4.8.4. stat</a></h4>
-<div class="paragraph">
-<p>Generates a statistics report based on the specified patient&#8217;s data.</p>
-</div>
-<div class="paragraph">
-<p>Format: <code>stat INDEX</code></p>
-</div>
-</div>
-</div>
 </div>
 </div>
 <div class="sect1">
@@ -1911,4 +1670,4 @@ e.g. <code>teeth patientadd primary</code></p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-07 11:55:40 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-07 15:34:56 UTC</div></div></div></body></html>
