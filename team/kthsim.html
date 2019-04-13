@@ -10,22 +10,35 @@
 <h2 id="overview"><a class="link" href="#overview">Overview</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>TeethHub is a desktop patient-record application meant for tech-savvy dental practitioners who
-prefer interacting with Command-Line Interfaces (CLI) based programs over Graphical User Interface (GUI) based ones.</p>
+<p>My teammates and I were assigned the task of either improving an existing Command-Line Interfaces (CLI) based program
+ by the name of AddressBook4 or to use it as the basis for our own program. We chose to transform it into TeethHub.</p>
 </div>
 <div class="paragraph">
-<p>The user interacts with it using a CLI, and it has a GUI created with JavaFX to display data for the user.
- It is written in Java, and has about 10 kLoC.</p>
+<p>TeethHub is a desktop patient-record application meant for tech-savvy dental practitioners who
+prefer interacting with Command-Line Interfaces (CLI) based programs over Graphical User Interface (GUI) based ones.
+The program allows dentists to enter patient data, manage records and teeth data tied to each patient, view
+information in a variety of ways, as well as import and export information into either .json or .pdf format.
+The user interacts with it using a CLI, and it has a GUI created with JavaFX to display data for the user.  It is
+written in Java, and has about 20 kLoC.</p>
+</div>
+<div class="paragraph">
+<p>My responsibility was implement different ways the dentist could view the stored information within the program. To
+that end, I created the <code>sort</code> and <code>stat</code> commands as well as enhanced the existing functionality of the <code>find</code>
+program. The below segments go into greater detail of these implementations as well as the sections I have written
+within both the user guide and the developer guide.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="summary-of-contributions"><a class="link" href="#summary-of-contributions">Summary of contributions</a></h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p>The segment below summarises the most pertinent improvements and enhancements I made towards the team&#8217;s overall goals.</p>
+</div>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Major enhancement</strong>: added <strong>the ability to sort displayed data</strong></p>
+<p>Added the ability to sort displayed data</p>
 <div class="ulist">
 <ul>
 <li>
@@ -46,7 +59,7 @@ depending on the mode the program is in. This feature reorders the stored data w
 </div>
 </li>
 <li>
-<p><strong>Major enhancement</strong>: added <strong>the ability to find patients and records through all available parameters</strong></p>
+<p>Added the ability to find patients and records through all available parameters</p>
 <div class="ulist">
 <ul>
 <li>
@@ -66,7 +79,7 @@ depending on the mode the program is in.</p>
 </div>
 </li>
 <li>
-<p><strong>Major enhancement</strong>: added <strong>the ability to view a patient&#8217;s statistics report</strong></p>
+<p>Added the ability to view a patient&#8217;s statistics report</p>
 <div class="ulist">
 <ul>
 <li>
@@ -85,16 +98,19 @@ pie chart.</p>
 </div>
 </li>
 <li>
-<p><strong>Minor enhancement</strong>: added a Next Of Kin class as an attribute for a patient.</p>
+<p>Added a Next Of Kin class as an attribute for a patient.</p>
 </li>
 <li>
-<p><strong>Minor enhancement</strong>: added a Procedure class as an attribute for a record.</p>
+<p>Added a Procedure class as an attribute for a record.</p>
 </li>
-<li>
-<p><strong>Code contributed</strong>: [<a href="https://github.com">Functional code</a>] [<a href="https://github.com">Test code</a>] <em>{give links to collated code files}</em></p>
-</li>
-<li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Code contributed</strong>: [<a href="http://tinyurl.com/yywtfzrn">Functional code</a>] [<a href="https://github.com">Test code</a>]</p>
+</div>
+<div class="paragraph">
 <p><strong>Other contributions</strong>:</p>
+</div>
 <div class="ulist">
 <ul>
 <li>
@@ -108,7 +124,7 @@ pie chart.</p>
 <p>Managed releases <code>v1.1</code> - <code>v1.4</code> (6 releases) on GitHub</p>
 </li>
 <li>
-<p>Responsible for approving and merging the PR of fellow teammates</p>
+<p>Responsible for approving and merging the Pull Requests of fellow teammates</p>
 </li>
 <li>
 <p>Created majority of open issues and distributed responsibilities for the issues to relevant team members</p>
@@ -125,10 +141,6 @@ pie chart.</p>
 <ul>
 <li>
 <p>Updated README to reflect information for TeethHub instead of AddressBook4</p>
-</li>
-<li>
-<p>Wrote additional tests for existing features to increase coverage from 88% to 92% (Pull requests
-<a href="https://github.com">#36</a>, <a href="https://github.com">#38</a>)</p>
 </li>
 </ul>
 </div>
@@ -176,9 +188,6 @@ repo</p>
 </li>
 </ul>
 </div>
-</li>
-</ul>
-</div>
 </div>
 </div>
 <div class="sect1">
@@ -190,10 +199,188 @@ repo</p>
 </colgroup>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the User Guide. They showcase my ability to write documentation targeting end-users.</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>The text below is the documentation done for the user guide that I feel highlights my ability to write end-user
+friendly documentation through the showcase of a few important sections.</em></p></td>
 </tr>
 </tbody>
 </table>
+<div class="sect3">
+<h4 id="sort"><a class="link" href="#sort">sort</a></h4>
+<div class="paragraph">
+<p>Sorts the records by an input parameter in an input order.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>sort PARAM [ORDER]</code></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>valid PARAM options in patient mode: address, dob, email, name, nric, phone, sex,
+drug, kinN, kinR, kinP, kinA, desc.</p>
+</li>
+<li>
+<p>valid PARAM options in record mode: desc, date, proc.</p>
+</li>
+<li>
+<p>valid ORDER options: asce, desc</p>
+<div class="ulist">
+<ul>
+<li>
+<p>default ORDER if unspecified is ascending</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top"><strong>ID</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Name</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Sex</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Phone</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Date of Birth</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Alice</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">84521666</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">03/07/2003</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Bob</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">96545555</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">11/02/2019</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Clara</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">F</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">98989898</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">05/02/2021</p></td>
+</tr>
+</tbody>
+</table>
+<div class="ulist">
+<ul>
+<li>
+<p>sort sex</p>
+</li>
+</ul>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>ID</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Name</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Sex</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Phone</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Date of Birth</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Clara</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">F</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">98989898</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">05/02/2021</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Alice</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">84521666</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">03/07/2003</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Bob</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">96545555</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">11/02/2019</p></td>
+</tr>
+</tbody>
+</table>
+<div class="ulist">
+<ul>
+<li>
+<p>sort dob desc</p>
+</li>
+</ul>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top"><strong>ID</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Name</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Sex</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Phone</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Date of Birth</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Clara</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">F</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">98989898</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">05/02/2021</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Bob</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">96545555</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">11/02/2019</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Alice</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">84521666</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">03/07/2003</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="stat"><a class="link" href="#stat">stat</a></h4>
+<div class="paragraph">
+<p>Generates a statistics report based on the specified patient&#8217;s data.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>stat INDEX</code></p>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -205,25 +392,20 @@ repo</p>
 </colgroup>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the Developer Guide. They showcase my ability to write technical documentation and the technical depth of my contributions to the project.</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>The text below is the documentation done for the developer guide that I feel highlights my ability to write
+technical documentation through the showcase of the more important
+implementations I did during the creation of the project.</em></p></td>
 </tr>
 </tbody>
 </table>
-<div class="sect2">
-<h3 id="find-feature"><a class="link" href="#find-feature">Find feature</a></h3>
 <div class="sect3">
-<h4 id="current-implementation"><a class="link" href="#current-implementation">Current Implementation</a></h4>
+<h4 id="find-feature"><a class="link" href="#find-feature">Find feature</a></h4>
 <div class="paragraph">
 <p>The Find mechanism is facilitated through the use of predicates in conjunction with the
 <code>FilteredList</code> within <code>ModelManager</code></p>
 </div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/FindCommandSequenceDiagram1.png" alt="FindCommandSequenceDiagram1" width="800">
-</div>
-</div>
 <div class="paragraph">
-<p>The above sequence diagram gives an overview of how a <code>Find</code> Command is created. When the proper string arguments for
+<p>The below sequence diagram gives an overview of how a <code>Find</code> Command is created. When the proper string arguments for
  a Find Command is entered into the user interface, the arguments are passed to the Logic Manager and then the
  AddressBook parser to determine if the input is valid. If it valid, a new <code>FindCommandParser</code> object is then created
   and handles the remaining user input.</p>
@@ -237,212 +419,133 @@ respective parameter <code>ContainsKeywordsPredicate</code> if the parameter is 
  flow in the sequence diagram.</p>
 </div>
 <div class="paragraph">
-<p>Whereas the sequence diagram below
-gives an overview of it&#8217;s execution behavior.</p>
+<p>On execution of the Find Command, <code>updateFilteredPersonList</code> is called with the predicate stored within the program
+itself. It subsequently calls <code>setPredicate(predicatte)</code> and updates the displayed person list to only show patients
+that matches the given predicate.</p>
 </div>
-<div class="paragraph">
-<p><em>{Placeholder for second execution sequence diagram}</em></p>
+<div class="imageblock">
+<div class="content">
+<img src="../images/FindCommandSequenceDiagram1.png" alt="FindCommandSequenceDiagram1" width="800">
+</div>
 </div>
 </div>
 <div class="sect3">
 <h4 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h4>
 <div class="sect4">
-<h5 id="aspect-creation-of-predicates"><a class="link" href="#aspect-creation-of-predicates">Aspect: Creation of Predicates</a></h5>
+<h5 id="aspect-creation-of-predicate-classes"><a class="link" href="#aspect-creation-of-predicate-classes">Aspect: Creation of Predicate Classes</a></h5>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative 1 (current choice):</strong> Every associated parameter that is found within either a <code>Patient</code> or <code>Record</code>
-class has an associated <code>ContainsKeywordsPredicate</code> that handles the predicate testing when that parameter is
-specified to be searched.</p>
+<p><strong>Current Implementation:</strong> Every associated parameter that is found within either a <code>Patient</code> or <code>Record</code>
+class has an associated parameter predicate classes extended from <code>ContainsKeywordsPredicate</code> class that handles the
+predicate testing when that parameter is specified to be searched.<br>
+(E.g. The predicate for Name is handled in <code>NameContainsKeywordsPredicate</code>)</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1:</strong> <code>Patient</code> and <code>Record</code> would each have an individually associated
+<code>PatientContainsKeywordsPredicate</code> and <code>RecordContainsKeywordsPredicate</code> that
+ contains each respective parameter predicate class within itself.</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative Pros:</strong> Collates all parameter predicates relevant to either Patient or Record within a singular
+class. This makes it easier for future developers to discover which file to change should they require to add or
+remove additional parameter predicates from TeethHub.</p>
 </li>
 <li>
-<p><strong>Alternative 2:</strong> <code>Patient</code> and <code>Record</code> would each have an individual associated <code>ContainsKeywordsPredicate</code> that
-acts as a "class of classes" that contains each respective paramater predicate class within itself.</p>
+<p><strong>Alternative Cons:</strong> Violates <strong>Open-Closed Principle</strong> as every time a parameter predicate needs to be added or
+modified, we are forced to modify the code of either <code>PatientContainsKeywordsPredicate</code> or
+<code>RecordContainsKeywordsPredicate</code> in order to extend its behavior.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Choice Justification:</strong> Ultimately, while the current implementation can be considered more troublesome for future
+developers as they would need to create a new java file for each new parameter, we decided that it was more
+important for us to maintain proper software engineering principles.</p>
+</li>
+</ul>
+</div>
 </li>
 </ul>
 </div>
 </div>
 </div>
+<div class="sect3">
+<h4 id="stat-feature"><a class="link" href="#stat-feature">Stat feature</a></h4>
+<div class="imageblock">
+<div class="content">
+<img src="../images/StatWindow.png" alt="StatWindow" width="500">
 </div>
 </div>
-</div>
-<div class="sect1">
-<h2 id="user-stories"><a class="link" href="#user-stories">User Stories</a></h2>
-<div class="sectionbody">
 <div class="paragraph">
-<p>Priorities: High (must have) - <code>* * *</code>, Medium (nice to have) - <code>* *</code>, Low (unlikely to have) - <code>*</code></p>
+<p>The <code>Stat</code> mechanism is facilitated through the use of the inbuilt JavaFx framework in conjunction with the data
+stored within each <code>Patient</code> object.</p>
 </div>
-<table class="tableblock frame-all grid-all" style="width: 59%;">
-<colgroup>
-<col style="width: 22%;">
-<col style="width: 23%;">
-<col style="width: 25%;">
-<col style="width: 30%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Priority</th>
-<th class="tableblock halign-left valign-top">As a &#8230;&#8203;</th>
-<th class="tableblock halign-left valign-top">I want to &#8230;&#8203;</th>
-<th class="tableblock halign-left valign-top">So that I can&#8230;&#8203;</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">add a new patient&#8217;s particulars</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">know about their situation</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">edit my patient&#8217;s particulars when the situation changes</p></td>
-<td class="tableblock halign-left valign-top"></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">my patients' medical records and teeth data tied to them</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">know how their situation evolved</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">store, edit, and view my dental patients' teeth condition</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">understand and serve my dental patients'
-teeth condition better</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">isolate other patients' information</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">focus on the current patient in my clinic</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">view my patients' dental records</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">understand and keep track of my patients' teeth health history</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">add a new dental record</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">store diagnosis and treatments of my patients during their dental sessions</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">delete a dental record</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">remove records that have become redundant or irrelevant</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">edit a dental record</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">correct or modify descriptions of dental records that I have already added</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">clear all dental records of a patient</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">protect the privacy of my patients if they require me to</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">add a new task</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">keep track of what I need to do</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">delete a task</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">remove tasks that I have already completed or no longer need to do</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">edit a task</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">change details of certains tasks that I have already added</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">encrypt the imported/exported data</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">ensure patient information remains confidential</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">append imported/exported data</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">work more flexibly with patient information</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">my imported/exported data supported by multiple file types</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">work more flexibly with patient information</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">see a statistics report on each patient&#8217;s dental history</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">have an easier time understanding their potential problems</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">warning to come up when I&#8217;m exiting the program if there exists duplicate entries</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">be reminded to
-edit them before exiting.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">see an overall statistics report on my patients</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">analyze potential trends</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">copy a person</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">reduce the time needed to create a new person who has similar records to an existing person in the list</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">export entries into an external file</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">view certain entries even when I am not using the application</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">import entries from an external file</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">reduce the time needed to create a person whose information can
-be already be obtained from an external source</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">see relevant dentistry tags on my patients' entries</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">have an overview of my patients' condition</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">user with many persons in the address book</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">sort patients by desired parameter</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">locate a person easily</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>*</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">user with confidential patient information</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">log into the application with a password</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">prevent unauthorized access to the application when I am not around</p></td>
-</tr>
-</tbody>
-</table>
+<div class="paragraph">
+<p>Upon execution of the stat command, the patient to have statistics generated from is set to the <code>StatWindow</code> file
+which then uses it to create the report. As per the diagram below, <code>StatWindow</code> then obtains all attributes from the
+patient and sets the latest teeth image to itself.</p>
+</div>
+<div class="paragraph">
+<p>The <code>StatWindow</code> then creates a <code>Map&lt;String, Integer&gt;</code> with all the valid procedure values
+found in <code>Procedure</code> as the keys and the values set to 0. <code>StatWindow</code> subsequently iterates through all the records
+linked to the set patient checking for the record&#8217;s procedure type, incrementing the value paired the respective
+procedure by 1 on a hit. It is from this Map that the records table is generated as well as the bar chart. The pie
+chart uses the Map as well while ignoring entries whose values have remained at 0.</p>
+</div>
+<div class="paragraph">
+<p>It is at this point that all necessary data has been populated within the statistics report and it is displayed to
+the user.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/StatActivityDiagram.png" alt="StatActivityDiagram" width="800">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-selecting-the-desired-patient-to-stat"><a class="link" href="#aspect-selecting-the-desired-patient-to-stat">Aspect: Selecting the desired patient to stat</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Current Implementation:</strong> The selected patient is determined by the Index number of the currently displayed
+patients within the <code>PatientListPanel</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1:</strong> The selected patient is determined by a given keyword. Upon entering the keyword, the program
+then searches for the patients that match the keyword. Should multiple patients match the keyword, the command would
+fail and the user would be prompted to refine their search.</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative Pros:</strong> Combines <code>patientfind</code> and <code>stat</code> together, giving the user greater convenience should they
+know enough unique details of the patient they wish to stat.</p>
+</li>
+<li>
+<p><strong>Alternative Cons:</strong> Reduces the ease of use of the stat command. As the amount of patients stored within the
+program increases, so does the probability that the entered keywords would match multiple patients.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Choice Justification:</strong> Ultimately, we decided to stick with Index based selection as it increases the ease of use
+for the user when there&#8217;s a large number of patient entries. As the Index references the displayed patients, the user
+can hence perform a <code>patientfind</code> operation beforehand and locate the desired patient.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
 <hr>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-13 15:36:08 UTC</div></div></div></body></html>
+</div>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-13 15:50:26 UTC</div></div></div></body></html>
