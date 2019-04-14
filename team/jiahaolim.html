@@ -13,7 +13,8 @@
 </div>
 <div class="paragraph">
 <p>As of version 1.4:<br>
-TeethHub allows Dentists to manage patient information, records of each patient and tasks for the dentist. TeethHub can also export them to a PDF file.<br>
+TeethHub allows Dentists to manage patient information, records of each patient and tasks for the dentist.
+TeethHub allows Dentists to manage multiple databases through File Management. File Management also allows exporting to a PDF file.<br>
 TeethHub displays the latest teeth information in the form of an image that follows the <strong>Universal Numbering System</strong> dental notation.
 TeethHub displays statistics generated from all patients and records stored in it.</p>
 </div>
@@ -173,6 +174,27 @@ E.g. The user enters <code>add</code>. TeethHub will ask them if they meant <cod
 </tr>
 </tbody>
 </table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="introduction"><a class="link" href="#introduction">Introduction</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Welcome to TeethHub!
+If you are a dental practitioner who prefers to use a Command Line Interface (CLI),
+then TeethHub is an application for you!</p>
+</div>
+<div class="paragraph">
+<p>TeethHub works primarily through a CLI while having elements of a Graphical User Interface (GUI).
+For example, you can select patients and records by clicking on them, but you would need to type the edit commands to edit them.
+TeethHub allows you to keep track of your patient&#8217;s particulars along with their dental records.
+An image of each patient&#8217;s teeth will also be displayed according to what you input for each tooth&#8217;s status(Absent, Problem, Healthy).
+In addition to that, TeethHub also allows you to keep track of your upcoming tasks, just like a calendar.</p>
+</div>
+<div class="paragraph">
+<p>Interested in trying TeethHub out? Check out <a href="#prerequisites">[prerequisites]</a> to see what programs you need in order for TeethHub to work properly.
+If you’re confident in your computer set-up, jump to <a href="#quick-start-guide">[quick-start-guide]</a> to begin!</p>
 </div>
 <div class="sect2">
 <h3 id="file-management"><a class="link" href="#file-management">File Management</a></h3>
@@ -417,6 +439,11 @@ In v1.6, TeethHub will have a new command for you to upload images.</p>
 </tbody>
 </table>
 </div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="implementation"><a class="link" href="#implementation">Implementation</a></h2>
+<div class="sectionbody">
 <div class="sect2">
 <h3 id="file-management-2"><a class="link" href="#file-management-2">File Management</a></h3>
 <div class="paragraph">
@@ -831,160 +858,7 @@ As TeethHub has a Patient Mode and a Record Mode, only commands that can be used
 </li>
 </ul>
 </div>
-<div class="paragraph">
-<p>|<code>* *</code> |user |open an external file |work with patients and tasks saved in another file</p>
-</div>
-<div class="paragraph">
-<p>|<code>* *</code> |user |import specific patients from an external file |add patients and tasks from another file</p>
-</div>
-<div class="paragraph">
-<p>|<code>* *</code> |user |save to an external file |have multiple files for cataloguing</p>
-</div>
-<div class="paragraph">
-<p>|<code>* *</code> |user |export specific patients to an external file |have multiple files for cataloguing</p>
-</div>
-<div class="paragraph">
-<p>|<code>* *</code> |user |save/export to PDF |have a more presentable format for reading</p>
-</div>
-<div class="paragraph">
-<p>|<code>* *</code> |user |see suggestions when I type common commands |do not have to keep consulting the Help page</p>
-</div>
-<div class="paragraph">
-<p>|<code>* *</code> |user |add my own images into records |keep track and store relevant images</p>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="exporting-data"><a class="link" href="#exporting-data">Exporting data</a></h3>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Exporting specific patients to a .json or .pdf file.</p>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
-<li>
-<p>Prerequisites: List all patients using the list command. At least one patient should be displayed in the list.</p>
-<div class="olist lowerroman">
-<ol class="lowerroman" type="i">
-<li>
-<p>Test case: <code>export test.json 1</code><br>
-Expected: A .json file named <strong>test.json</strong> is created/overwritten in the "data" folder. When opened in text viewer (like Notepad), only the patient that corresponds to index 1 in TeethHub should be present, along with all tasks.</p>
-</li>
-<li>
-<p>Test case: <code>export test ! @ # $ % ^ &amp; ( ) _ + - = { } [ ] ; ' , .json 1</code><br>
-Expected: Same as previous.</p>
-</li>
-<li>
-<p>Test case: <code>export test &lt; &gt; : " | ? *.json 1</code><br>
-   Expected: Error message <span class="menuseq"><b class="menu">Special characters such as</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">&lt; :</b></span> | ? *
-are not allowed." is shown in message box. No file is created/overwritten.</p>
-</li>
-<li>
-<p>Test case: <code>export test.pdf 1</code><br>
-Expected: A .pdf file named <strong>test.pdf</strong> is created/overwritten in the "data" folder. When opened in PDF viewer (like Adobe Acrobat Reader DC), only the patient that corresponds to index 1 in TeethHub should be present, along with all tasks.</p>
-</li>
-<li>
-<p>Test case: <code>export test.json 0</code> or <code>export test.json x</code> where x is an index not present in the patient list<br>
-Expected: A .json file named <strong>test.json</strong> is created in the "data" folder. When opened in text viewer (like Notepad), no patient should be present, but all tasks are.</p>
-</li>
-<li>
-<p>Test case: <code>export test.txt 1</code><br>
-Expected: Error message "Input file type is not a .json or .pdf." is shown in message box. No file is created/overwritten.</p>
-</li>
-<li>
-<p>Test case: <code>export testfolder/test.json 1</code><br>
-Expected: A folder named "testfolder" is created in the "data" folder and a .json file named <strong>test.json</strong> is created/overwritten in the "testfolder" folder. When opened in text viewer (like Notepad), only the patient that corresponds to index 1 in TeethHub should be present, along with all tasks.</p>
-</li>
-<li>
-<p>Test case: <code>export testfolder\test.json 1</code><br>
-Expected: Same as previous.</p>
-</li>
-<li>
-<p>Test case: <code>export \testfolder/test.json 1</code><br>
-Expected: Same as previous.</p>
-</li>
-<li>
-<p>Test case: <code>export testfolder\\\\\\\test.json 1</code><br>
-Expected: Same as previous.</p>
-</li>
-</ol>
-</div>
-</li>
-<li>
-<p>Prerequisites: List all patients using the list command. At least 3 patients should be displayed in the list.</p>
-<div class="olist lowerroman">
-<ol class="lowerroman" type="i">
-<li>
-<p>Test case: <code>export test.json 1,3</code><br>
-Expected: A .json file named <strong>test.json</strong> is created/overwritten in the "data" folder. When opened in text viewer (like Notepad), only the patients that correspond to index 1 <strong>and</strong> index 3 in TeethHub should be present, along with all tasks.</p>
-</li>
-<li>
-<p>Test case: <code>export test.json 1-3</code><br>
-Expected: A .json file named <strong>test.json</strong> is created/overwritten in the "data" folder. When opened in text viewer (like Notepad), only the patient that corresponds to index 1 <strong>to</strong> index 3 in TeethHub should be present, along with all tasks.</p>
-</li>
-</ol>
-</div>
-</li>
-<li>
-<p>Prerequisites: List all patients using the list command. At least 5 patients should be displayed in the list.</p>
-<div class="olist lowerroman">
-<ol class="lowerroman" type="i">
-<li>
-<p>Test case: <code>export test.json 1,3,5</code><br>
-Expected: A .json file named <strong>test.json</strong> is created/overwritten in the "data" folder. When opened in text viewer (like Notepad), only the patients that correspond to index 1, index 3 <strong>and</strong> index 5 in TeethHub should be present, along with all tasks.</p>
-</li>
-<li>
-<p>Test case: <code>export test.json 1,3-5</code><br>
-Expected: A .json file named <strong>test.json</strong> is created/overwritten in the "data" folder. When opened in text viewer (like Notepad), only the patient that corresponds to index 1 <strong>and</strong> index 3 <strong>to</strong> index 5 in TeethHub should be present, along with all tasks.</p>
-</li>
-<li>
-<p>Test case: <code>export test.json all</code><br>
-Expected: A .json file named <strong>test.json</strong> is created/overwritten in the "data" folder. When opened in text viewer (like Notepad), all in TeethHub should be present, along with all tasks. Result should be the same as using <code>save test.json</code>.</p>
-</li>
-</ol>
-</div>
-</li>
-</ol>
-</div>
-</li>
-</ol>
-</div>
-</div>
-<div class="sect2">
-<h3 id="opening-data"><a class="link" href="#opening-data">Opening data</a></h3>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Trying to open missing/corrupted data files.</p>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
-<li>
-<p>Prerequisites: Save or Export a .json file with <code>save test.json</code>. Open the .json file in the "data" folder with a text editor (like Notepad). Delete the first line and save.</p>
-<div class="olist lowerroman">
-<ol class="lowerroman" type="i">
-<li>
-<p>Test case: <code>open test.json</code><br>
-Expected: Error message "Data file is not in the correct format." is shown in message box.</p>
-</li>
-</ol>
-</div>
-</li>
-<li>
-<p>Prerequisites: Make sure there is no file in the "data" folder named "test.json".</p>
-<div class="olist lowerroman">
-<ol class="lowerroman" type="i">
-<li>
-<p>Test case: <code>open test.json</code><br>
-Expected: Error message "File not found!" is shown in message box.</p>
-</li>
-</ol>
-</div>
-</li>
-</ol>
-</div>
-</li>
-</ol>
-</div>
-</div>
-</div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-13 15:50:26 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-14 02:44:56 UTC</div></div></div></body></html>
