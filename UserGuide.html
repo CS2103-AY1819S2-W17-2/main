@@ -77,17 +77,20 @@
 <li><a href="#suggestion-commands">4.7. Suggestion Commands</a></li>
 </ul>
 </li>
-<li><a href="#patient-teeth-per-record-coming-in-v1-5">5. Patient Teeth per record [Coming in v1.5]</a></li>
-<li><a href="#adding-images-to-records-coming-in-v1-6">6. Adding images to records [Coming in v1.6]</a></li>
-<li><a href="#spell-checker-functionality-coming-in-v1-7">7. Spell-Checker Functionality [Coming in v1.7]</a></li>
-<li><a href="#support-for-primary-teeth-type-coming-in-v2-0">8. Support for Primary Teeth Type [Coming in v2.0]</a></li>
-<li><a href="#implementation-of-other-teeth-numbering-standards-coming-in-v2-0">9. Implementation of Other Teeth Numbering Standards [Coming in v2.0]</a></li>
-<li><a href="#cloud-functionality-coming-in-v2-0">10. Cloud Functionality [Coming in v2.0]</a></li>
-<li><a href="#placeholder-coming-in-v1-8">11. Placeholder [Coming in v1.8]</a></li>
-<li><a href="#placeholder-coming-in-v1-9">12. Placeholder [Coming in v1.9]</a></li>
-<li><a href="#cloud-functionality-coming-in-v2-0-2">13. Cloud Functionality [Coming in v2.0]</a></li>
-<li><a href="#frequently-asked-questions-faq">14. Frequently Asked Questions (FAQ)</a></li>
-<li><a href="#command-summary">15. Command Summary</a></li>
+<li><a href="#planned-implementations">5. Planned Implementations</a>
+<ul class="sectlevel2">
+<li><a href="#patient-teeth-per-record-coming-in-v1-5">5.1. Patient Teeth per record [Coming in v1.5]</a></li>
+<li><a href="#adding-images-to-records-coming-in-v1-6">5.2. Adding images to records [Coming in v1.6]</a></li>
+<li><a href="#spell-checker-functionality-coming-in-v1-7">5.3. Spell-Checker Functionality [Coming in v1.7]</a></li>
+<li><a href="#store-procedure-costs-and-fees-coming-in-v1-8">5.4. Store procedure costs and fees [Coming in v1.8]</a></li>
+<li><a href="#bill-generation-coming-in-v1-9">5.5. Bill Generation [Coming in v1.9]</a></li>
+<li><a href="#support-for-primary-teeth-type-coming-in-v2-0">5.6. Support for Primary Teeth Type [Coming in v2.0]</a></li>
+<li><a href="#implementation-of-other-teeth-numbering-standards-coming-in-v2-0">5.7. Implementation of Other Teeth Numbering Standards [Coming in v2.0]</a></li>
+<li><a href="#cloud-functionality-coming-in-v2-0">5.8. Cloud Functionality [Coming in v2.0]</a></li>
+</ul>
+</li>
+<li><a href="#frequently-asked-questions-faq">6. Frequently Asked Questions (FAQ)</a></li>
+<li><a href="#command-summary">7. Command Summary</a></li>
 </ul>
 </div>
 </div>
@@ -1477,7 +1480,7 @@ Some attributes are bolded and marked with an asterisk <code>*</code>. These are
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Title</strong>*</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">General description for the task to be added.</p>
 <p class="tableblock">You can provide any alphanumeric characters and the special characters:
-<code>( ,@, !, ?, ., -</code> when giving the title for the task. Other characters not specified will not be allowed
+<code>" ' ( ) @ ! ? . , -</code> when giving the title for the task. Other characters not specified will not be allowed
 due to security reasons.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">ti/</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">ti/Tooth Extraction</p>
@@ -1968,77 +1971,64 @@ Don&#8217;t worry about the commands that cannot be used in your current mode; t
 </div>
 </div>
 <div class="sect1">
-<h2 id="patient-teeth-per-record-coming-in-v1-5"><a class="link" href="#patient-teeth-per-record-coming-in-v1-5">5. Patient Teeth per record [Coming in v1.5]</a></h2>
+<h2 id="planned-implementations"><a class="link" href="#planned-implementations">5. Planned Implementations</a></h2>
 <div class="sectionbody">
+<div class="sect2">
+<h3 id="patient-teeth-per-record-coming-in-v1-5"><a class="link" href="#patient-teeth-per-record-coming-in-v1-5">5.1. Patient Teeth per record [Coming in v1.5]</a></h3>
 <div class="paragraph">
 <p>Currently, TeethHub stores and displays the latest teeth image of each patient.
 We understand that you may want to see teeth changes over time.
 In v1.5, TeethHub will be able to store and display a teeth image for each record.</p>
 </div>
 </div>
-</div>
-<div class="sect1">
-<h2 id="adding-images-to-records-coming-in-v1-6"><a class="link" href="#adding-images-to-records-coming-in-v1-6">6. Adding images to records [Coming in v1.6]</a></h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="adding-images-to-records-coming-in-v1-6"><a class="link" href="#adding-images-to-records-coming-in-v1-6">5.2. Adding images to records [Coming in v1.6]</a></h3>
 <div class="paragraph">
 <p>Currently, TeethHub is not equipped to accept images from you.
 We understand that you may want to store x-rays of teeth or other relevant images you have taken.
 In v1.6, TeethHub will have a new command for you to upload images.</p>
 </div>
 </div>
-</div>
-<div class="sect1">
-<h2 id="spell-checker-functionality-coming-in-v1-7"><a class="link" href="#spell-checker-functionality-coming-in-v1-7">7. Spell-Checker Functionality [Coming in v1.7]</a></h2>
-<div class="sectionbody">
-
-</div>
-</div>
-<div class="sect1">
-<h2 id="support-for-primary-teeth-type-coming-in-v2-0"><a class="link" href="#support-for-primary-teeth-type-coming-in-v2-0">8. Support for Primary Teeth Type [Coming in v2.0]</a></h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>To allow the application to truly be able to cater for all dental patients of our user.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="implementation-of-other-teeth-numbering-standards-coming-in-v2-0"><a class="link" href="#implementation-of-other-teeth-numbering-standards-coming-in-v2-0">9. Implementation of Other Teeth Numbering Standards [Coming in v2.0]</a></h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>TeethHub can adopt other common teeth numbering standards such as the ISO System or Palmer notation method.
-This allows our users to pick the numbering standard they are most familiar with.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="cloud-functionality-coming-in-v2-0"><a class="link" href="#cloud-functionality-coming-in-v2-0">10. Cloud Functionality [Coming in v2.0]</a></h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>To increase data redundancy and reduce the risk of data being lost,
-you will be able to synchronise your data with a cloud account.</p>
-</div>
+<div class="sect2">
+<h3 id="spell-checker-functionality-coming-in-v1-7"><a class="link" href="#spell-checker-functionality-coming-in-v1-7">5.3. Spell-Checker Functionality [Coming in v1.7]</a></h3>
 <div class="paragraph">
 <p>Currently, TeethHub does not have a spell checker.
 It would be great if TeethHub would automatically correct an improperly typed command(e.g. sirt to sort).
 In v1.7, TeethHub will have a spell checker functionality.</p>
 </div>
 </div>
-</div>
-<div class="sect1">
-<h2 id="placeholder-coming-in-v1-8"><a class="link" href="#placeholder-coming-in-v1-8">11. Placeholder [Coming in v1.8]</a></h2>
-<div class="sectionbody">
-
-</div>
-</div>
-<div class="sect1">
-<h2 id="placeholder-coming-in-v1-9"><a class="link" href="#placeholder-coming-in-v1-9">12. Placeholder [Coming in v1.9]</a></h2>
-<div class="sectionbody">
-
+<div class="sect2">
+<h3 id="store-procedure-costs-and-fees-coming-in-v1-8"><a class="link" href="#store-procedure-costs-and-fees-coming-in-v1-8">5.4. Store procedure costs and fees [Coming in v1.8]</a></h3>
+<div class="paragraph">
+<p>TeethHub currently allows users to store procedural records and tasks.
+Eventually, TeethHub would be able to allow its user to customize costs to
+each procedure and tasks.</p>
 </div>
 </div>
-<div class="sect1">
-<h2 id="cloud-functionality-coming-in-v2-0-2"><a class="link" href="#cloud-functionality-coming-in-v2-0-2">13. Cloud Functionality [Coming in v2.0]</a></h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="bill-generation-coming-in-v1-9"><a class="link" href="#bill-generation-coming-in-v1-9">5.5. Bill Generation [Coming in v1.9]</a></h3>
+<div class="paragraph">
+<p>TeethHub would eventually be able to help its user calculate and generate bills
+when a patient finishes a check-up or procedure done by its user. This allows our
+users to integrate billings with patients and tasks, allowing all necessary
+interactions to be done on TeethHub.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="support-for-primary-teeth-type-coming-in-v2-0"><a class="link" href="#support-for-primary-teeth-type-coming-in-v2-0">5.6. Support for Primary Teeth Type [Coming in v2.0]</a></h3>
+<div class="paragraph">
+<p>To allow the application to truly be able to cater for all dental patients of our user.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="implementation-of-other-teeth-numbering-standards-coming-in-v2-0"><a class="link" href="#implementation-of-other-teeth-numbering-standards-coming-in-v2-0">5.7. Implementation of Other Teeth Numbering Standards [Coming in v2.0]</a></h3>
+<div class="paragraph">
+<p>TeethHub can adopt other common teeth numbering standards such as the ISO System or Palmer notation method.
+This allows our users to pick the numbering standard they are most familiar with.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="cloud-functionality-coming-in-v2-0"><a class="link" href="#cloud-functionality-coming-in-v2-0">5.8. Cloud Functionality [Coming in v2.0]</a></h3>
 <div class="paragraph">
 <p>Currently, TeethHub is not connected to a cloud.
 To increase data redundancy and reduce the risk of data being lost,
@@ -2047,8 +2037,9 @@ In v2.0, TeethHub will be synchronized with a cloud server.</p>
 </div>
 </div>
 </div>
+</div>
 <div class="sect1">
-<h2 id="frequently-asked-questions-faq"><a class="link" href="#frequently-asked-questions-faq">14. Frequently Asked Questions (FAQ)</a></h2>
+<h2 id="frequently-asked-questions-faq"><a class="link" href="#frequently-asked-questions-faq">6. Frequently Asked Questions (FAQ)</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p><strong>Q</strong>: How do I transfer my data to another Computer?</p>
@@ -2062,7 +2053,7 @@ download it from there.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="command-summary"><a class="link" href="#command-summary">15. Command Summary</a></h2>
+<h2 id="command-summary"><a class="link" href="#command-summary">7. Command Summary</a></h2>
 <div class="sectionbody">
 <div class="ulist">
 <ul>
@@ -2173,16 +2164,24 @@ e.g. <code>save mnt/clinicRecords.txt</code></p>
 e.g. <code>sort name ascend</code> or <code>sort age descend</code></p>
 </li>
 <li>
-<p><strong>Task patientadd</strong>:  <code>taskadd PARAM</code><br>
+<p><strong>Task add</strong>:  <code>taskadd PARAM</code><br>
 e.g. <code>taskadd ti/Regular review of all patients' records sd/10-10-2019 ed/15-10-2019 st/1200 et/0800 pri/low</code></p>
 </li>
 <li>
-<p><strong>Task patientedit</strong>: <code>taskedit INDEX PARAM</code><br>
+<p><strong>Task edit</strong>: <code>taskedit INDEX PARAM</code><br>
 e.g. <code>taskedit 1 ti/Tooth extraction for Alex pri/HIGH</code></p>
 </li>
 <li>
-<p><strong>Task patientdelete</strong>: <code>taskdelete INDEX</code><br>
+<p><strong>Task delete</strong>: <code>taskdelete INDEX</code><br>
 e.g. <code>taskdelete 1</code></p>
+</li>
+<li>
+<p><strong>Task complete</strong>: <code>taskdone INDEX</code><br>
+e.g. <code>taskdone 1</code></p>
+</li>
+<li>
+<p><strong>Task calendar</strong>: <code>taskcal INDEX</code><br>
+e.g. <code>taskcal 11-11-2019</code></p>
 </li>
 <li>
 <p>*Tasksort <code>tasksort starttime/endtime/priority [asc/desc]</code>
@@ -2198,4 +2197,4 @@ e.g. <code>teeth patientadd primary</code></p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-14 11:53:42 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-14 17:14:18 UTC</div></div></div></body></html>
