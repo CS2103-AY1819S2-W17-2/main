@@ -1439,34 +1439,15 @@ At the moment, only the permanent teeth type is supported.
 </div>
 <div class="sect2">
 <h3 id="task-management"><a class="link" href="#task-management">4.6. Task Management</a></h3>
-<div class="sect3">
-<h4 id="taskadd"><a class="link" href="#taskadd">4.6.1. taskadd</a></h4>
 <div class="paragraph">
-<p>Adds a task to the application&#8217;s list of tasks.</p>
+<p>In addition to patients, TeethHub also helps you store, display and manage your tasks so that you can improve your overall efficiency. Much like patients, you can interact with your tasks using specific commands to perform essential functions like adding, editing and deleting a task.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code>taskadd PARAMETERS</code> or <code>tadd PARAMETERS</code></p>
+<p>TeethHub helps you handle and differentiate the many tasks you might have by giving every task certain attributes that define them. You will need to know the various attributes a task can have before proceding to the commands that you can use to work with your tasks. Not to worry though, most attributes are basic information such as title of the task, the date and times of the task, making them very intuitive and easy to work with.</p>
 </div>
 <div class="paragraph">
-<p>You can specify information that describes the task you wish to add by
-keying in certain tags after the <code>taskadd</code> command. Do note the following:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>All parameters have certain patterns that <strong>MUST</strong> be followed.<br></p>
-</li>
-<li>
-<p>Some parameters are mandatory when adding a task.<br></p>
-</li>
-<li>
-<p>Non-mandatory tasks will be assigned a default value if not specified.</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Table 1 shows the list of parameters along with their respective descriptions.
-Mandatory parameters are marked with an asterisk <code>*</code> in the attribute section of the table.</p>
+<p>Table 1 below shows the list of parameters along with their respective descriptions.
+Some attributes are bolded and marked with an asterisk <code>*</code>. These are <strong>mandatory</strong> attributes that should be provided when adding a task for the first time.</p>
 </div>
 <table class="tableblock frame-all grid-all spread">
 <caption class="title">Table 1. Task parameters</caption>
@@ -1486,16 +1467,17 @@ Mandatory parameters are marked with an asterisk <code>*</code> in the attribute
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Title*</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Title</strong>*</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">General description for the task to be added.</p>
 <p class="tableblock">You can provide any alphanumeric characters and the special characters:
 <code>( ,@, !, ?, ., -</code> when giving the title for the task. Other characters not specified will not be allowed
 due to security reasons.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">ti/TEXT</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">ti/Tooth Extraction</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ti/</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ti/Tooth Extraction</p>
+<p class="tableblock">*</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Start date*</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Start date**</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The date in which the task is set to begin.</p>
 <p class="tableblock">You should provide the start date in the format <code>DD-MM-YYYY</code> and should not be a date that is BEFORE the current date.
 You can also use the keyword <code>today</code> as an input which will use the current date as the start date.</p>
@@ -1503,7 +1485,7 @@ You can also use the keyword <code>today</code> as an input which will use the c
 For example, <code>31-04-2019</code> will be flagged as invalid as there are only 30 days in April.</p>
 <p class="tableblock">As of the current version, 29th of February in a leap year (29-02-2019) is not accepted as a valid input, but will be
 implemented in future versions.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">sd/DD-MM-YYYY</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">sd/</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">sd/19-12-2019</p></td>
 </tr>
 <tr>
@@ -1514,53 +1496,88 @@ BEFORE the task&#8217;s START DATE.
 You can also use the keyword <code>today</code> as an input which will use the current date as the start date.</p>
 <p class="tableblock">Other validity checks for the end date are the same as that of start date.</p>
 <p class="tableblock">Default value if not specified: Task&#8217;s start date.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">ed/DD-MM-YYYY</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ed/</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">ed/19-12-2019</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Start time*</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Start time</strong>*</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The specific time in which the task is set to begin.</p>
 <p class="tableblock">You should provide the time in the format <code>HHMM</code> (hours and minutes) and should also follow standard time values.</p>
-<p class="tableblock">Only <strong>real</strong> time values are accepted as valid inputs. For example, values such as <code>1265</code> or <code>2500</code> are not valid as
+<p class="tableblock">Only <strong>possible</strong> time values are accepted as valid inputs. For example, values such as <code>1265</code> or <code>2500</code> are not valid as
 these are not time values used in the current world.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">st/HHMM</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">st/</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">st/0845</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">End time*</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>End time</strong>*</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The specific time in which the task is set to end.</p>
 <p class="tableblock">You should provide the time in the format <code>HHMM</code> (hours and minutes) and should also follow standard time values.
 If the task&#8217;s start date and end date are the same, the end time should also not be BEFORE the start time.</p>
 <p class="tableblock">Other validity checks for the end time are the same as that of the start time.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">et/HHMM</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">et/</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">et/1245</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Priority</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The priority level of the task to be performed.</p>
-<p class="tableblock">You should provide the priority as <code>high</code>, <code>med</code>, <code>low</code> or <code>completed</code> in either upper or lowercase.
+<p class="tableblock">You can provide the priority as <code>high</code>, <code>med</code>, <code>low</code> or <code>completed</code> in either upper or lowercase.
 Tasks with different priority will be marked with different colored labels on the task list.
 High priority will be marked <span class="red">red</span>, Medium priority be marked <span class="orange">orange</span> and
 Low priority will be marked <span class="yellow">yellow</span>. Completed tasks will be marked with <span class="green">green</span>.</p>
 <p class="tableblock">Default value if not specified: <span class="yellow">Low</span></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">pri/PRIORITY</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">pri/</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">pri/high</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Patient</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The patient to be linked to the task. Linking a patient to a task, enables the <a href="#taskdone">taskdone</a> command to
  automatically add a record upon execution.</p>
-<p class="tableblock">The patient&#8217;s index must be a valid POSITIVE integer and it can be found in the patient list next to the name.
+<p class="tableblock">The patient&#8217;s index must be a valid POSITIVE number and it can be found in the patient list next to the name.
 If you want to set a task&#8217;s linked patient to none, you can give this parameter
 a value of <code>0</code> when using the <a href="#taskedit">taskedit</a> command. This parameter should not be included in task adding or
 task editing when in <a href="#goto">goto</a> mode as the patient list is not visible in that mode.<br></p>
-<p class="tableblock">If a linked patient is <a href="#edit">edited</a> pr <a href="#delete">deleted</a>, the affected tasks will be updated accordingly.</p>
+<p class="tableblock">If a linked patient is <a href="#edit">edited</a>, fret not, TeethHub automatically updates the tasks for you.</p>
+<p class="tableblock">If a patient is <a href="#delete">deleted</a> , you will be greeted with an alert box to let you decide between deleting the tasks associated with the patient, or setting those tasks to have no patient linked to them.</p>
 <p class="tableblock">Default value if not specified: 0 (indicates that no patient is linked to the task)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">pat/INDEX</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">pat/</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">pat/2</p></td>
 </tr>
 </tbody>
 </table>
+<div class="paragraph">
+<p>With knowledge of the attributes that make up a task, you can now get to the actual interaction process, the task related commands.</p>
+</div>
+<div class="sect3">
+<h4 id="taskadd"><a class="link" href="#taskadd">4.6.1. taskadd</a></h4>
+<div class="paragraph">
+<p>Adds a task to the application&#8217;s list of tasks.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>taskadd PARAMETERS</code> or <code>tadd PARAMETERS</code></p>
+</div>
+<div class="paragraph">
+<p>You can specify information that describes the task you wish to add by
+keying in certain tags after the <code>taskadd</code> command. The <code>PARAMETERS</code> here refer to the task&#8217;s attributes to be provided using their relevant tags.</p>
+</div>
+<div class="paragraph">
+<p>Do note the following:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>All parameters have certain patterns that <strong>MUST</strong> be followed.<br></p>
+</li>
+<li>
+<p>Some parameters are mandatory when adding a task.<br></p>
+</li>
+<li>
+<p>Non-mandatory attributes will be assigned a default value if not specified.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Mandatory</strong> fields are TITLE <code>ti/</code>, START DATE <code>sd/</code>, START TIME <code>st/</code> and END TIME <code>et/</code></p>
+</div>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -1576,6 +1593,18 @@ task editing when in <a href="#goto">goto</a> mode as the patient list is not vi
 same TITLE, START DATE, START TIME, END TIME and
 LINKED PATIENT</p>
 </div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+You can use the <code><a href="#undo">undo</a></code> command to undo the results of this command, or <code><a href="#redo">redo</a></code> command to redo it.
 </td>
 </tr>
 </table>
@@ -1606,13 +1635,19 @@ pat/1</code></p>
 <div class="paragraph">
 <p>Format: <code>taskedit INDEX PARAMETERS</code> or <code>tedit INDEX PARAMETERS</code></p>
 </div>
+<div class="paragraph">
+<p>You can edit any attribute of the tasks as you wish and you can even provide multiple paramters in a single command and they will all be edited accordingly.</p>
+</div>
+<div class="paragraph">
+<p>Take note of the following:</p>
+</div>
 <div class="ulist">
 <ul>
 <li>
 <p>Index of a task shown in the list <strong>MUST</strong> be specified<br></p>
 </li>
 <li>
-<p>Index should be a positive integer (e.g. 1,2&#8230;&#8203;5)</p>
+<p>Index should be a positive number (e.g. 1,2,3..)</p>
 </li>
 <li>
 <p>Index of the tasks will be shown next to task&#8217;s title in the task list</p>
@@ -1621,13 +1656,41 @@ pat/1</code></p>
 <p>Input tag of the field to modify followed by the new value to replace the old value</p>
 </li>
 <li>
-<p>Multiple fields can be provided in a single command and they will all be edited.</p>
-</li>
-<li>
-<p>Refer to <strong>Table 1</strong> in <a href="#taskadd">taskadd</a> to see the fields that can be modified
+<p>Refer to <strong>Table 1</strong> above to see all the fields that can be modified
 along with their format and restrictions</p>
 </li>
 </ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Edit will not go through if task becomes a duplicate after the change.</p>
+</div>
+<div class="paragraph">
+<p>Tasks are considered duplicates if they have the <strong>exact</strong>
+same TITLE, START DATE, START TIME, END TIME and
+LINKED PATIENT</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+You can use the <code><a href="#undo">undo</a></code> command to undo the results of this command, or <code><a href="#redo">redo</a></code> command to redo it.
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -1663,12 +1726,27 @@ along with their format and restrictions</p>
 <p>Index of a task shown in the list <strong>MUST</strong> be specified<br></p>
 </li>
 <li>
-<p>Index should be a positive integer (e.g. 1,2&#8230;&#8203;5)</p>
+<p>Index should be a positive number (e.g. 1,2&#8230;&#8203;5)</p>
 </li>
 <li>
 <p>Index of the tasks will be shown next to task&#8217;s title in the task list</p>
 </li>
 </ul>
+</div>
+<div class="paragraph">
+<p>You can delete tasks even if they are not completed or even if the task&#8217;s start date has not come to pass. For tasks with a patient linked to them, you can safely delete the task if you wish to as it has no effect on the patient linked to the task.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+You can use the <code><a href="#undo">undo</a></code> command to undo the results of this command, or <code><a href="#redo">redo</a></code> command to redo it.
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
 <p>Example:</p>
@@ -1715,33 +1793,135 @@ along with their format and restrictions</p>
 <div class="sect3">
 <h4 id="taskdone"><a class="link" href="#taskdone">4.6.6. taskdone</a></h4>
 <div class="paragraph">
-<p>Sets a task to <code><span class="green">complete</span></code>, marking the completion of the task.
-Executing this command on a patient that has a patient linked to it will automatically add a record to the patient.</p>
+<p>Sets a task to <code><span class="green">complete</span></code>, marking the completion of the task.</p>
 </div>
 <div class="paragraph">
 <p>Format: <code>taskdone INDEX</code></p>
+</div>
+<div class="paragraph">
+<p>Tasks marked as complete will have their priority replaced with a green tag that says COMPLETED as illustrated by Figure 1 below:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/Taskdone.png" alt="Taskdone" width="">
+</div>
+</div>
+<div class="paragraph">
+<p>Figure 1: Image showing the change in a task&#8217;s priority tag after completion.</p>
+</div>
+<div class="paragraph">
+<p>If you execute this command on a task with a patient linked to it, TeethHub will help you add a record to the patient automatically.
+The added record will use the task&#8217;s title as its description. Figure 2 shows you an example of the outcome of running the command on a task with a linked patient.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/Taskdone2.png" alt="Taskdone2" width="">
+</div>
+</div>
+<div class="paragraph">
+<p>Figure 2: Image showing the added record after completing a task.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+You can use the <code>undo</code> command to set a completed task back to its original priority. However, the added record will remain in the patient as of the current implementation of TeethHub.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>If you use the <code>redo</code> command immediately after the <code>undo</code> command, the task will be set back to being completed, but a new record will not be added. You can execute another <code>taskdone</code> command after the <code>undo</code>  to add another record to the linked patient.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>taskdone 2</code></p>
+</li>
+<li>
+<p><code><a href="#taskcal">taskcal</a></code><br>
+<code>taskdone 1</code></p>
+</li>
+</ul>
 </div>
 </div>
 <div class="sect3">
 <h4 id="taskcal"><a class="link" href="#taskcal">4.6.7. taskcal</a></h4>
 <div class="paragraph">
-<p>Creates a popup window with a list of tasks on the left hand side of the window and a calendar on the right hand side.
-There will also be a command box below the calendar, allowing you to execute task commands from this window as well.</p>
+<p>Creates a popup window with a list of tasks on the left hand side of the window and a calendar on the right hand side. The calendar will load the dates for the month and year of the given date.
+There will also be a command box below the calendar, allowing you to execute task mangement commands and navigate to other dates.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Executing the command without specifying a date will cause the calendar to load into the current date.
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
 <p>format: <code>taskcal</code> or <code>taskcal DD-MM-YYYY</code></p>
 </div>
 <div class="paragraph">
-<p>You will see day cells in the calendar highlighted in color of the highest priority task for that day.
-The top pane of the calendar has clickable buttons that lets you display the dates for different months and years.</p>
+<p>Figure 3 below shows the the displayed window and its key components</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/TaskCalendarUG.png" alt="TaskCalendarUG" width="">
+</div>
 </div>
 <div class="paragraph">
-<p>You can also click on a numbered date cell which will select it and the task display panel will be updated to show tasks that have either their
-<code>start date</code> or <code>end date</code> on that date. You can also key in a specific date in the format <code>DD-MM-YYYY</code> into the
-command box <code>e.g. 30-03-2019</code> and that day will be selected.</p>
+<p>Figure 3: Image showing the entire task calendar window with labelled components</p>
 </div>
 <div class="paragraph">
-<p>Executing the command without specifying a date will cause the current date to be selected by default.</p>
+<p>As seen from Figure 3, you can view tasks that either start or end on a particular date from the task list. You can also see in the calendar pane that certain date cells highlighted in colored circles. These signify that there are tasks on those particular dates. The cells are colored according to the highest priority task for the date. This also means that you do not have any tasks that start or have their deadlines on dates that are not marked with a colored circle.</p>
+</div>
+<div class="paragraph">
+<p>Using Figure 3 as an example, the date <code>29-03-2019</code> is colored in red which matches the highest priority task on that day which is <code>HIGH</code>. You can also focus into any of the dates in the calendar to change the task list to display the tasks for that date. To choose a date to focus into, you can either key a date directly into the command box in the format <code>DD-MM-YYYY</code>, or simply click on the date cells with a mouse.</p>
+</div>
+<div class="paragraph">
+<p>You can execute task related commands such as <code>taskadd</code>, <code>taskedit</code>, <code>taskdelete</code> and <code>tasklist</code> from the command box in this window to interact with tasks.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Executing the <code>taskcal</code> command inside this popup window without specifying a date will cause the calendar to load into the current date.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The top pane of the calendar has clickable arrows that lets you change the calendar page to display the dates for different months and years. Figure 4 below shows a focused view of the calendar&#8217;s top pane:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/TaskCalendarUG2.png" alt="TaskCalendarUG2" width="">
+</div>
 </div>
 </div>
 </div>
@@ -2011,4 +2191,4 @@ e.g. <code>teeth patientadd primary</code></p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-14 05:56:29 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-14 09:55:54 UTC</div></div></div></body></html>

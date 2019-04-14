@@ -30,13 +30,14 @@
 <li><a href="#implementation">3. Implementation</a>
 <ul class="sectlevel2">
 <li><a href="#patient-management">3.1. Patient Management</a></li>
-<li><a href="#undo-redo-feature">3.2. Undo/Redo feature</a></li>
-<li><a href="#proposed-data-encryption">3.3. [Proposed] Data Encryption</a></li>
-<li><a href="#viewing-information">3.4. Viewing Information</a></li>
-<li><a href="#file-management">3.5. File Management</a></li>
-<li><a href="#suggestion-feature">3.6. Suggestion feature</a></li>
-<li><a href="#logging">3.7. Logging</a></li>
-<li><a href="#Implementation-Configuration">3.8. Configuration</a></li>
+<li><a href="#task-management-and-related-commands">3.2. Task Management and related commands</a></li>
+<li><a href="#undo-redo-feature">3.3. Undo/Redo feature</a></li>
+<li><a href="#proposed-data-encryption">3.4. [Proposed] Data Encryption</a></li>
+<li><a href="#viewing-information">3.5. Viewing Information</a></li>
+<li><a href="#file-management">3.6. File Management</a></li>
+<li><a href="#suggestion-feature">3.7. Suggestion feature</a></li>
+<li><a href="#logging">3.8. Logging</a></li>
+<li><a href="#Implementation-Configuration">3.9. Configuration</a></li>
 </ul>
 </li>
 <li><a href="#documentation">4. Documentation</a>
@@ -91,8 +92,11 @@
 <li><a href="#patient-and-record-lists">H.2. Patient and Record lists</a></li>
 <li><a href="#deleting-a-patient">H.3. Deleting a patient</a></li>
 <li><a href="#deleting-a-dental-record">H.4. Deleting a dental record</a></li>
-<li><a href="#exporting-data">H.5. Exporting data</a></li>
-<li><a href="#opening-data">H.6. Opening data</a></li>
+<li><a href="#adding-a-task">H.5. Adding a task</a></li>
+<li><a href="#editing-a-task">H.6. Editing a task</a></li>
+<li><a href="#deleting-a-task">H.7. Deleting a task</a></li>
+<li><a href="#exporting-data">H.8. Exporting data</a></li>
+<li><a href="#opening-data">H.9. Opening data</a></li>
 </ul>
 </li>
 </ul>
@@ -1046,7 +1050,352 @@ However, the patient class is mutable, and accidental changes to its attributes 
 </div>
 </div>
 <div class="sect2">
-<h3 id="undo-redo-feature"><a class="link" href="#undo-redo-feature">3.2. Undo/Redo feature</a></h3>
+<h3 id="task-management-and-related-commands"><a class="link" href="#task-management-and-related-commands">3.2. Task Management and related commands</a></h3>
+<div class="paragraph">
+<p>Our user can also utilize TeethHub to store manage and interact with tasks aside from patients. Dentists would often have tasks that needs to be completed or performed and the implementation of the <code>Task</code> data object allows TeethHub to provide its user with the ability to manage these tasks and have them interact with their patient&#8217;s details when necessary as well. The main commands added with the data object serve to provide the user with a way to manage and view the tasks stored in the application.</p>
+</div>
+<div class="paragraph">
+<p>This segment will explain the main features of the a new data type <code>Task</code> that TeethHub handle. Key implementation details and the design considerations when designing these features will also be covered.
+==== Task storage and attributes
+The <code>Task</code> class is a new type of object that is meant to represent any task a dentist would have to perform. <code>Task</code> objects are kept in a list and handled by the <code>UniqueTaskList</code> class. This follows the same process as the <code>Patient</code> class and by extension, the <code>Person</code> class which has a <code>UniquePersonList</code> handling a list of <code>Person</code> objects.</p>
+</div>
+<div class="paragraph">
+<p>Storing information of all objects does not change between <code>Task</code> and <code>Person</code> classes and both are stored into a <code>TeethHub.json</code> file. Attributes for <code>Task</code> are instantiated as objects with their own methods to validate the user&#8217;s input much like the current implementation of <code>Patient</code>/<code>Person</code> .</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Task has an attribute called <code>LinkedPatient</code> which stores the <code>NAME</code> and <code>NRIC</code> of a patient. This is to allow tasks to be bound to a patient and facilliate another implementation <code>taskdone</code> .
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The following class diagram details the relevant attributes for a <code>Task</code> object along with the multiplicity association between the classes:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/TaskClassDiagramFinal.png" alt="TaskClassDiagramFinal" width="">
+</div>
+</div>
+<div class="sect3">
+<h4 id="task-interaction-feature-basic"><a class="link" href="#task-interaction-feature-basic">3.2.1. Task interaction feature (Basic)</a></h4>
+<div class="paragraph">
+<p>Essential commands for basic interaction with the tasks such as, <code>taskadd</code>, <code>taskedit</code> and <code>taskdelete</code> are implemented in a similar fashion as compared to existing commands. All three commands extend from the abstract class <code>Command</code> and follow the same execution flow as <code>patientadd</code>, <code>patientedit</code> and <code>patientdelete</code>.</p>
+</div>
+<div class="paragraph">
+<p>The generic execution flow of these commands mostly involve the <code>Logic</code> and <code>Model</code> component of the application and the order can be detailed as follows:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User&#8217;s input command gets sent to LogicManager.</p>
+</li>
+<li>
+<p>LogicManager sends to AddressBookParser to check command validity.</p>
+</li>
+<li>
+<p>AddressBookParser creates a CommandParser(typically named <code>commandclassnameParser</code> like <code>TaskAddCommandParser</code>) to check the arguments.</p>
+</li>
+<li>
+<p>CommandParser creates an instance of the Command and sends it back to LogicManager.</p>
+</li>
+<li>
+<p>LogicManager calls the method to execute the Command.</p>
+</li>
+<li>
+<p>Command executes and calls methods from Model to interact with the <code>Task</code> objects.</p>
+</li>
+<li>
+<p>Result from the command&#8217;s execution gets sent back to the UI and eventually the user.</p>
+</li>
+</ol>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Adding and editing tasks may involved additional calls to <code>Model</code> if the user specifies a patient to link to the task as the application will have to extract unique information from the <code>Patient</code> to store in the task
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The following sequence diagram illustrates the stated generic command execution flow and the components involved:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/GenericSequenceDiagram.png" alt="GenericSequenceDiagram" width="">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="task-autocomplete-feature"><a class="link" href="#task-autocomplete-feature">3.2.2. Task Autocomplete feature</a></h4>
+<div class="paragraph">
+<p>The <code>taskdone</code> command is a feature implemented to allow the user to automatically complete a task of his/her choice, setting it to <code>COMPLETED</code>. The command also allows the user to automatically add a record to the task&#8217;s <code>LinkedPatient</code> upon completion of the task. This feature makes use of the <code>Model</code> by calling its methods <code>setTask()</code> and <code>setPerson()</code> to perform additional interactions with both task and patient respectively.</p>
+</div>
+<div class="paragraph">
+<p>The general process followed during the command&#8217;s execution is as follows:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User runs a valid <code>taskdone</code> command on a task with a linkedpatient</p>
+</li>
+<li>
+<p>Command gets parsed properly and reaches the execution stage within <code>TaskDoneCommand</code></p>
+</li>
+<li>
+<p>New task gets created with the exact same attributes as the task to be completed.</p>
+</li>
+<li>
+<p>New task is set to COMPLETED</p>
+</li>
+<li>
+<p>setTask method is called to replace the task to be completed with the new task</p>
+</li>
+<li>
+<p>TeethHub&#8217;s stored list of patients is searched to look for a patient matching the task&#8217;s linked patient&#8217;s NRIC</p>
+</li>
+<li>
+<p>Retrieves the found patient and adds a record to the patient.</p>
+</li>
+<li>
+<p>setPerson method is called to replace the matching patient with the new patient who has the added record.</p>
+</li>
+<li>
+<p>Command execution ends and result is returned back to the user.</p>
+</li>
+</ol>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The current <code>patientedit</code> and <code>patientdelete</code> commands have been modified to update tasks linked to a patient when said patient gets modified or deleted. However, to keep in line with the concept of Defensive Programming, the execution still check and inform the user in an event where the <code>LinkedPatient</code> cannot be found.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The following sequence diagram illustrates an example where command executes on task with the index <code>1</code>:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/TaskDoneSequenceDiagram.png" alt="TaskDoneSequenceDiagram" width="">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="task-calendar-feature"><a class="link" href="#task-calendar-feature">3.2.3. Task Calendar feature</a></h4>
+<div class="paragraph">
+<p>The <code>taskcal</code> command is a feature implemented to allow the user to view task related data in a more interactive and helpful manner. Executing the command creates a popup window with the list of tasks on the left side and a calendar on the right side. The popup window will also have a commandbox where the user is able to key in task related commands, dates in the format of <code>dd-mm-yyyy</code> to navigate the calendar or exit and help as miscelleanous commands.This feature also enables the user to find tasks depending on the <code>date</code> they provide in the commandbox or the date cell they click on such that the task list will update to show users the tasks with start dates and/or end dates on the selected date cell.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Closing the Main Window whilst the Task Calendar popup is showing will also close the popup automatically. This is implemented intentionally as the popup is designed to be an extension of the Main Window, not a standalone window.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The calendar is generated with modifications to the date cells being done during the generation process. Modifications to the date cells (e.g. changing font colors, overlaying a circle) are done to highlight date cells with the color of task priority. The class <code>CalendarWindow</code> uses a <code>HashMap</code> with the date, as the key and priority number, as a value,to store the start date and end date information from tasks stored in TeethHub, replacing the stored value with a highest priority value between the duplicates. This enables the date cells to be compared with the stored values amidst the generation process, choosing which date cells to highlight with the highest priority color.</p>
+</div>
+<div class="paragraph">
+<p>The UI components of this feature are implemented using classes from <code>JavaFX</code> with the most important component being <code>DatePicker</code> which allows a calendar to be drawn up and displayed to the user. The implementation overrides the <code>updateItem()</code> method from <code>DatePicker</code> to enable modifications to be done to the date cells in the calendar.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Color sceheme and certain font sizes of the Calendar are done using Cascading Style Sheets (CSS) in a <code>Calendar.CSS</code> file found under resources. Changes can be made to the CSS file to change color schemes of the calendar if needed
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The following swimlane activity diagram illustrates the process in which the application goes through to create and display the interactive calendar for the user:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/TaskCalendarSwimLaneDiagram.png" alt="TaskCalendarSwimLaneDiagram" height="500">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">3.2.4. Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-storing-the-task-class"><a class="link" href="#aspect-storing-the-task-class">Aspect: Storing the task class</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Current implementation:</strong> Tasks are stored in the same json file as patients.</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative:</strong> Store the tasks in a seperate json file</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Alternative Pros: Very unlikely to have a very large json file by saving different data types to a different file.The single json file that stores the data will not become too large if there are too many patients and/or tasks. Reduces the likelihood that the size of the json file will exceed the limit of certain file systems like FAT-32 with a limit of 4GB, which would result in the application being unable to save to the file.</p>
+</li>
+<li>
+<p>Alternative Cons: Increases time spent opening a seperate json file. This results in more I/O work for application, decreasing application load time.Complicated to implement and affects future storage and I/O features. Implementation would affect I/O features that may need to read from the files to export both patients and tasks. Sets a precedent where new data types added in the future should be stored seperately for consistency, which would affect <code>export</code> and <code>import</code> commands as they have to be changed to read a new file to export/import.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Choice Justification</strong>: Most operating systems these days utilize a filesystem that allows for filesizes far beyond 4GB. The limit can go up to 2^64 bytes in NTFS for example and in almost all cases, it is unlikely for the a dentist to have such a large number of patients and tasks. Compared to the cons of the alternative where performance and increased likelihood of issues in the futre, the pros that the alternative offers do not seem valid enough to justify using it over the current choice.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="aspect-representing-the-priority-class-attribute-for-task"><a class="link" href="#aspect-representing-the-priority-class-attribute-for-task">Aspect: Representing the Priority class attribute for Task</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Current implementation:</strong> Java&#8217;s special Enumeration (Enum) class is used for the Priority class</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative:</strong> Use a normal class type, with string as inner attribute for Priority.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Alternative Pros: Priorities can be named anything the user desires such as "code red", "code blue" for example. Easy to implement as it functions similarly to how <code>name</code> and <code>title</code> works.</p>
+</li>
+<li>
+<p>Alternative Cons: Priority tracking depends on the user&#8217;s own memory of what he/she named them and sees as a higher priority, making it difficult for the program to display the appropriate color for priorities to benefit users. Goes against good programming practice which is to use enum for values that should not be changed and Enum is typically used to store priority types.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Choice Justification</strong>: Priorities being represented as "high", "med" and "low" is a common case and as such, most if not all people should be able to understand the naming convention. While giving freedom to the user is typically beneficial, in this case, it prevents the application from providing better more value to the user. The current choice uses terms that are understandable whilst providing benefits to the user by enabling a consistent colored display of priority tags.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="aspect-modifying-task-and-patient-when-executing-code-taskdone-code-command"><a class="link" href="#aspect-modifying-task-and-patient-when-executing-code-taskdone-code-command">3.2.5. Aspect: Modifying task and patient when executing <code>taskdone</code> command</a></h4>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Current implementation:</strong> Target task and patient are replaced with new instances with priority changed and record added respectively.</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative:</strong> Modify the target task and linked patient directly.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Alternative Pros: Easy to implement as they already have methods to perform the operations Requires less operations to execute the command, leading to performance increase.</p>
+</li>
+<li>
+<p>Alternative Cons: Completing a task does not work with undo and redo due to the way the model is implemented.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Choice Justification</strong>: The current choice enables undo and redo to work with the task autocomplete feature, enabling tasks to be un-completed by using the undo command. This is important as the user could potentially key the wrong index when completing a task and wish to undo the command without having to manually edit the task. From tests done with the alternative, the performance increase is also  negligible at best. The lack of a strong benefit does not make up for the inability to undo/redo making the alternative less desirable as compared to the current choice.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="aspect-data-strcuture-to-support-task-calendar-generation"><a class="link" href="#aspect-data-strcuture-to-support-task-calendar-generation">3.2.6. Aspect: Data strcuture to support Task Calendar generation</a></h4>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Current implementation:</strong> HashMap is used to store dates that have task&#8217;s starting and/or ending.</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative:</strong>  Use an ArrayList to store the dates instead.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Alternative Pros: Does not require its stored values to have an <code>equals()</code> method. Lower memory consuption as there is no need to store both a key and a value. Retrieves elements with <code>get()</code> in O(1) time with a specified index.</p>
+</li>
+<li>
+<p>Alternative Cons: Checking if an element exists within is O(n) time as the entire arraylist needs to be checked. Requires knowing the actual index in order to utilize the benefit of an O(1) retrieval.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Choice Justification</strong>: The generation of the calendar page requires a data structure that can check if a particular date is contained within itself in order to decide whether a date cell should be highlighted or not. Arraylist would be slower in this case as it would have to peform an O(n) every time a task gets iterated compared to the O(1) a HashMap offers. There is also no need to implement an <code>equals()</code> method for the DateCustom object to be stored as it is already implemented to ensure that there are no duplicate tasks. In this case, the current choices is a much better fit as compared to arraylist to support the calendar feature.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="aspect-method-of-displaying-task-calendar"><a class="link" href="#aspect-method-of-displaying-task-calendar">3.2.7. Aspect: Method of displaying Task Calendar</a></h4>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Current implementation:</strong> Task Calendar window is displayed in a seperate popup.</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative:</strong> Display the calendar in another pane in the Main Window.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Alternative Pros: Everything can be shown at one glance to the user. No need to shuffle between windows. No need for a command to make the calendar show.</p>
+</li>
+<li>
+<p>Alternative Cons: Other elements displayed in the Main Window have to be shrunk along with the calendar&#8217;s contents to make space for the task calendar to be viewed. Main Window would be displaying too many things.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Choice Justification</strong>: Shrinking all elements in the Main Window would adversely affect the visibility of other important features the application provdies such as the patient&#8217;s information, the list of patients and list of tasks. This reduces the user experience as content cannot be clearly seen. Following the traditional usage of a calendar, most people typically look at a calendar when the need arises such as planning or scheduling. It would be better for a command to be provided and show the user a clear and distinct calendar only when he/she requires it, making the current choice ideal.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="undo-redo-feature"><a class="link" href="#undo-redo-feature">3.3. Undo/Redo feature</a></h3>
 <div class="paragraph">
 <p>The undo/redo mechanism is facilitated by <code>VersionedAddressBook</code>.
 It extends <code>AddressBook</code> with an undo/redo history, stored internally as an <code>addressBookStateList</code> and <code>currentStatePointer</code>.
@@ -1175,7 +1524,7 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">3.2.1. Design Considerations</a></h4>
+<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">3.3.1. Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-how-undo-redo-executes"><a class="link" href="#aspect-how-undo-redo-executes">Aspect: How undo &amp; redo executes</a></h5>
 <div class="ulist">
@@ -1239,15 +1588,15 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 </div>
 </div>
 <div class="sect2">
-<h3 id="proposed-data-encryption"><a class="link" href="#proposed-data-encryption">3.3. [Proposed] Data Encryption</a></h3>
+<h3 id="proposed-data-encryption"><a class="link" href="#proposed-data-encryption">3.4. [Proposed] Data Encryption</a></h3>
 <div class="paragraph">
 <p><em>{Explain here how the data encryption feature will be implemented}</em></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="viewing-information"><a class="link" href="#viewing-information">3.4. Viewing Information</a></h3>
+<h3 id="viewing-information"><a class="link" href="#viewing-information">3.5. Viewing Information</a></h3>
 <div class="sect3">
-<h4 id="find-feature"><a class="link" href="#find-feature">3.4.1. Find feature</a></h4>
+<h4 id="find-feature"><a class="link" href="#find-feature">3.5.1. Find feature</a></h4>
 <div class="paragraph">
 <p>The Find mechanism is facilitated through the use of predicates in conjunction with the
 <code>FilteredList</code> within <code>ModelManager</code></p>
@@ -1278,7 +1627,7 @@ that matches the given predicate.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">3.4.2. Design Considerations</a></h4>
+<h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">3.5.2. Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-creation-of-predicate-classes"><a class="link" href="#aspect-creation-of-predicate-classes">Aspect: Creation of Predicate Classes</a></h5>
 <div class="ulist">
@@ -1322,7 +1671,7 @@ important for us to maintain proper software engineering principles.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="sort-feature"><a class="link" href="#sort-feature">3.4.3. Sort feature</a></h4>
+<h4 id="sort-feature"><a class="link" href="#sort-feature">3.5.3. Sort feature</a></h4>
 <div class="paragraph">
 <p>The <code>Sort</code> mechanism is facilitated through the use of Comparators in conjunction with the Unique Lists for both
 record and patient depending on the programm&#8217;s mode when the command is called.</p>
@@ -1355,7 +1704,7 @@ methods and classes instead.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">3.4.4. Design Considerations</a></h4>
+<h4 id="design-considerations-5"><a class="link" href="#design-considerations-5">3.5.4. Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-implementation-of-sort"><a class="link" href="#aspect-implementation-of-sort">Aspect: Implementation of sort</a></h5>
 <div class="ulist">
@@ -1398,7 +1747,7 @@ essentially the same. As such, it made more sense for us to go ahead with our cu
 </div>
 </div>
 <div class="sect3">
-<h4 id="stat-feature"><a class="link" href="#stat-feature">3.4.5. Stat feature</a></h4>
+<h4 id="stat-feature"><a class="link" href="#stat-feature">3.5.5. Stat feature</a></h4>
 <div class="imageblock">
 <div class="content">
 <img src="images/statWindow.png" alt="statWindow" width="500">
@@ -1431,7 +1780,7 @@ the user.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-5"><a class="link" href="#design-considerations-5">3.4.6. Design Considerations</a></h4>
+<h4 id="design-considerations-6"><a class="link" href="#design-considerations-6">3.5.6. Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-selecting-the-desired-patient-to-stat"><a class="link" href="#aspect-selecting-the-desired-patient-to-stat">Aspect: Selecting the desired patient to stat</a></h5>
 <div class="ulist">
@@ -1472,7 +1821,7 @@ can hence perform a <code>patientfind</code> operation beforehand and locate the
 </div>
 </div>
 <div class="sect2">
-<h3 id="file-management"><a class="link" href="#file-management">3.5. File Management</a></h3>
+<h3 id="file-management"><a class="link" href="#file-management">3.6. File Management</a></h3>
 <div class="paragraph">
 <p>Although TeethHub already has a built-in auto-load and auto-save, implementing file management would give the user more flexibility with managing data.<br>
 PDF export is also implemented so that the user would have an easier time making sense of the data when offline.</p>
@@ -1513,7 +1862,7 @@ Use a combination of commas and dashes to indicate a range as well. e.g. <code>1
 </table>
 </div>
 <div class="sect3">
-<h4 id="open-vs-import"><a class="link" href="#open-vs-import">3.5.1. Open vs Import</a></h4>
+<h4 id="open-vs-import"><a class="link" href="#open-vs-import">3.6.1. Open vs Import</a></h4>
 <div class="paragraph">
 <p>Suppose you have a <code>data.json</code> file with the following contents:</p>
 </div>
@@ -1532,7 +1881,7 @@ Use a combination of commas and dashes to indicate a range as well. e.g. <code>1
 </div>
 </div>
 <div class="sect3">
-<h4 id="open-feature"><a class="link" href="#open-feature">3.5.2. Open feature</a></h4>
+<h4 id="open-feature"><a class="link" href="#open-feature">3.6.2. Open feature</a></h4>
 <div class="paragraph">
 <p>As TeethHub already has a built-in auto-load when starting the program, the implemented Open feature is simple.<br>
 <strong>The Open feature opens the specified file and overwrites the current TeethHub data with the file data.</strong><br>
@@ -1567,7 +1916,7 @@ The Open feature&#8217;s format is: <code>open FILE_PATH</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="import-feature"><a class="link" href="#import-feature">3.5.3. Import feature</a></h4>
+<h4 id="import-feature"><a class="link" href="#import-feature">3.6.3. Import feature</a></h4>
 <div class="paragraph">
 <p>As TeethHub already has a built-in auto-load when starting the program, the implemented Import feature makes use of it.<br>
 <strong>The Import feature opens the specified file and adds the file data to the current TeethHub data.</strong><br>
@@ -1599,7 +1948,7 @@ The Import feature&#8217;s format is: <code>import FILE_PATH INDEX_RANGE</code><
 </div>
 </div>
 <div class="sect3">
-<h4 id="save-feature"><a class="link" href="#save-feature">3.5.4. Save feature</a></h4>
+<h4 id="save-feature"><a class="link" href="#save-feature">3.6.4. Save feature</a></h4>
 <div class="paragraph">
 <p>As TeethHub already has a built-in auto-save when exiting the program, the implemented Save feature makes use of it.<br>
 <strong>The Save feature saves all current TeethHub data to the specified file.</strong><br>
@@ -1630,7 +1979,7 @@ The Save feature&#8217;s format is: <code>save FILE_PATH</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="export-feature"><a class="link" href="#export-feature">3.5.5. Export feature</a></h4>
+<h4 id="export-feature"><a class="link" href="#export-feature">3.6.5. Export feature</a></h4>
 <div class="paragraph">
 <p>As TeethHub already has a built-in auto-save when starting the program, the implemented Export feature makes use of it.<br>
 <strong>The Export feature saves specified patients in the current TeethHub data to the specified file.</strong><br>
@@ -1669,7 +2018,7 @@ The Export feature&#8217;s format is: <code>export FILE_PATH INDEX_RANGE</code><
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-6"><a class="link" href="#design-considerations-6">3.5.6. Design Considerations</a></h4>
+<h4 id="design-considerations-7"><a class="link" href="#design-considerations-7">3.6.6. Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-reading-or-writing-a-file"><a class="link" href="#aspect-reading-or-writing-a-file">Aspect: Reading or writing a file</a></h5>
 <div class="ulist">
@@ -1842,7 +2191,7 @@ E.g. There are patients from index 1 to index 30. User inputs <code>export test.
 </div>
 </div>
 <div class="sect2">
-<h3 id="suggestion-feature"><a class="link" href="#suggestion-feature">3.6. Suggestion feature</a></h3>
+<h3 id="suggestion-feature"><a class="link" href="#suggestion-feature">3.7. Suggestion feature</a></h3>
 <div class="paragraph">
 <p>As TeethHub contains commands that are similar, we decided to implement a Suggestion feature.<br>
 This feature was designed to help users who are familiar with older versions of TeethHub or Address Book 4, as they have the names of old commands.<br>
@@ -1857,7 +2206,7 @@ As TeethHub has a Patient Mode and a Record Mode, only commands that can be used
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-7"><a class="link" href="#design-considerations-7">3.6.1. Design Considerations</a></h4>
+<h4 id="design-considerations-8"><a class="link" href="#design-considerations-8">3.7.1. Design Considerations</a></h4>
 <div class="ulist">
 <ul>
 <li>
@@ -1888,14 +2237,14 @@ As TeethHub has a Patient Mode and a Record Mode, only commands that can be used
 </div>
 </div>
 <div class="sect2">
-<h3 id="logging"><a class="link" href="#logging">3.7. Logging</a></h3>
+<h3 id="logging"><a class="link" href="#logging">3.8. Logging</a></h3>
 <div class="paragraph">
 <p>We are using <code>java.util.logging</code> package for logging. The <code>LogsCenter</code> class is used to manage the logging levels and logging destinations.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.8, &#8220;Configuration&#8221;</a>)</p>
+<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.9, &#8220;Configuration&#8221;</a>)</p>
 </li>
 <li>
 <p>The <code>Logger</code> for a class can be obtained using <code>LogsCenter.getLogger(Class)</code> which will log messages according to the specified logging level</p>
@@ -1926,7 +2275,7 @@ As TeethHub has a Patient Mode and a Record Mode, only commands that can be used
 </div>
 </div>
 <div class="sect2">
-<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.8. Configuration</a></h3>
+<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.9. Configuration</a></h3>
 <div class="paragraph">
 <p>Certain properties of the application can be controlled (e.g user prefs file location, logging level) through the configuration file (default: <code>config.json</code>).</p>
 </div>
@@ -3158,7 +3507,10 @@ for <code>RemarkCommandParser</code>.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">clear all dental records of a patient</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">protect the privacy of my patients</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">protect the privacy of my patients</p>
+<p class="tableblock">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+=======
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; b9fb0223463b82e5a0cae61472649c312488ef34</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
@@ -3177,6 +3529,31 @@ for <code>RemarkCommandParser</code>.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">edit a task</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">change details of certain tasks that I have already added</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">link a patient to a task</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">differentiate between tasks that are meant for a patient and normal tasks</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">set a task to complete</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mark a task as done without needing to edit it again and add a record automatically if the task is linked to a patient</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">add a record automatically upon completing a task</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">save time after completing a task that relates a patient by having the record added automatically</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">view tasks in a calendar</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">see all the dates in which I have tasks starting or ending, keeping better track of urgency of tasks and deadlines</p>
+<p class="tableblock">end::task_user_stories_cchj1995[]</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
@@ -3802,7 +4179,130 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="exporting-data"><a class="link" href="#exporting-data">H.5. Exporting data</a></h3>
+<h3 id="adding-a-task"><a class="link" href="#adding-a-task">H.5. Adding a task</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Adding a new task while all tasks are listed</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: List all tasks using the <code>tasklist</code> command Tasks should all be displayed in the task list. No tasks with the exact same attributes as the test cases are present in the list.</p>
+<div class="olist lowerroman">
+<ol class="lowerroman" type="i">
+<li>
+<p>Test case: <code>taskadd ti/Test task sd/today st/1200 et/1300 pri/HIGH</code><br>
+Expected: Task with the title "Test task" is added for with the current date as the start date and end date, a start time of 1200, end time of 1300 and a high priority tag displayed in red, should be added at the bottom of the list of all tasks.</p>
+</li>
+<li>
+<p>Test case: <code>taskadd ti/Test task 2 sd/11-05-2019 ed/16-05-2019 ti/Test task 2 st/1200 et/1300</code><br>
+Expected: Task with the title "Test task 2" is added with a start date of 11-05-2019, an end date of 16-05-2019, a start time of 1200, end time of 1300 and a high priority tag displayed in red, should be added at the bottom of the list of all tasks.</p>
+</li>
+<li>
+<p>Test case: <code>taskadd ti/Test task 2 st/1200 et/1300</code><br>
+Expected: No task is added. Error details shown in the status message showing proper command usage.</p>
+</li>
+<li>
+<p>Test case: <code>taskaddti/Test task 2 st/1200 et/1300</code><br>
+Expected: No task is added. Error details shown in the status message stating an unknown command.</p>
+</li>
+<li>
+<p>Other incorrect taskadd commands to try: <code>task add</code>, <code>taskad d ti/Test task sd/today st/1200 et/1300 pri/HIGH</code><br>
+Expected: Similar to previous.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="editing-a-task"><a class="link" href="#editing-a-task">H.6. Editing a task</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Editing a new task while all tasks are listed</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: List all tasks using the <code>tasklist</code> command. There are more than 3 tasks present. Tasks should all be displayed in the task list. No tasks with the exact same attributes as the test cases are present in the list.</p>
+<div class="olist lowerroman">
+<ol class="lowerroman" type="i">
+<li>
+<p>Test case: <code>taskedit 1 ti/New Edited Title</code><br>
+Expected: First task in the list of tasks has its title changed to "New Edited Title".</p>
+</li>
+<li>
+<p>Test case: <code>taskedit 2 ti/New Edited Title 2 sd/today ed/today</code><br>
+Expected: Second task in the list of tasks has its title changed to "New Edited Title 2", its start date and end date changed to the current date.</p>
+</li>
+<li>
+<p>Test case: <code>taskedit 3 ti/New Edited Title 3 sd/today ed/today st/1300 et/1200</code><br>
+Expected: No task is edited. Error details shown in the status message stating that start time cannot be before end time if start date is the same as the end date.</p>
+</li>
+<li>
+<p>Test case: <code>taskedit x ti/New Edited Title</code> (where x is larger than the number of tasks listed)<br>
+Expected: No task is edited. Error details shown in the status message stating that the task index provided is invalid.</p>
+</li>
+<li>
+<p>Test case: <code>task edit 1 ti/New Edited Title 4</code><br>
+Expected: No task is edited. Error details shown in the status message stating an unknown command.</p>
+</li>
+<li>
+<p>Other incorrect taskadd commands to try: <code>tasedit</code>, <code>taskedit/ti/Test task sd/today st/1200 et/1300 pri/HIGH</code><br>
+Expected: Similar to previous.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="deleting-a-task"><a class="link" href="#deleting-a-task">H.7. Deleting a task</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Deleting a task while all tasks are listed</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: List all tasks using the <code>tasklist</code> command Tasks should all be displayed in the task list.</p>
+<div class="olist lowerroman">
+<ol class="lowerroman" type="i">
+<li>
+<p>Test case: <code>taskdelete 1</code><br>
+Expected: First task is deleted from the list. Details of the deleted task are shown in the result display box.</p>
+</li>
+<li>
+<p>Test case: <code>taskdelete 0</code><br>
+Expected: No record is deleted. Error details shown in the status message showing invalid command format.</p>
+</li>
+<li>
+<p>Test case: <code>taskdelete0</code><br>
+Expected: No record is deleted. Error details shown in the status message stating an unknown command.</p>
+</li>
+<li>
+<p>Other incorrect recorddelete commands to try: <code>taskdel</code>, <code>task delete</code><br>
+Expected: Similar to previous.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="exporting-data"><a class="link" href="#exporting-data">H.8. Exporting data</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -3898,7 +4398,7 @@ Expected: A .json file named <strong>test.json</strong> is created/overwritten i
 </div>
 </div>
 <div class="sect2">
-<h3 id="opening-data"><a class="link" href="#opening-data">H.6. Opening data</a></h3>
+<h3 id="opening-data"><a class="link" href="#opening-data">H.9. Opening data</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -3935,4 +4435,4 @@ Expected: Error message "Data file is not in the correct format." is shown in me
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-14 05:56:29 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-14 09:55:54 UTC</div></div></div></body></html>

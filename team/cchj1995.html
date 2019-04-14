@@ -10,73 +10,98 @@
 <h2 id="overview"><a class="link" href="#overview">Overview</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>AddressBook - Level 4 is a desktop address book application used for teaching Software Engineering principles. The user interacts with it using a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about 10 kLoC.</p>
+<p>As part of a Software Engineering module, my team and I were given an objective to enhance or morph an existing application known as AddressBoook4(AB4). We opted to transform the application and the product of our efforts was TeethHub.</p>
+</div>
+<div class="paragraph">
+<p>TeethHub was designed for dentists who are proficient with computers and comfortable with using a Command Line Interface(CLI) for interaction over a Graphical User Interface(GUI). Dentists can store, modify, interact and even export their patients, records and tasks, all the while enjoying clear graphical feedback. TeethHub was written in Java, building its graphical elements on JavaFX. As of v1.4, the application has roughly 20000 lines of codes, a difference of 10000 lines compared to AB4.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="summary-of-contributions"><a class="link" href="#summary-of-contributions">Summary of contributions</a></h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p>My role in the development of TeethHub was to cover two main aspects, task data management and GUI enhancement.
+The main contributions listed here details how I covered these two aspects.</p>
+</div>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Major enhancement</strong>: added <strong>the ability to undo/redo previous commands</strong></p>
+<p><strong>Major implementation</strong>: added <strong>the task class and all its attributes</strong></p>
 <div class="ulist">
 <ul>
 <li>
-<p>What it does: allows the user to undo all previous commands one at a time. Preceding undo commands can be reversed by using the redo command.</p>
+<p>What it does: The entire task data structure enables TeethHub to store information pertaining to our users' tasks.</p>
 </li>
 <li>
-<p>Justification: This feature improves the product significantly because a user can make mistakes in commands and the app should provide a convenient way to rectify them.</p>
+<p>Justification: As dentists, aside from having patients and records, our users will certainly have tasks that they are required to complete with certain tasks being related to their patients. By enabling TeethHub to handle the information for these tasks, users can enjoy the benefits of having all of their important information being in the one application.</p>
 </li>
 <li>
-<p>Highlights: This enhancement affects existing commands and commands to be added in future. It required an in-depth analysis of design alternatives. The implementation too was challenging as it required changes to existing commands.</p>
-</li>
-<li>
-<p>Credits: <em>{mention here if you reused any code/ideas from elsewhere or if a third-party library is heavily used in the feature so that a reader can make a more accurate judgement of how much effort went into the feature}</em></p>
+<p>Highlights: This implementation serves as a stepping stone for future developments to provide more interaction with task information. Comprehensive understanding of the existing application (AB4) was necessary for this implementation as it essentially creates a new type of data for the application.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>Minor enhancement</strong>: added a history command that allows the user to navigate to previous commands using up/down keys.</p>
+<p><strong>Major enhancement</strong>: added <strong>the ability to display a task calendar</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>What it does: This enhancement allows the user to use a <code>taskcal</code> command to display a new popup window containing a calendar, a list of tasks and a commandbox. The displayed window provides users interactive information about their tasks, highlighting dates where tasks are present.</p>
 </li>
 <li>
-<p><strong>Code contributed</strong>: [<a href="https://github.com">Functional code</a>] [<a href="https://github.com">Test code</a>] <em>{give links to collated code files}</em></p>
+<p>Justification: This enhancement provides additional value and meaning to the task information TeethHub stores for its users. By giving users context for the tasks in the form of a calendar, users can more accurately view and plan their schedules as they have a clearer view of when they have tasks and how important are these tasks.</p>
+</li>
+<li>
+<p>Highlights: This was the most challenging enhancement I had made to the application because it involved in-depth understanding of the program&#8217;s GUI, considering the best means of displaying the calendar and the logical approach to finding the right dates to highlight.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Minor enhancement</strong>: added taskadd, taskedit and taskdelete commands to provide users to have the most basic but essential interactions with the task information.</p>
+</li>
+<li>
+<p><strong>Minor enhancement</strong>: added a taskdone command to enable users to automatically set a task to complete and add a record to its linked patient (if any).</p>
+</li>
+<li>
+<p><strong>Code contributed</strong>: [<a href="https://nus-cs2103-ay1819s2.github.io/cs2103-dashboard/#=undefined&amp;search=cchj1995">Reposense</a>]</p>
 </li>
 <li>
 <p><strong>Other contributions</strong>:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Project management:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Managed releases <code>v1.3</code> - <code>v1.5rc</code> (3 releases) on GitHub</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
 <p>Enhancements to existing features:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Updated the GUI color scheme (Pull requests <a href="https://github.com">#33</a>, <a href="https://github.com">#34</a>)</p>
+<p>Modified GUI layout to fit TeethHub&#8217;s own layout (layout designed by teammate)</p>
 </li>
 <li>
-<p>Wrote additional tests for existing features to increase coverage from 88% to 92% (Pull requests <a href="https://github.com">#36</a>, <a href="https://github.com">#38</a>)</p>
+<p>Added new implementations to existing patientedit and patiendelete commands to work with task</p>
+</li>
+<li>
+<p>Wrote tests for new features to increase coverage by ~7%</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p>Documentation:</p>
+<p>Contributions to team members' enhancements:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Did cosmetic tweaks to existing contents of the User Guide: <a href="https://github.com">#14</a></p>
+<p>Provided code to flatten and overlay images of teeth, resulting image used in teammates features.</p>
+</li>
+<li>
+<p>Added GUI panel to display Teeth feature using flattened image.</p>
+</li>
+<li>
+<p>Added GUI panel to display Patient and Record information.</p>
+</li>
+<li>
+<p>Reported, suggested solutions and fixed bugs for own team (E.g. <a href="https://github.com/CS2103-AY1819S2-W17-2/main/issues/106#issuecomment-478082206">Date bug</a>, <a href="https://github.com/CS2103-AY1819S2-W17-2/main/issues/106#issuecomment-478637428">Record bug</a> and <a href="https://github.com/CS2103-AY1819S2-W17-2/main/pull/108">Bug fixes</a> )</p>
 </li>
 </ul>
 </div>
@@ -86,29 +111,7 @@
 <div class="ulist">
 <ul>
 <li>
-<p>PRs reviewed (with non-trivial review comments): <a href="https://github.com">#12</a>, <a href="https://github.com">#32</a>, <a href="https://github.com">#19</a>, <a href="https://github.com">#42</a></p>
-</li>
-<li>
-<p>Contributed to forum discussions (examples:  <a href="https://github.com">1</a>, <a href="https://github.com">2</a>, <a href="https://github.com">3</a>, <a href="https://github.com">4</a>)</p>
-</li>
-<li>
-<p>Reported bugs and suggestions for other teams in the class (examples:  <a href="https://github.com">1</a>, <a href="https://github.com">2</a>, <a href="https://github.com">3</a>)</p>
-</li>
-<li>
-<p>Some parts of the history feature I added was adopted by several other class mates (<a href="https://github.com">1</a>, <a href="https://github.com">2</a>)</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Tools:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Integrated a third party library (Natty) to the project (<a href="https://github.com">#42</a>)</p>
-</li>
-<li>
-<p>Integrated a new Github plugin (CircleCI) to the team repo</p>
+<p>Reported bugs and suggestions for another team in a Practical Exam (PE) dry run. (E.g. <a href="https://github.com/nus-cs2103-AY1819S2/pe-dry-run/issues/921">Sort suggestion</a>, <a href="https://github.com/nus-cs2103-AY1819S2/pe-dry-run/issues/795">Error Message bug</a>, <a href="https://github.com/nus-cs2103-AY1819S2/pe-dry-run/issues/175">UI display bug</a></p>
 </li>
 </ul>
 </div>
@@ -117,9 +120,6 @@
 </div>
 </li>
 </ul>
-</div>
-<div class="paragraph">
-<p><em>{you can add/remove categories in the list above}</em></p>
 </div>
 </div>
 </div>
@@ -132,10 +132,144 @@
 </colgroup>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the User Guide. They showcase my ability to write documentation targeting end-users.</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>This section illustrates my contributions to TeethHub&#8217;s User Guide. I have selected some exerpts for the task features to showcase my end-user focused documentation skills.</em></p></td>
 </tr>
 </tbody>
 </table>
+<div class="sect3">
+<h4 id="taskdone"><a class="link" href="#taskdone">taskdone</a></h4>
+<div class="paragraph">
+<p>Sets a task to <code><span class="green">complete</span></code>, marking the completion of the task.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>taskdone INDEX</code></p>
+</div>
+<div class="paragraph">
+<p>Tasks marked as complete will have their priority replaced with a green tag that says COMPLETED as illustrated by Figure 1 below:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/Taskdone.png" alt="Taskdone" width="">
+</div>
+</div>
+<div class="paragraph">
+<p>Figure 1: Image showing the change in a task&#8217;s priority tag after completion.</p>
+</div>
+<div class="paragraph">
+<p>If you execute this command on a task with a patient linked to it, TeethHub will help you add a record to the patient automatically.
+The added record will use the task&#8217;s title as its description. Figure 2 shows you an example of the outcome of running the command on a task with a linked patient.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/Taskdone2.png" alt="Taskdone2" width="">
+</div>
+</div>
+<div class="paragraph">
+<p>Figure 2: Image showing the added record after completing a task.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+You can use the <code>undo</code> command to set a completed task back to its original priority. However, the added record will remain in the patient as of the current implementation of TeethHub.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>If you use the <code>redo</code> command immediately after the <code>undo</code> command, the task will be set back to being completed, but a new record will not be added. You can execute another <code>taskdone</code> command after the <code>undo</code>  to add another record to the linked patient.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>taskdone 2</code></p>
+</li>
+<li>
+<p><code><a href="#taskcal">taskcal</a></code><br>
+<code>taskdone 1</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="taskcal"><a class="link" href="#taskcal">taskcal</a></h4>
+<div class="paragraph">
+<p>Creates a popup window with a list of tasks on the left hand side of the window and a calendar on the right hand side. The calendar will load the dates for the month and year of the given date.
+There will also be a command box below the calendar, allowing you to execute task mangement commands and navigate to other dates.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Executing the command without specifying a date will cause the calendar to load into the current date.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>format: <code>taskcal</code> or <code>taskcal DD-MM-YYYY</code></p>
+</div>
+<div class="paragraph">
+<p>Figure 3 below shows the the displayed window and its key components</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/TaskCalendarUG.png" alt="TaskCalendarUG" width="">
+</div>
+</div>
+<div class="paragraph">
+<p>Figure 3: Image showing the entire task calendar window with labelled components</p>
+</div>
+<div class="paragraph">
+<p>As seen from Figure 3, you can view tasks that either start or end on a particular date from the task list. You can also see in the calendar pane that certain date cells highlighted in colored circles. These signify that there are tasks on those particular dates. The cells are colored according to the highest priority task for the date. This also means that you do not have any tasks that start or have their deadlines on dates that are not marked with a colored circle.</p>
+</div>
+<div class="paragraph">
+<p>Using Figure 3 as an example, the date <code>29-03-2019</code> is colored in red which matches the highest priority task on that day which is <code>HIGH</code>. You can also focus into any of the dates in the calendar to change the task list to display the tasks for that date. To choose a date to focus into, you can either key a date directly into the command box in the format <code>DD-MM-YYYY</code>, or simply click on the date cells with a mouse.</p>
+</div>
+<div class="paragraph">
+<p>You can execute task related commands such as <code>taskadd</code>, <code>taskedit</code>, <code>taskdelete</code> and <code>tasklist</code> from the command box in this window to interact with tasks.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Executing the <code>taskcal</code> command inside this popup window without specifying a date will cause the calendar to load into the current date.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The top pane of the calendar has clickable arrows that lets you change the calendar page to display the dates for different months and years. Figure 4 below shows a focused view of the calendar&#8217;s top pane:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/TaskCalendarUG2.png" alt="TaskCalendarUG2" width="">
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -147,59 +281,22 @@
 </colgroup>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the Developer Guide. They showcase my ability to write technical documentation and the technical depth of my contributions to the project.</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>This section illustrates my contributions to TeethHub&#8217;s Developer Guide. I have selected some exerpts for the task features to showcase my technical documentation skills and provide insight to the technical depths of my contributions.</em></p></td>
 </tr>
 </tbody>
 </table>
 <div class="sect2">
-<h3 id="undo-redo-feature"><a class="link" href="#undo-redo-feature">Undo/Redo feature</a></h3>
+<h3 id="task-management-and-related-commands"><a class="link" href="#task-management-and-related-commands">Task Management and related commands</a></h3>
 <div class="paragraph">
-<p>The undo/redo mechanism is facilitated by <code>VersionedAddressBook</code>.
-It extends <code>AddressBook</code> with an undo/redo history, stored internally as an <code>addressBookStateList</code> and <code>currentStatePointer</code>.
-Additionally, it implements the following operations:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>VersionedAddressBook#commit()</code>&#8201;&#8212;&#8201;Saves the current address book state in its history.</p>
-</li>
-<li>
-<p><code>VersionedAddressBook#undo()</code>&#8201;&#8212;&#8201;Restores the previous address book state from its history.</p>
-</li>
-<li>
-<p><code>VersionedAddressBook#redo()</code>&#8201;&#8212;&#8201;Restores a previously undone address book state from its history.</p>
-</li>
-</ul>
+<p>Our user can also utilize TeethHub to store manage and interact with tasks aside from patients. Dentists would often have tasks that needs to be completed or performed and the implementation of the <code>Task</code> data object allows TeethHub to provide its user with the ability to manage these tasks and have them interact with their patient&#8217;s details when necessary as well. The main commands added with the data object serve to provide the user with a way to manage and view the tasks stored in the application.</p>
 </div>
 <div class="paragraph">
-<p>These operations are exposed in the <code>Model</code> interface as <code>Model#commitAddressBook()</code>, <code>Model#undoAddressBook()</code> and <code>Model#redoAddressBook()</code> respectively.</p>
+<p>This segment will explain the main features of the a new data type <code>Task</code> that TeethHub handle. Key implementation details and the design considerations when designing these features will also be covered.
+==== Task storage and attributes
+The <code>Task</code> class is a new type of object that is meant to represent any task a dentist would have to perform. <code>Task</code> objects are kept in a list and handled by the <code>UniqueTaskList</code> class. This follows the same process as the <code>Patient</code> class and by extension, the <code>Person</code> class which has a <code>UniquePersonList</code> handling a list of <code>Person</code> objects.</p>
 </div>
 <div class="paragraph">
-<p>Given below is an example usage scenario and how the undo/redo mechanism behaves at each step.</p>
-</div>
-<div class="paragraph">
-<p>Step 1. The user launches the application for the first time. The <code>VersionedAddressBook</code> will be initialized with the initial address book state, and the <code>currentStatePointer</code> pointing to that single address book state.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UndoRedoStartingStateListDiagram.png" alt="UndoRedoStartingStateListDiagram" width="800">
-</div>
-</div>
-<div class="paragraph">
-<p>Step 2. The user executes <code>delete 5</code> command to delete the 5th person in the address book. The <code>delete</code> command calls <code>Model#commitAddressBook()</code>, causing the modified state of the address book after the <code>delete 5</code> command executes to be saved in the <code>addressBookStateList</code>, and the <code>currentStatePointer</code> is shifted to the newly inserted address book state.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UndoRedoNewCommand1StateListDiagram.png" alt="UndoRedoNewCommand1StateListDiagram" width="800">
-</div>
-</div>
-<div class="paragraph">
-<p>Step 3. The user executes <code>add n/David &#8230;&#8203;</code> to add a new person. The <code>add</code> command also calls <code>Model#commitAddressBook()</code>, causing another modified address book state to be saved into the <code>addressBookStateList</code>.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UndoRedoNewCommand2StateListDiagram.png" alt="UndoRedoNewCommand2StateListDiagram" width="800">
-</div>
+<p>Storing information of all objects does not change between <code>Task</code> and <code>Person</code> classes and both are stored into a <code>TeethHub.json</code> file. Attributes for <code>Task</code> are instantiated as objects with their own methods to validate the user&#8217;s input much like the current implementation of <code>Patient</code>/<code>Person</code> .</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -208,18 +305,57 @@ Additionally, it implements the following operations:</p>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-If a command fails its execution, it will not call <code>Model#commitAddressBook()</code>, so the address book state will not be saved into the <code>addressBookStateList</code>.
+Task has an attribute called <code>LinkedPatient</code> which stores the <code>NAME</code> and <code>NRIC</code> of a patient. This is to allow tasks to be bound to a patient and facilliate another implementation <code>taskdone</code> .
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>Step 4. The user now decides that adding the person was a mistake, and decides to undo that action by executing the <code>undo</code> command. The <code>undo</code> command will call <code>Model#undoAddressBook()</code>, which will shift the <code>currentStatePointer</code> once to the left, pointing it to the previous address book state, and restores the address book to that state.</p>
+<p>The following class diagram details the relevant attributes for a <code>Task</code> object along with the multiplicity association between the classes:</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="../images/UndoRedoExecuteUndoStateListDiagram.png" alt="UndoRedoExecuteUndoStateListDiagram" width="800">
+<img src="../images/TaskClassDiagramFinal.png" alt="TaskClassDiagramFinal" width="">
 </div>
+</div>
+<div class="sect3">
+<h4 id="task-autocomplete-feature"><a class="link" href="#task-autocomplete-feature">Task Autocomplete feature</a></h4>
+<div class="paragraph">
+<p>The <code>taskdone</code> command is a feature implemented to allow the user to automatically complete a task of his/her choice, setting it to <code>COMPLETED</code>. The command also allows the user to automatically add a record to the task&#8217;s <code>LinkedPatient</code> upon completion of the task. This feature makes use of the <code>Model</code> by calling its methods <code>setTask()</code> and <code>setPerson()</code> to perform additional interactions with both task and patient respectively.</p>
+</div>
+<div class="paragraph">
+<p>The general process followed during the command&#8217;s execution is as follows:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User runs a valid <code>taskdone</code> command on a task with a linkedpatient</p>
+</li>
+<li>
+<p>Command gets parsed properly and reaches the execution stage within <code>TaskDoneCommand</code></p>
+</li>
+<li>
+<p>New task gets created with the exact same attributes as the task to be completed.</p>
+</li>
+<li>
+<p>New task is set to COMPLETED</p>
+</li>
+<li>
+<p>setTask method is called to replace the task to be completed with the new task</p>
+</li>
+<li>
+<p>TeethHub&#8217;s stored list of patients is searched to look for a patient matching the task&#8217;s linked patient&#8217;s NRIC</p>
+</li>
+<li>
+<p>Retrieves the found patient and adds a record to the patient.</p>
+</li>
+<li>
+<p>setPerson method is called to replace the matching patient with the new patient who has the added record.</p>
+</li>
+<li>
+<p>Command execution ends and result is returned back to the user.</p>
+</li>
+</ol>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -228,21 +364,24 @@ If a command fails its execution, it will not call <code>Model#commitAddressBook
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-If the <code>currentStatePointer</code> is at index 0, pointing to the initial address book state, then there are no previous address book states to restore. The <code>undo</code> command uses <code>Model#canUndoAddressBook()</code> to check if this is the case. If so, it will return an error to the user rather than attempting to perform the undo.
+The current <code>patientedit</code> and <code>patientdelete</code> commands have been modified to update tasks linked to a patient when said patient gets modified or deleted. However, to keep in line with the concept of Defensive Programming, the execution still check and inform the user in an event where the <code>LinkedPatient</code> cannot be found.
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>The following sequence diagram shows how the undo operation works:</p>
+<p>The following sequence diagram illustrates an example where command executes on task with the index <code>1</code>:</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="../images/UndoRedoSequenceDiagram.png" alt="UndoRedoSequenceDiagram" width="800">
+<img src="../images/TaskDoneSequenceDiagram.png" alt="TaskDoneSequenceDiagram" width="">
 </div>
 </div>
+</div>
+<div class="sect3">
+<h4 id="task-calendar-feature"><a class="link" href="#task-calendar-feature">Task Calendar feature</a></h4>
 <div class="paragraph">
-<p>The <code>redo</code> command does the opposite&#8201;&#8212;&#8201;it calls <code>Model#redoAddressBook()</code>, which shifts the <code>currentStatePointer</code> once to the right, pointing to the previously undone state, and restores the address book to that state.</p>
+<p>The <code>taskcal</code> command is a feature implemented to allow the user to view task related data in a more interactive and helpful manner. Executing the command creates a popup window with the list of tasks on the left side and a calendar on the right side. The popup window will also have a commandbox where the user is able to key in task related commands, dates in the format of <code>dd-mm-yyyy</code> to navigate the calendar or exit and help as miscelleanous commands.This feature also enables the user to find tasks depending on the <code>date</code> they provide in the commandbox or the date cell they click on such that the task list will update to show users the tasks with start dates and/or end dates on the selected date cell.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -251,60 +390,63 @@ If the <code>currentStatePointer</code> is at index 0, pointing to the initial a
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-If the <code>currentStatePointer</code> is at index <code>addressBookStateList.size() - 1</code>, pointing to the latest address book state, then there are no undone address book states to restore. The <code>redo</code> command uses <code>Model#canRedoAddressBook()</code> to check if this is the case. If so, it will return an error to the user rather than attempting to perform the redo.
+Closing the Main Window whilst the Task Calendar popup is showing will also close the popup automatically. This is implemented intentionally as the popup is designed to be an extension of the Main Window, not a standalone window.
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>Step 5. The user then decides to execute the command <code>list</code>. Commands that do not modify the address book, such as <code>list</code>, will usually not call <code>Model#commitAddressBook()</code>, <code>Model#undoAddressBook()</code> or <code>Model#redoAddressBook()</code>. Thus, the <code>addressBookStateList</code> remains unchanged.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UndoRedoNewCommand3StateListDiagram.png" alt="UndoRedoNewCommand3StateListDiagram" width="800">
-</div>
+<p>The calendar is generated with modifications to the date cells being done during the generation process. Modifications to the date cells (e.g. changing font colors, overlaying a circle) are done to highlight date cells with the color of task priority. The class <code>CalendarWindow</code> uses a <code>HashMap</code> with the date, as the key and priority number, as a value,to store the start date and end date information from tasks stored in TeethHub, replacing the stored value with a highest priority value between the duplicates. This enables the date cells to be compared with the stored values amidst the generation process, choosing which date cells to highlight with the highest priority color.</p>
 </div>
 <div class="paragraph">
-<p>Step 6. The user executes <code>clear</code>, which calls <code>Model#commitAddressBook()</code>. Since the <code>currentStatePointer</code> is not pointing at the end of the <code>addressBookStateList</code>, all address book states after the <code>currentStatePointer</code> will be purged. We designed it this way because it no longer makes sense to redo the <code>add n/David &#8230;&#8203;</code> command. This is the behavior that most modern desktop applications follow.</p>
+<p>The UI components of this feature are implemented using classes from <code>JavaFX</code> with the most important component being <code>DatePicker</code> which allows a calendar to be drawn up and displayed to the user. The implementation overrides the <code>updateItem()</code> method from <code>DatePicker</code> to enable modifications to be done to the date cells in the calendar.</p>
 </div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UndoRedoNewCommand4StateListDiagram.png" alt="UndoRedoNewCommand4StateListDiagram" width="800">
-</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Color sceheme and certain font sizes of the Calendar are done using Cascading Style Sheets (CSS) in a <code>Calendar.CSS</code> file found under resources. Changes can be made to the CSS file to change color schemes of the calendar if needed
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
-<p>The following activity diagram summarizes what happens when a user executes a new command:</p>
+<p>The following swimlane activity diagram illustrates the process in which the application goes through to create and display the interactive calendar for the user:</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="../images/UndoRedoActivityDiagram.png" alt="UndoRedoActivityDiagram" width="650">
+<img src="../images/TaskCalendarSwimLaneDiagram.png" alt="TaskCalendarSwimLaneDiagram" height="500">
+</div>
 </div>
 </div>
 <div class="sect3">
 <h4 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h4>
 <div class="sect4">
-<h5 id="aspect-how-undo-redo-executes"><a class="link" href="#aspect-how-undo-redo-executes">Aspect: How undo &amp; redo executes</a></h5>
+<h5 id="aspect-storing-the-task-class"><a class="link" href="#aspect-storing-the-task-class">Aspect: Storing the task class</a></h5>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Current implementation:</strong> Saves the entire address book.</p>
+<p><strong>Current implementation:</strong> Tasks are stored in the same json file as patients.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative:</strong> Individual command knows how to undo/redo by itself.</p>
+<p><strong>Alternative:</strong> Store the tasks in a seperate json file</p>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative Pros:</strong> Will use less memory (e.g. for <code>delete</code>, just save the person being deleted).</p>
+<p>Alternative Pros: Very unlikely to have a very large json file by saving different data types to a different file.The single json file that stores the data will not become too large if there are too many patients and/or tasks. Reduces the likelihood that the size of the json file will exceed the limit of certain file systems like FAT-32 with a limit of 4GB, which would result in the application being unable to save to the file.</p>
 </li>
 <li>
-<p><strong>Alternative Cons:</strong> We must ensure that the implementation of each individual command are correct.</p>
+<p>Alternative Cons: Increases time spent opening a seperate json file. This results in more I/O work for application, decreasing application load time.Complicated to implement and affects future storage and I/O features. Implementation would affect I/O features that may need to read from the files to export both patients and tasks. Sets a precedent where new data types added in the future should be stored seperately for consistency, which would affect <code>export</code> and <code>import</code> commands as they have to be changed to read a new file to export/import.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>Choice Justification:</strong> We decided to go with the current implementation as it is simple and easier to fix.</p>
+<p><strong>Choice Justification</strong>: Most operating systems these days utilize a filesystem that allows for filesizes far beyond 4GB. The limit can go up to 2^64 bytes in NTFS for example and in almost all cases, it is unlikely for the a dentist to have such a large number of patients and tasks. Compared to the cons of the alternative where performance and increased likelihood of issues in the futre, the pros that the alternative offers do not seem valid enough to justify using it over the current choice.</p>
 </li>
 </ul>
 </div>
@@ -313,28 +455,119 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 </div>
 </div>
 <div class="sect4">
-<h5 id="aspect-data-structure-to-support-the-undo-redo-commands"><a class="link" href="#aspect-data-structure-to-support-the-undo-redo-commands">Aspect: Data structure to support the undo/redo commands</a></h5>
+<h5 id="aspect-representing-the-priority-class-attribute-for-task"><a class="link" href="#aspect-representing-the-priority-class-attribute-for-task">Aspect: Representing the Priority class attribute for Task</a></h5>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Current implementation:</strong> Use a list to store the history of address book states.</p>
+<p><strong>Current implementation:</strong> Java&#8217;s special Enumeration (Enum) class is used for the Priority class</p>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative:</strong> Use <code>HistoryManager</code> for undo/redo</p>
+<p><strong>Alternative:</strong> Use a normal class type, with string as inner attribute for Priority.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative Pros:</strong> We do not need to maintain a separate list, and just reuse what is already in the codebase. Logic is not duplicated twice as a result.</p>
+<p>Alternative Pros: Priorities can be named anything the user desires such as "code red", "code blue" for example. Easy to implement as it functions similarly to how <code>name</code> and <code>title</code> works.</p>
 </li>
 <li>
-<p><strong>Alternative Cons:</strong> Requires dealing with commands that have already been undone: We must remember to skip these commands. Violates Single Responsibility Principle and Separation of Concerns as <code>HistoryManager</code> now needs to do two different things. It is also harder for the new incoming developers of our project, who are new Computer Science student undergraduates, to understand.</p>
+<p>Alternative Cons: Priority tracking depends on the user&#8217;s own memory of what he/she named them and sees as a higher priority, making it difficult for the program to display the appropriate color for priorities to benefit users. Goes against good programming practice which is to use enum for values that should not be changed and Enum is typically used to store priority types.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>Choice Justification:</strong> We decided to keep to the Single Responsibility Principle and Separation of Concerns, thus we chose the current implementation.</p>
+<p><strong>Choice Justification</strong>: Priorities being represented as "high", "med" and "low" is a common case and as such, most if not all people should be able to understand the naming convention. While giving freedom to the user is typically beneficial, in this case, it prevents the application from providing better more value to the user. The current choice uses terms that are understandable whilst providing benefits to the user by enabling a consistent colored display of priority tags.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="aspect-modifying-task-and-patient-when-executing-code-taskdone-code-command"><a class="link" href="#aspect-modifying-task-and-patient-when-executing-code-taskdone-code-command">Aspect: Modifying task and patient when executing <code>taskdone</code> command</a></h4>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Current implementation:</strong> Target task and patient are replaced with new instances with priority changed and record added respectively.</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative:</strong> Modify the target task and linked patient directly.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Alternative Pros: Easy to implement as they already have methods to perform the operations Requires less operations to execute the command, leading to performance increase.</p>
+</li>
+<li>
+<p>Alternative Cons: Completing a task does not work with undo and redo due to the way the model is implemented.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Choice Justification</strong>: The current choice enables undo and redo to work with the task autocomplete feature, enabling tasks to be un-completed by using the undo command. This is important as the user could potentially key the wrong index when completing a task and wish to undo the command without having to manually edit the task. From tests done with the alternative, the performance increase is also  negligible at best. The lack of a strong benefit does not make up for the inability to undo/redo making the alternative less desirable as compared to the current choice.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="aspect-data-strcuture-to-support-task-calendar-generation"><a class="link" href="#aspect-data-strcuture-to-support-task-calendar-generation">Aspect: Data strcuture to support Task Calendar generation</a></h4>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Current implementation:</strong> HashMap is used to store dates that have task&#8217;s starting and/or ending.</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative:</strong>  Use an ArrayList to store the dates instead.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Alternative Pros: Does not require its stored values to have an <code>equals()</code> method. Lower memory consuption as there is no need to store both a key and a value. Retrieves elements with <code>get()</code> in O(1) time with a specified index.</p>
+</li>
+<li>
+<p>Alternative Cons: Checking if an element exists within is O(n) time as the entire arraylist needs to be checked. Requires knowing the actual index in order to utilize the benefit of an O(1) retrieval.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Choice Justification</strong>: The generation of the calendar page requires a data structure that can check if a particular date is contained within itself in order to decide whether a date cell should be highlighted or not. Arraylist would be slower in this case as it would have to peform an O(n) every time a task gets iterated compared to the O(1) a HashMap offers. There is also no need to implement an <code>equals()</code> method for the DateCustom object to be stored as it is already implemented to ensure that there are no duplicate tasks. In this case, the current choices is a much better fit as compared to arraylist to support the calendar feature.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="aspect-method-of-displaying-task-calendar"><a class="link" href="#aspect-method-of-displaying-task-calendar">Aspect: Method of displaying Task Calendar</a></h4>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Current implementation:</strong> Task Calendar window is displayed in a seperate popup.</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative:</strong> Display the calendar in another pane in the Main Window.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Alternative Pros: Everything can be shown at one glance to the user. No need to shuffle between windows. No need for a command to make the calendar show.</p>
+</li>
+<li>
+<p>Alternative Cons: Other elements displayed in the Main Window have to be shrunk along with the calendar&#8217;s contents to make space for the task calendar to be viewed. Main Window would be displaying too many things.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Choice Justification</strong>: Shrinking all elements in the Main Window would adversely affect the visibility of other important features the application provdies such as the patient&#8217;s information, the list of patients and list of tasks. This reduces the user experience as content cannot be clearly seen. Following the traditional usage of a calendar, most people typically look at a calendar when the need arises such as planning or scheduling. It would be better for a command to be provided and show the user a clear and distinct calendar only when he/she requires it, making the current choice ideal.</p>
 </li>
 </ul>
 </div>
@@ -344,20 +577,4 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="proposed-data-encryption"><a class="link" href="#proposed-data-encryption">[Proposed] Data Encryption</a></h3>
-<div class="paragraph">
-<p><em>{Explain here how the data encryption feature will be implemented}</em></p>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="project-powerpointlabs"><a class="link" href="#project-powerpointlabs">PROJECT: PowerPointLabs</a></h2>
-<div class="sectionbody">
-<hr>
-<div class="paragraph">
-<p><em>{Optionally, you may include other projects in your portfolio.}</em></p>
-</div>
-</div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-14 05:56:29 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-14 09:55:54 UTC</div></div></div></body></html>
