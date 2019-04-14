@@ -3,7 +3,7 @@
 <link rel="stylesheet" href="../stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="seedu-header"><nav class="navbar navbar-lg navbar-light bg-lighter"><div class="container"><a class="navbar-brand" href="https://se-edu.github.io/"><img src="../images/SeEduLogo.png" alt="SE-EDU"></a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level1">AB-1</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level2">AB-2</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level3">AB-3</a></li><li class="nav-item"><a class="nav-link active" href="../index.html">AB-4</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/collate">Collate</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/se-book">Book</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/learningresources">Resources</a></li></ul></div></nav></div><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="../index.html">AddressBook-Level4</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="../UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link" href="../DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link" href="../LearningOutcomes.html">LOs</a></li><li class="nav-item"><a class="nav-link active" href="../AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="../ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/se-edu/addressbook-level4"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>Keith Sim - Project Portfolio</h1></div><div id="content"><div class="sect1">
 <h2 id="project-teethhub"><a class="link" href="#project-teethhub">PROJECT: TeethHub</a></h2>
 <div class="sectionbody">
-<hr>
+
 </div>
 </div>
 <div class="sect1">
@@ -106,7 +106,7 @@ pie chart.</p>
 </ul>
 </div>
 <div class="paragraph">
-<p><strong>Code contributed</strong>: [<a href="http://tinyurl.com/yywtfzrn">Functional code</a>] [<a href="https://github.com">Test code</a>]</p>
+<p><strong>Code contributed</strong>: [<a href="http://tinyurl.com/yywtfzrn">Reposense</a>]</p>
 </div>
 <div class="paragraph">
 <p><strong>Other contributions</strong>:</p>
@@ -146,22 +146,9 @@ pie chart.</p>
 </div>
 </li>
 <li>
-<p>Documentation:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Did cosmetic tweaks to existing contents of the User Guide: <a href="https://github.com">#14</a></p>
-</li>
-</ul>
-</div>
-</li>
-<li>
 <p>Community:</p>
 <div class="ulist">
 <ul>
-<li>
-<p>PRs reviewed (with non-trivial review comments)</p>
-</li>
 <li>
 <p>Reported bugs and suggestions for other team members <a href="https://github.com/CS2103-AY1819S2-W17-2/main/issues/58">#58</a>
 <a href="https://github.com/CS2103-AY1819S2-W17-2/main/issues/106">#106</a></p>
@@ -374,8 +361,15 @@ drug, kinN, kinR, kinP, kinA, desc.</p>
 </div>
 <div class="sect3">
 <h4 id="stat"><a class="link" href="#stat">stat</a></h4>
+<div class="imageblock">
+<div class="content">
+<img src="../images/StatWindow.png" alt="StatWindow" width="500">
+</div>
+</div>
 <div class="paragraph">
-<p>Generates a statistics report based on the specified patient&#8217;s data.</p>
+<p>Generates a statistics report based on the specified patient&#8217;s data. The generated report will contain all extended
+patient information, a breakdown of all the records linked to the select patient parse in three different formats; a
+table of records; a bar chart visualization; and a pie chart visualization.</p>
 </div>
 <div class="paragraph">
 <p>Format: <code>stat INDEX</code></p>
@@ -512,12 +506,83 @@ important for us to maintain proper software engineering principles.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="stat-feature"><a class="link" href="#stat-feature">Stat feature</a></h4>
+<h4 id="sort-feature"><a class="link" href="#sort-feature">Sort feature</a></h4>
+<div class="paragraph">
+<p>The <code>Sort</code> mechanism is facilitated through the use of Comparators in conjunction with the Unique Lists for both
+record and patient depending on the programm&#8217;s mode when the command is called.</p>
+</div>
+<div class="paragraph">
+<p>Upon parsing the arguments, <code>SortCommandParser</code> then checks which mode TeethHub currently is in. If it&#8217;s in record /
+goTo mode, it creates a <code>RecordComparator</code> and returns a <code>SortRecordCommand</code>. Otherwise, a <code>PatientComparator</code> is called
+instead and returns a <code>SortPatientCommand</code> instead.</p>
+</div>
+<div class="paragraph">
+<p>When the comparator is retrieved,  SortCommandParser then calls <code>orderChecker</code> from itself to determine the
+<code>isReverse</code> boolean. Finally, the respective parameters are used to create the neccessary <code>SortCommand</code> and returns
+it to <code>AddressBookParser</code> and then <code>LogicManager</code>.</p>
+</div>
+<div class="paragraph">
+<p>On execution, there are two behaviours can occur depending on whether the <code>SortCommand</code> is a <code>SortPatientCommand</code> or
+<code>SortRecordCommand</code>.  Should it be an instance of <code>SortRecordCommand</code>, <code>sortRecordsBook(c,isReverse)</code> is called from
+ModelManager, which in turns called <code>sortRecords(c, isReverse)</code> from <code>VersionedAddressBook</code> and finally calls
+<code>sortStoredList (c, isReverse)</code> from <code>UniqueRecordList</code>. This sorts the records currently stored according to the
+parsed comparator and hence changes the order records are displayed to the user.</p>
+</div>
+<div class="paragraph">
+<p>Should it be a <code>SortPatientCommand</code> instead, the same logic flow occurs except it that calls the respective patient
+methods and classes instead.</p>
+</div>
 <div class="imageblock">
 <div class="content">
-<img src="../images/statWindow.png" alt="statWindow" width="500">
+<img src="../images/SortCommandSequenceDiagram.png" alt="SortCommandSequenceDiagram" width="800">
 </div>
 </div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-implementation-of-sort"><a class="link" href="#aspect-implementation-of-sort">Aspect: Implementation of sort</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Current Implementation:</strong> <code>SortPatientCommand</code> &amp; <code>SortRecordCommand</code> extends from a super <code>SortCommand</code> class and
+share a common <code>SortCommandParser</code>. They hence share the same command words and allows the user to simply enter
+<code>sort</code> to sort either the displayed patients or records.</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1:</strong> Create separate parsers and commands for sorting patients and records respectively.
+<code>PatientSortCommand</code> and <code>PatientSortParserCommand</code> could sort patients while in patients mode while
+<code>RecordSortCommand</code> and <code>RecordSortParserCommand</code> could sort records while in records mode.</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative Pros:</strong> A clearer distinction of what mode the program is in would be made to the user. Additionally,
+it would be easier to change the parser behavior if necessary in the future of either sort command without affecting
+the other.</p>
+</li>
+<li>
+<p><strong>Alternative Cons:</strong> It would no longer be possible to change any shared behavior of both sort commands simply by
+modifying the SortCommand super class.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Choice Justification:</strong> Ultimately, we decided on having a parent SortCommand with its two SortPatientCommand and
+SortRecordCommand children share a common SortCommandParser. Aside from the fact that <code>SortRecordCommand</code> calls the
+Record equivalent methods and classes that <code>SortPatientCommand</code> does, the behavior of both sort commands are
+essentially the same. As such, it made more sense for us to go ahead with our current implementation.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="stat-feature"><a class="link" href="#stat-feature">Stat feature</a></h4>
 <div class="paragraph">
 <p>The <code>Stat</code> mechanism is facilitated through the use of the inbuilt JavaFx framework in conjunction with the data
 stored within each <code>Patient</code> object.</p>
@@ -545,7 +610,7 @@ the user.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">Design Considerations</a></h4>
+<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-selecting-the-desired-patient-to-stat"><a class="link" href="#aspect-selecting-the-desired-patient-to-stat">Aspect: Selecting the desired patient to stat</a></h5>
 <div class="ulist">
@@ -586,4 +651,4 @@ can hence perform a <code>patientfind</code> operation beforehand and locate the
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-14 10:11:29 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-14 11:53:42 UTC</div></div></div></body></html>
