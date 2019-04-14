@@ -29,7 +29,7 @@
 </li>
 <li><a href="#implementation">3. Implementation</a>
 <ul class="sectlevel2">
-<li><a href="#patient-management-feature">3.1. Patient Management Feature</a></li>
+<li><a href="#patient-management">3.1. Patient Management</a></li>
 <li><a href="#undo-redo-feature">3.2. Undo/Redo feature</a></li>
 <li><a href="#proposed-data-encryption">3.3. [Proposed] Data Encryption</a></li>
 <li><a href="#viewing-information">3.4. Viewing Information</a></li>
@@ -581,9 +581,9 @@ As a more OOP model, we can store a <code>Tag</code> list in <code>Address Book<
 <p>This section describes some noteworthy details on how certain features are implemented.</p>
 </div>
 <div class="sect2">
-<h3 id="patient-management-feature"><a class="link" href="#patient-management-feature">3.1. Patient Management Feature</a></h3>
+<h3 id="patient-management"><a class="link" href="#patient-management">3.1. Patient Management</a></h3>
 <div class="sect3">
-<h4 id="current-implementation-storing-patient-s-information"><a class="link" href="#current-implementation-storing-patient-s-information">3.1.1. Current Implementation: Storing Patient&#8217;s Information</a></h4>
+<h4 id="patient-feature"><a class="link" href="#patient-feature">3.1.1. Patient Feature</a></h4>
 <div class="paragraph">
 <p>The <code>Patient</code> class represents patients for our users on TeethHub.
 It extends <code>Person</code> with more patient-specific attributes, as well as methods.
@@ -594,12 +594,12 @@ Various methods are also overridden in order for them to work appropriately with
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/PatientClassDiagram.png" alt="PatientClassDiagram" width=""800">
+<img src="images/PatientClassDiagram.png" alt="PatientClassDiagram" width="800">
 </div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="current-implementation-patient-s-dental-records"><a class="link" href="#current-implementation-patient-s-dental-records">3.1.2. Current Implementation: Patient&#8217;s Dental Records</a></h4>
+<h4 id="dental-records-feature"><a class="link" href="#dental-records-feature">3.1.2. Dental Records Feature</a></h4>
 <div class="paragraph">
 <p>The <code>Record</code> class represents a dental record of a patient. Each <code>Patient</code> class has an list of <code>Record</code> as an attribute.</p>
 </div>
@@ -610,7 +610,7 @@ This ensures that the processing of records is streamlined with <code>Patient</c
 </div>
 </div>
 <div class="sect3">
-<h4 id="current-implementation-interface-to-interact-with-patient-s-dental-records"><a class="link" href="#current-implementation-interface-to-interact-with-patient-s-dental-records">3.1.3. Current Implementation: Interface to interact with Patient&#8217;s Dental Records</a></h4>
+<h4 id="records-mode-feature"><a class="link" href="#records-mode-feature">3.1.3. Records Mode Feature</a></h4>
 <div class="paragraph">
 <p>The current implementation to view a specified patient&#8217;s dental records uses the <code>goto</code> command.</p>
 </div>
@@ -699,7 +699,7 @@ If the <code>back</code> command is entered while the window is already showing 
 </div>
 </div>
 <div class="sect3">
-<h4 id="current-implementation-representing-patient-s-teeth"><a class="link" href="#current-implementation-representing-patient-s-teeth">3.1.4. Current Implementation: Representing Patient&#8217;s Teeth</a></h4>
+<h4 id="patient-s-teeth-feature"><a class="link" href="#patient-s-teeth-feature">3.1.4. Patient&#8217;s Teeth Feature</a></h4>
 <div class="paragraph">
 <p>The <code>Teeth</code> class represents patients' teeth for our users on TeethHub.
 It consist of an array of <code>Tooth</code> objects, which represents the individual tooth of patients.</p>
@@ -753,7 +753,7 @@ The <code>teethedit</code> command can only run after a patient is specified via
 </div>
 </div>
 <div class="sect3">
-<h4 id="current-implementation-automatically-generated-tags"><a class="link" href="#current-implementation-automatically-generated-tags">3.1.5. Current Implementation: Automatically Generated Tags</a></h4>
+<h4 id="automatically-generated-tags-feature"><a class="link" href="#automatically-generated-tags-feature">3.1.5. Automatically Generated Tags Feature</a></h4>
 <div class="paragraph">
 <p>There are only two types of tags that are valid in the <code>Patient</code> class.
 They are <code>StatusTag</code> and <code>TeethTag</code>.
@@ -790,7 +790,7 @@ Since only permanent teeth is supported by TeethHub at the moment, <code>TeethTa
 </div>
 </div>
 <div class="sect3">
-<h4 id="current-implementation-dentist-information"><a class="link" href="#current-implementation-dentist-information">3.1.6. Current Implementation: Dentist Information</a></h4>
+<h4 id="dentist-feature"><a class="link" href="#dentist-feature">3.1.6. Dentist Feature</a></h4>
 <div class="paragraph">
 <p>Following the single user policy, TeethHub only prompts the user once to acquire his or her name, which will then be used when creating new dental records for patients.</p>
 </div>
@@ -812,7 +812,7 @@ It is possible for users to change their name from the <code>.txt</code> file, a
 </div>
 </div>
 <div class="sect3">
-<h4 id="current-implementation-other-relevant-commands"><a class="link" href="#current-implementation-other-relevant-commands">3.1.7. Current Implementation: Other Relevant Commands</a></h4>
+<h4 id="other-relevant-features"><a class="link" href="#other-relevant-features">3.1.7. Other Relevant Features</a></h4>
 <div class="paragraph">
 <p>We have also created new commands that will facilitate the <code>Patient</code> class.</p>
 </div>
@@ -848,32 +848,29 @@ The commands below can only be executed after a patient is specified via the <co
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative 1 (current choice):</strong> Create the <code>Patient</code> class by extending it from <code>Person</code>.</p>
+<p><strong>Current implementation:</strong> Create the <code>Patient</code> class by extending it from <code>Person</code>.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: It is intuitive, as it is logical that all patients are persons as well.
-The code from <code>Person</code> can be reused in <code>Patient</code> through inheritance, and all existing classes and methods which work with <code>Person</code> will also work with <code>Patient</code>.
-Most importantly, it allows us to make use of the object-oriented programming principles we learnt in class.
-We assume that the Open-Closed Principle is applied on the <code>Person</code> class.</p>
+<p><strong>Alternative:</strong> Create the <code>Patient</code> class from the bottom-up.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Alternative Pros: As <code>Patient</code> will not be a subclass of any other class, it will be less affected by changes in other classes.</p>
 </li>
 <li>
-<p>Cons: Any changes to <code>Person</code> may affect <code>Patient</code>.</p>
+<p>Alternative Cons: All existing classes and methods which currently work with <code>Person</code> needs to be re-written to work with the new <code>Patient</code> class.
+Attributes and methods cannot be reused, and must be re-implemented.
+Lastly, polymorphism cannot be applied in cases where there is a need to deal with both persons and patients.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>Alternative 2:</strong> Create the <code>Patient</code> class from the bottom-up.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: As <code>Patient</code> will not be a subclass of any other class, it will be less affected by changes in other classes.</p>
-</li>
-<li>
-<p>Cons: All existing classes and methods which currently work with <code>Person</code> needs to be re-written to work with the new <code>Patient</code> class.
-Attributes and methods cannot be reused, and must be re-implemented.
-Lastly, polymorphism cannot be applied in cases where there is a need to deal with both persons and patients.</p>
+<p><strong>Choice Justification:</strong> It is intuitive, as it is logical that all patients are persons as well.
+The code from <code>Person</code> can be reused in <code>Patient</code> through inheritance, and all existing classes and methods which work with <code>Person</code> will also work with <code>Patient</code>.
+Most importantly, it allows us to make use of the object-oriented programming principles we learnt in class.
+We assume that the Open-Closed Principle is applied on the <code>Person</code> class.</p>
 </li>
 </ul>
 </div>
@@ -886,30 +883,28 @@ Lastly, polymorphism cannot be applied in cases where there is a need to deal wi
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative 1 (current choice):</strong> Store the records using a list.</p>
+<p><strong>Current implementation:</strong> Store the records using a list.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: It is easy to understand, which is crucial for collaborative programming as other programmers may require accessing the records in the list.
-It can also save new records in the order of when they are added, from most recent to oldest, simply using <code>List.add(0, Record)</code>.</p>
+<p><strong>Alternative:</strong> Store the records using a hash table.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Alternative Pros: It gives the fastest time complexity if a record search is required. It runs in O(1) time.</p>
 </li>
 <li>
-<p>Cons: If the list gets long over time, it might cause additional waiting time for our users when they would to search for a specific record.
-This is because a linear search in a list is of O(n) time complexity.</p>
+<p>Alternative Cons: It can be challenging for collaborators to understand, which can be detrimental for collaborative programming.
+It also creates an extra layer of complexity in order to display the stored records in the order they were first stored in the application by our users.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>Alternative 2:</strong> Store the records using a hash table.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: It gives the fastest time complexity if a record search is required. It runs in O(1) time.</p>
-</li>
-<li>
-<p>Cons: It can be challenging for collaborators to understand, which can be detrimental for collaborative programming.
-It also creates an extra layer of complexity in order to display the stored records in the order they were first stored in the application by our users.</p>
+<p><strong>Choice Justification:</strong> It is easy to understand, which is crucial for collaborative programming as other programmers may require accessing the records in the list.
+It can also save new records in the order of when they are added, from most recent to oldest, simply using <code>List.add(0, Record)</code>.
+However, if the list gets long over time, it might cause additional waiting time for our users when they would to search for a specific record.
+This is because a linear search in a list is of O(n) time complexity.</p>
 </li>
 </ul>
 </div>
@@ -922,28 +917,26 @@ It also creates an extra layer of complexity in order to display the stored reco
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative 1 (current choice):</strong> Use a static variable to store the specified patient, with a public getter method, and a static boolean that denotes the current list viewing mode.</p>
+<p><strong>Current implementation:</strong> Use a static variable to store the specified patient, with a public getter method, and a static boolean that denotes the current list viewing mode.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: This is relatively easy to implement and understand. Furthermore, other classes can easily access the current specified patient, and the current list viewing mode.</p>
+<p><strong>Alternative:</strong> Save the specified patient and list viewing mode as an instance variable of MainWindow.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Alternative Pros: Will work properly even if MainWindow is no longer a singleton class.</p>
 </li>
 <li>
-<p>Cons: May cause complications if MainWindow is no longer a singleton class.</p>
+<p>Alternative Cons: Challenging to implement as major revamp is required to most existing classes and tests.
+All new classes which wish to access the specified patient or list viewing mode will need to take in a reference to the MainWindow instance.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>Alternative 2:</strong> Save the specified patient and list viewing mode as an instance variable of MainWindow.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Will work properly even if MainWindow is no longer a singleton class.</p>
-</li>
-<li>
-<p>Cons: Challenging to implement as major revamp is required to most existing classes and tests.
-All new classes which wish to access the specified patient or list viewing mode will need to take in a reference to the MainWindow instance.</p>
+<p><strong>Choice Justification:</strong> This is relatively easy to implement and understand. Furthermore, other classes can easily access the current specified patient, and the current list viewing mode.
+However, it may cause complications if MainWindow is no longer a singleton class.</p>
 </li>
 </ul>
 </div>
@@ -956,30 +949,28 @@ All new classes which wish to access the specified patient or list viewing mode 
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative 1 (current choice):</strong> Use a patient variable to store the patient specified by the command.</p>
+<p><strong>Current implementation:</strong> Use a patient variable to store the patient specified by the command.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: An intuitive solution, as the specified patient is stored as an exact same class as a patient.
-Additionally, attributes of the specified patient can be accessed just like any other patient class.
-Changes to the patient class does not significantly affect the goto command.</p>
+<p><strong>Alternative:</strong> Create a new immutable patient variable to store the specified patient.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Alternative Pros: Ensures the the specified patient cannot be edited by other classes or methods.</p>
 </li>
 <li>
-<p>Cons: The patient class is mutable, and accidental changes to its attributes by other classes or methods can occur.</p>
+<p>Alternative Cons: Major changes to the patient class would require the immutable patient class to be changed too.
+Furthermore, every time any record of the specified patient is modified, a new immutable patient needs to be created to update the currently stored immutable patient.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>Alternative 2:</strong> Create a new immutable patient variable to store the specified patient.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Ensures the the specified patient cannot be edited by other classes or methods.</p>
-</li>
-<li>
-<p>Cons: Major changes to the patient class would require the immutable patient class to be changed too.
-Furthermore, every time any record of the specified patient is modified, a new immutable patient needs to be created to update the currently stored immutable patient.</p>
+<p><strong>Choice Justification:</strong> An intuitive solution, as the specified patient is stored as an exact same class as a patient.
+Additionally, attributes of the specified patient can be accessed just like any other patient class.
+Changes to the patient class does not significantly affect the goto command.
+However, the patient class is mutable, and accidental changes to its attributes by other classes or methods can occur.</p>
 </li>
 </ul>
 </div>
@@ -992,27 +983,25 @@ Furthermore, every time any record of the specified patient is modified, a new i
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative 1 (current choice):</strong> Create a <code>Tooth</code> object representing a tooth, and use an array to store a list of tooth which will represent the teeth of patients.</p>
+<p><strong>Current implementation:</strong> Create a <code>Tooth</code> object representing a tooth, and use an array to store a list of tooth which will represent the teeth of patients.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: An straightforward object-oriented solution and easy to understand by other collaborating programmers who are familiar with object-oriented programming.</p>
+<p><strong>Alternative:</strong> Create an integer array representing teeth. Each integer value in the array indicates the status of a tooth.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Alternative Pros: Simplest to implement.</p>
 </li>
 <li>
-<p>Cons: <code>Tooth</code> and <code>Teeth</code> objects, as well as their relevant methods takes a significant amount of time to be created. They will also require proper test cases to be implemented.</p>
+<p>Alternative Cons: Can be hard to understand by other programmers as integers are used to represent teeth statuses. Additionally, this is violating object-oriented principles.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>Alternative 2:</strong> Create an integer array representing teeth. Each integer value in the array indicates the status of a tooth.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Simplest to implement.</p>
-</li>
-<li>
-<p>Cons: Can be hard to understand by other programmers as integers are used to represent teeth statuses. Additionally, this is violating object-oriented principles.</p>
+<p><strong>Choice Justification:</strong> An straightforward object-oriented solution and easy to understand by other collaborating programmers who are familiar with object-oriented programming.
+However, <code>Tooth</code> and <code>Teeth</code> objects, as well as their relevant methods takes a significant amount of time to be created. They will also require proper test cases to be implemented.</p>
 </li>
 </ul>
 </div>
@@ -1025,30 +1014,28 @@ Furthermore, every time any record of the specified patient is modified, a new i
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative 1 (current choice):</strong> Use a patient variable to store the patient specified by the command.</p>
+<p><strong>Current implementation:</strong> Use a patient variable to store the patient specified by the command.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: An intuitive solution, as the specified patient is stored as an exact same class as a patient.
-Additionally, attributes of the specified patient can be accessed just like any other patient class.
-Changes to the patient class does not significantly affect the goto command.</p>
+<p><strong>Alternative:</strong> Create a new immutable patient variable to store the specified patient.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Alternative Pros: Ensures the the specified patient cannot be edited by other classes or methods.</p>
 </li>
 <li>
-<p>Cons: The patient class is mutable, and accidental changes to its attributes by other classes or methods can occur.</p>
+<p>Alternative Cons: Major changes to the patient class would require the immutable patient class to be changed too.
+Furthermore, every time any record of the specified patient is modified, a new immutable patient needs to be created to update the currently stored immutable patient.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>Alternative 2:</strong> Create a new immutable patient variable to store the specified patient.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Ensures the the specified patient cannot be edited by other classes or methods.</p>
-</li>
-<li>
-<p>Cons: Major changes to the patient class would require the immutable patient class to be changed too.
-Furthermore, every time any record of the specified patient is modified, a new immutable patient needs to be created to update the currently stored immutable patient.</p>
+<p><strong>Choice Justification:</strong> An intuitive solution, as the specified patient is stored as an exact same class as a patient.
+Additionally, attributes of the specified patient can be accessed just like any other patient class.
+Changes to the patient class does not significantly affect the goto command.
+However, the patient class is mutable, and accidental changes to its attributes by other classes or methods can occur.</p>
 </li>
 </ul>
 </div>
@@ -3948,4 +3935,4 @@ Expected: Error message "Data file is not in the correct format." is shown in me
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-14 02:44:56 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-14 03:56:31 UTC</div></div></div></body></html>
