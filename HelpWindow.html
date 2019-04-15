@@ -60,6 +60,7 @@
 <li><a href="#record-list">4.4.12. Record List</a></li>
 <li><a href="#record-find">4.4.13. Record Find</a></li>
 <li><a href="#record-clear">4.4.14. Record Clear</a></li>
+<li><a href="#record-mc-creation">4.4.15. Record MC creation</a></li>
 </ul>
 </li>
 <li><a href="#teeth-management">4.5. Teeth Management</a>
@@ -73,10 +74,11 @@
 <li><a href="#taskadd">4.6.1. taskadd</a></li>
 <li><a href="#taskedit">4.6.2. taskedit</a></li>
 <li><a href="#taskdelete">4.6.3. taskdelete</a></li>
-<li><a href="#tasklist">4.6.4. tasklist</a></li>
-<li><a href="#tasksort">4.6.5. tasksort</a></li>
-<li><a href="#taskdone">4.6.6. taskdone</a></li>
-<li><a href="#taskcal">4.6.7. taskcal</a></li>
+<li><a href="#taskcopy">4.6.4. taskcopy</a></li>
+<li><a href="#tasklist">4.6.5. tasklist</a></li>
+<li><a href="#tasksort">4.6.6. tasksort</a></li>
+<li><a href="#taskdone">4.6.7. taskdone</a></li>
+<li><a href="#taskcal">4.6.8. taskcal</a></li>
 </ul>
 </li>
 <li><a href="#suggestion-commands">4.7. Suggestion Commands</a></li>
@@ -586,19 +588,16 @@ However, you can manage them manually with <code>open</code>, <code>save</code>,
 </div>
 <div class="paragraph">
 <p><strong>.json files hold data that TeethHub can read. Use this to "save" or "load" your progress.</strong><br>
-<strong>.pdf files are easier for people to read. Use this if you are printing out a physical copy.</strong><br></p>
+<strong>.pdf files are easier for people to read. Use this if you are printing out a physical copy.</strong></p>
 </div>
-<div class="literalblock">
-<div class="content">
-<pre> +
-You can use `open` to open another .json file that you may have transferred over from another computer. +
- +
-You can use `save` to save specific patients to a .json or .pdf file. +
- +
-You can use `import` to add specific patients from another .json file to your current data. +
- +
-You can use `export` to save specific patients to a .json or .pdf file.</pre>
-</div>
+<div class="paragraph">
+<p>You can use <code>open</code> to open another .json file that you may have transferred over from another computer.<br>
+<br>
+You can use <code>save</code> to save specific patients to a .json or .pdf file.<br>
+<br>
+You can use <code>import</code> to add specific patients from another .json file to your current data.<br>
+<br>
+You can use <code>export</code> to save specific patients to a .json or .pdf file.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -1429,6 +1428,49 @@ Show all the patients with a procedure containing the keyword Braces.</p>
 </table>
 </div>
 </div>
+<div class="sect3">
+<h4 id="record-mc-creation"><a class="link" href="#record-mc-creation">4.4.15. Record MC creation</a></h4>
+<div class="paragraph">
+<p>Creates Medical Certificate (MC) for at patient based on description of the selected record. The MC is used as a proof for patient&#8217;s undergoing procedure.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>recordmc INDEX [DaysToRest]</code> or <code>rmc INDEX [DaysToRest]</code></p>
+</div>
+<div class="paragraph">
+<p>Note:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The MC is saved as a pdf file under <code>data/</code> folder.</p>
+</li>
+<li>
+<p>By defualt the number of days suggested to rest is 2.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>recordmc 1</code> - Creates mc for the first record, suggesting 2 days of rest.</p>
+</li>
+<li>
+<p><code>recordmc 1 3</code> - Create mc for the first record, suggesting 3 dyas of rest.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Figure below shows a sample MC created.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/SampleMc.png" alt="SampleMc" width="600">
+</div>
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="teeth-management"><a class="link" href="#teeth-management">4.5. Teeth Management</a></h3>
@@ -1823,7 +1865,32 @@ You can use the <code><a href="#undo">undo</a></code> command to undo the result
 </div>
 </div>
 <div class="sect3">
-<h4 id="tasklist"><a class="link" href="#tasklist">4.6.4. tasklist</a></h4>
+<h4 id="taskcopy"><a class="link" href="#taskcopy">4.6.4. taskcopy</a></h4>
+<div class="paragraph">
+<p>Makes one or multiple copies of a task in the task list. This is useful when adding multiple tasks share similar attributes.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>taskcopy INDEX [COUNT]</code> or <code>tcopy INDEX [COUNT]</code></p>
+</div>
+<div class="paragraph">
+<p>Note: If the copied entry is modified, it will no longer be considered as a copy. Thus, it should be different from existing entries in the task list. If copies exist before existing, there will be a confirmation.</p>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>taskcopy 1</code> - Make one copy of the 1st task in task list.</p>
+</li>
+<li>
+<p><code>taskcopy 1 2</code> - Make two copies of the 1st task in task list.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="tasklist"><a class="link" href="#tasklist">4.6.5. tasklist</a></h4>
 <div class="paragraph">
 <p>Shows a list of all the task stored in the application.</p>
 </div>
@@ -1832,25 +1899,42 @@ You can use the <code><a href="#undo">undo</a></code> command to undo the result
 </div>
 </div>
 <div class="sect3">
-<h4 id="tasksort"><a class="link" href="#tasksort">4.6.5. tasksort</a></h4>
+<h4 id="tasksort"><a class="link" href="#tasksort">4.6.6. tasksort</a></h4>
 <div class="paragraph">
 <p>Sort the tasks ascendingly or descendingly in some order.</p>
 </div>
 <div class="paragraph">
-<p>Format : 'tasksort priority/startime/endtime [asc/desc]'</p>
+<p>Format : <code>tasksort PARAMETER [asce/desc]</code> or <code>tsort PARAMETER [asce/desc]</code></p>
+</div>
+<div class="paragraph">
+<p>Note :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>PATAMETER</code> can be <code>starttime</code>, <code>endtime</code> or  <code>priority</code></p>
+</li>
+<li>
+<p>The <code>asc/desc</code> is optional. It&#8217;s sorted <code>ascendingly</code> by default</p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
 <p>Example:</p>
 </div>
-<div class="paragraph">
-<p>*<code>tasksort priority</code></p>
-</div>
-<div class="paragraph">
-<p>*<code>tasksort starttime desc</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>tasksort priority</code></p>
+</li>
+<li>
+<p><code>tasksort starttime desc</code></p>
+</li>
+</ul>
 </div>
 </div>
 <div class="sect3">
-<h4 id="taskdone"><a class="link" href="#taskdone">4.6.6. taskdone</a></h4>
+<h4 id="taskdone"><a class="link" href="#taskdone">4.6.7. taskdone</a></h4>
 <div class="paragraph">
 <p>Sets a task to <code><span class="green">complete</span></code>, marking the completion of the task.</p>
 </div>
@@ -1922,7 +2006,7 @@ You can use the <code>undo</code> command to set a completed task back to its or
 </div>
 </div>
 <div class="sect3">
-<h4 id="taskcal"><a class="link" href="#taskcal">4.6.7. taskcal</a></h4>
+<h4 id="taskcal"><a class="link" href="#taskcal">4.6.8. taskcal</a></h4>
 <div class="paragraph">
 <p>Creates a popup window with a list of tasks on the left hand side of the window and a calendar on the right hand side. The calendar will load the dates for the month and year of the given date.
 There will also be a command box below the calendar, allowing you to execute task mangement commands and navigate to other dates.</p>
@@ -2195,6 +2279,10 @@ e.g. <code>recordedit 1 ic/S1234657H</code></p>
 e.g. <code>recordclear</code></p>
 </li>
 <li>
+<p><strong>Record MC creation</strong> : <code>recordmc INDEX [daysToRest]</code><br>
+e.g. <code>recordmc 1</code></p>
+</li>
+<li>
 <p><strong>Patient List</strong> : <code>list</code></p>
 </li>
 <li>
@@ -2225,6 +2313,10 @@ e.g. <code>taskedit 1 ti/Tooth extraction for Alex pri/HIGH</code></p>
 e.g. <code>taskdelete 1</code></p>
 </li>
 <li>
+<p><strong>Task copy</strong>: <code>taskcopy INDEX [COUNT]</code>+
+e.g. <code>taskcopy 1</code></p>
+</li>
+<li>
 <p><strong>Task complete</strong>: <code>taskdone INDEX</code><br>
 e.g. <code>taskdone 1</code></p>
 </li>
@@ -2233,7 +2325,7 @@ e.g. <code>taskdone 1</code></p>
 e.g. <code>taskcal 11-11-2019</code></p>
 </li>
 <li>
-<p><strong>Tasksort</strong> <code>tasksort starttime/endtime/priority [asc/desc]</code>
+<p><strong>Tasksort</strong> <code>tasksort starttime/endtime/priority [asce/desc]</code>
 e.g. <code>tasksort endtime</code></p>
 </li>
 <li>
@@ -2246,4 +2338,4 @@ e.g. <code>teeth patientadd primary</code></p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-15 13:47:22 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-15 13:57:15 UTC</div></div></div></body></html>

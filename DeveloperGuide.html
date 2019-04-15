@@ -1012,6 +1012,36 @@ However, <code>Tooth</code> and <code>Teeth</code> objects, as well as their rel
 </ul>
 </div>
 </div>
+<div class="sect4">
+<h5 id="aspect-not-adding-copies-into-local-storage"><a class="link" href="#aspect-not-adding-copies-into-local-storage">Aspect: Not adding copies into local storage</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Current implementation:</strong> Copies are not serialized into json file. It&#8217;s only inside the memory. When copies exist before exit, program will ask for user&#8217;s confirmation</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative: </strong> Serialize copies into json file. Make changes to comparators of patient/task such that it accepts same entries with copy tag.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Alternative Pros: Everything is on track. User does not need to make a confirmation before exiting with copies. And if the program exits accidentally, the copies are still there.</p>
+</li>
+<li>
+<p>Alternative Cons: User may be able to generate too many unnecessary entries easily, whose serialization is costly in time and space. The change of comparator also violates the design of unique list, bringing potential security issues as well.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Choice Justification:</strong> Serialization may need less code in the beginning. The maintenacne is more difficult, and the robustness of the program is compromised. On the other hand, creating copies for the user is not a hard task. Thus, creating copies on demand should be a better idea.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
 </div>
 </div>
 <div class="sect2">
@@ -3561,6 +3591,18 @@ edit them before exiting.</p></td>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">copy a task</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">reduce the time needed to create a new task who has similar records to an existing task in the list</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">create MC based on existing record</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">reduce the time needed to input existing data to another system.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">open an external file</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">work with patients and tasks saved in another file</p></td>
 </tr>
@@ -4387,4 +4429,4 @@ Expected: Error message "Data file is not in the correct format." is shown in me
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-15 13:47:22 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-15 13:57:15 UTC</div></div></div></body></html>
