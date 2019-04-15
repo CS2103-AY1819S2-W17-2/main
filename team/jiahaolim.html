@@ -102,7 +102,7 @@ E.g. The user enters <code>add</code>. TeethHub will ask them if they meant <cod
 <p>Created all images used by the Teeth feature.</p>
 </li>
 <li>
-<p>Reported bugs and suggestions for own team (Example: <a href="https://github.com/CS2103-AY1819S2-W17-2/main/issues/106#issuecomment-480783456">Copy bug</a>)</p>
+<p>Reported bugs and suggestions for own team. (Example: <a href="https://github.com/CS2103-AY1819S2-W17-2/main/issues/106#issuecomment-480783456">Copy bug</a>)</p>
 </li>
 </ul>
 </div>
@@ -114,6 +114,9 @@ E.g. The user enters <code>add</code>. TeethHub will ask them if they meant <cod
 <li>
 <p>Wrote tests for new features to increase coverage by 6%~7%.</p>
 </li>
+<li>
+<p>Renamed AddressBook 4 to TeethHub.</p>
+</li>
 </ul>
 </div>
 </li>
@@ -121,6 +124,9 @@ E.g. The user enters <code>add</code>. TeethHub will ask them if they meant <cod
 <p>Documentation:</p>
 <div class="ulist">
 <ul>
+<li>
+<p>Renamed AddressBook 4 to TeethHub in User Guide.</p>
+</li>
 <li>
 <p>Added Welcome message to User Guide.</p>
 </li>
@@ -134,7 +140,16 @@ E.g. The user enters <code>add</code>. TeethHub will ask them if they meant <cod
 <p>Reordered original order of Commands and Feature to the current version in User Guide.</p>
 </li>
 <li>
-<p>Edited Design Considerations for existing undo/redo feature to conform to the new format agreed on by my team.</p>
+<p>Edited Design Considerations for existing undo/redo feature to conform to the new format agreed on by my team in Developer Guide.</p>
+</li>
+<li>
+<p>Added Use Cases for File Management commands in Developer Guide.</p>
+</li>
+<li>
+<p>Added User Stories for File Management commands, Suggestion commands and adding user images to records[Planned Implementation v1.6] in Developer Guide.</p>
+</li>
+<li>
+<p>Added Manual Testing for Open and Export commands in Developer Guide.</p>
 </li>
 <li>
 <p>Proofread and edited README.adoc.</p>
@@ -147,7 +162,7 @@ E.g. The user enters <code>add</code>. TeethHub will ask them if they meant <cod
 <div class="ulist">
 <ul>
 <li>
-<p>Reported bugs and suggestions for other teams in the class (Examples: <a href="https://github.com/cs2103-ay1819s2-w09-3/main/issues/181">1</a>, <a href="https://github.com/cs2103-ay1819s2-w09-3/main/issues/183">2</a>, <a href="https://github.com/cs2103-ay1819s2-w09-3/main/issues/176">3</a>, <a href="https://github.com/cs2103-ay1819s2-w09-3/main/issues/177">4</a>)</p>
+<p>Reported bugs and suggestions for other teams in the class. (Examples: <a href="https://github.com/cs2103-ay1819s2-w09-3/main/issues/181">1</a>, <a href="https://github.com/cs2103-ay1819s2-w09-3/main/issues/183">2</a>, <a href="https://github.com/cs2103-ay1819s2-w09-3/main/issues/176">3</a>, <a href="https://github.com/cs2103-ay1819s2-w09-3/main/issues/177">4</a>)</p>
 </li>
 </ul>
 </div>
@@ -205,18 +220,26 @@ If you’re confident in your computer set-up, jump to <a href="#quick-start-gui
 <div class="sect2">
 <h3 id="file-management"><a class="link" href="#file-management">File Management</a></h3>
 <div class="paragraph">
-<p>TeethHub automatically saves all data in TeethHub.json when you close the program.
+<p>TeethHub automatically saves all data to TeethHub.json when you close the program.
 However, you can manage them manually with <code>open</code>, <code>save</code>, <code>import</code> and <code>export</code>.<br>
 <br>
-<strong>When we mention "data", we mean the patients list and their respective records plus the task list.</strong><br>
-<br>
-You can use <code>open</code> to open another .json file that you may have transferred over from another computer.<br>
-<br>
-You can use <code>save</code> to save specific patients to a .json or .pdf file.<br>
-<br>
-You can use <code>import</code> to add specific patients from another .json file to your current data.<br>
-<br>
-You can use <code>export</code> to save specific patients to a .json or .pdf file.</p>
+<strong>When we mention "data", we mean the patients list and their respective records plus the task list.</strong><br></p>
+</div>
+<div class="paragraph">
+<p><strong>.json files hold data that TeethHub can read. Use this to "save" or "load" your progress.</strong><br>
+<strong>.pdf files are easier for people to read. Use this if you are printing out a physical copy.</strong><br></p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre> +
+You can use `open` to open another .json file that you may have transferred over from another computer. +
+ +
+You can use `save` to save specific patients to a .json or .pdf file. +
+ +
+You can use `import` to add specific patients from another .json file to your current data. +
+ +
+You can use `export` to save specific patients to a .json or .pdf file.</pre>
+</div>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -284,11 +307,11 @@ You can also type <code>all</code> instead to import/export everything.</p>
 <ul>
 <li>
 <p><code>open data1.json</code><br>
-This replaces the current data of TeethHub with the data in "data1.json".</p>
+This replaces the current data of TeethHub with the contents of "data1.json".</p>
 </li>
 <li>
 <p><code>open february/data2.json</code><br>
-This replaces the current data of TeethHub with the data in "data2.json" found in the "february" folder.</p>
+This replaces the current data of TeethHub with the contents of "data2.json" found in the "february" folder.</p>
 </li>
 </ul>
 </div>
@@ -415,22 +438,31 @@ This saves all patients currently in TeethHub to "data1.json".</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="patient-teeth-per-record-coming-in-v1-5"><a class="link" href="#patient-teeth-per-record-coming-in-v1-5">Patient Teeth per record [Coming in v1.5]</a></h2>
+<h2 id="planned-implementations"><a class="link" href="#planned-implementations">Planned Implementations</a></h2>
 <div class="sectionbody">
+<div class="sect2">
+<h3 id="patient-teeth-per-record-coming-in-v1-5"><a class="link" href="#patient-teeth-per-record-coming-in-v1-5">Patient Teeth per record [Coming in v1.5]</a></h3>
 <div class="paragraph">
 <p>Currently, TeethHub stores and displays the latest teeth image of each patient.
 We understand that you may want to see teeth changes over time.
 In v1.5, TeethHub will be able to store and display a teeth image for each record.</p>
 </div>
 </div>
-</div>
-<div class="sect1">
-<h2 id="adding-images-to-records-coming-in-v1-6"><a class="link" href="#adding-images-to-records-coming-in-v1-6">Adding images to records [Coming in v1.6]</a></h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="adding-images-to-records-coming-in-v1-6"><a class="link" href="#adding-images-to-records-coming-in-v1-6">Adding images to records [Coming in v1.6]</a></h3>
 <div class="paragraph">
 <p>Currently, TeethHub is not equipped to accept images from you.
 We understand that you may want to store x-rays of teeth or other relevant images you have taken.
 In v1.6, TeethHub will have a new command for you to upload images.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="spell-checker-functionality-coming-in-v1-7"><a class="link" href="#spell-checker-functionality-coming-in-v1-7">Spell-Checker Functionality [Coming in v1.7]</a></h3>
+<div class="paragraph">
+<p>Currently, TeethHub does not have a spell checker.
+It would be great if TeethHub would automatically correct an improperly typed command(e.g. sirt to sort).
+In v1.7, TeethHub will have a spell checker functionality.</p>
+</div>
 </div>
 <div class="sect2">
 <h3 id="contributions-to-the-developer-guide"><a class="link" href="#contributions-to-the-developer-guide">Contributions to the Developer Guide</a></h3>
@@ -867,4 +899,4 @@ As TeethHub has a Patient Mode and a Record Mode, only commands that can be used
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-15 07:20:55 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-15 09:32:51 UTC</div></div></div></body></html>

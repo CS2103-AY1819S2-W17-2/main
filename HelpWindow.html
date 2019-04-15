@@ -281,7 +281,7 @@ a parameter which can be used as patientadd n/John Doe.</p>
 <p>If there is no dentist name specified, the program will prompt you to enter one.</p>
 </li>
 <li>
-<p>This should only happen once, during the first startup of the application.</p>
+<p>This should only happen once, during the first start-up of the application.</p>
 </li>
 </ul>
 </div>
@@ -574,7 +574,7 @@ table of records; a bar chart visualization; and a pie chart visualization.</p>
 <div class="sect2">
 <h3 id="file-management"><a class="link" href="#file-management">4.3. File Management</a></h3>
 <div class="paragraph">
-<p>TeethHub automatically saves all data in TeethHub.json when you close the program.
+<p>TeethHub automatically saves all data to TeethHub.json when you close the program.
 However, you can manage them manually with <code>open</code>, <code>save</code>, <code>import</code> and <code>export</code>.<br>
 <br>
 <strong>When we mention "data", we mean the patients list and their respective records plus the task list.</strong><br></p>
@@ -634,7 +634,9 @@ Any positive integers (numbers with no decimals, must be greater than 0) are all
 You can use commas (no space) to choose multiple individual indexes. e.g. <code>1,3,5</code> for 1 and 3 and 5<br>
 You can use dash (no space) to choose a range of indexes. e.g. <code>3-5</code> for 3 to 5. <code>1-3-5</code> is not allowed, just use <code>1-5</code>.<br>
 You can use a combination of commas and dashes to choose a range as well. e.g. <code>1-3,5</code> for 1 to 3 and 5.<br>
-You can also type <code>all</code> instead to import/export everything.</p>
+You can also type <code>all</code> instead to import/export everything.
+<strong>If you input a range that includes indexes that do not exist, the File Management commands will still run, but the indexes that do not exist will be ignored.</strong><br>
+e.g. <code>import test.json 10-40</code> when there are only 30 patients in test.json. Patients 10 to 30 will be imported.</p>
 </div>
 </td>
 </tr>
@@ -661,11 +663,11 @@ You can also type <code>all</code> instead to import/export everything.</p>
 <ul>
 <li>
 <p><code>open data1.json</code><br>
-This replaces the current data of TeethHub with the data in "data1.json".</p>
+This replaces the current data of TeethHub with the contents of "data1.json".</p>
 </li>
 <li>
 <p><code>open february/data2.json</code><br>
-This replaces the current data of TeethHub with the data in "data2.json" found in the "february" folder.</p>
+This replaces the current data of TeethHub with the contents of "data2.json" found in the "february" folder.</p>
 </li>
 </ul>
 </div>
@@ -2197,4 +2199,4 @@ e.g. <code>teeth patientadd primary</code></p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-15 07:20:55 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-15 09:32:51 UTC</div></div></div></body></html>

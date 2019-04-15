@@ -4389,6 +4389,14 @@ Expected: A .json file named <strong>test.json</strong> is created/overwritten i
 Expected: A .json file named <strong>test.json</strong> is created/overwritten in the "data" folder. When opened in text viewer (like Notepad), only the patient that corresponds to index 1 <strong>and</strong> index 3 <strong>to</strong> index 5 in TeethHub should be present, along with all tasks.</p>
 </li>
 <li>
+<p>Test case: <code>export test.json 1-3-5</code><br>
+Expected: Error message "Invalid index range! Please input a positive unsigned index range." is shown in message box. No file is created/overwritten.</p>
+</li>
+<li>
+<p>Test case: <code>export test.json 1,,5</code><br>
+Expected: Error message "Invalid index range! Please input a positive unsigned index range." is shown in message box. No file is created/overwritten.</p>
+</li>
+<li>
 <p>Test case: <code>export test.json all</code><br>
 Expected: A .json file named <strong>test.json</strong> is created/overwritten in the "data" folder. When opened in text viewer (like Notepad), all in TeethHub should be present, along with all tasks. Result should be the same as using <code>save test.json</code>.</p>
 </li>
@@ -4439,4 +4447,4 @@ Expected: Error message "Data file is not in the correct format." is shown in me
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-15 07:20:55 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-15 09:32:51 UTC</div></div></div></body></html>
