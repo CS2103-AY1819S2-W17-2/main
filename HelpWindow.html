@@ -21,13 +21,12 @@
 <li><a href="#general-commands">4.2. General Commands</a>
 <ul class="sectlevel3">
 <li><a href="#help">4.2.1. help</a></li>
-<li><a href="#dentist">4.2.2. dentist</a></li>
-<li><a href="#history">4.2.3. history</a></li>
-<li><a href="#undo">4.2.4. undo</a></li>
-<li><a href="#redo">4.2.5. redo</a></li>
-<li><a href="#sort">4.2.6. sort</a></li>
-<li><a href="#stat">4.2.7. stat</a></li>
-<li><a href="#exit">4.2.8. exit</a></li>
+<li><a href="#history">4.2.2. history</a></li>
+<li><a href="#undo">4.2.3. undo</a></li>
+<li><a href="#redo">4.2.4. redo</a></li>
+<li><a href="#sort">4.2.5. sort</a></li>
+<li><a href="#stat">4.2.6. stat</a></li>
+<li><a href="#exit">4.2.7. exit</a></li>
 </ul>
 </li>
 <li><a href="#file-management">4.3. File Management</a>
@@ -278,23 +277,7 @@ a parameter which can be used as patientadd n/John Doe.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="dentist"><a class="link" href="#dentist">4.2.2. dentist</a></h4>
-<div class="paragraph">
-<p>You can specify the name you want to reflect in your patients' dental record when you create them.</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>If there is no dentist name specified, the program will prompt you to enter one.</p>
-</li>
-<li>
-<p>This should only happen once, during the first start-up of the application.</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect3">
-<h4 id="history"><a class="link" href="#history">4.2.3. history</a></h4>
+<h4 id="history"><a class="link" href="#history">4.2.2. history</a></h4>
 <div class="paragraph">
 <p>Lists all the commands that have been entered since starting the
 application in reverse chronological order.</p>
@@ -304,7 +287,7 @@ application in reverse chronological order.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="undo"><a class="link" href="#undo">4.2.4. undo</a></h4>
+<h4 id="undo"><a class="link" href="#undo">4.2.3. undo</a></h4>
 <div class="paragraph">
 <p>Undo the latest command.</p>
 </div>
@@ -336,7 +319,7 @@ The undo command fails as there are no undo-able commands executed previously.</
 </div>
 </div>
 <div class="sect3">
-<h4 id="redo"><a class="link" href="#redo">4.2.5. redo</a></h4>
+<h4 id="redo"><a class="link" href="#redo">4.2.4. redo</a></h4>
 <div class="paragraph">
 <p>Reverses the most recent undo command.</p>
 </div>
@@ -371,7 +354,7 @@ previously.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="sort"><a class="link" href="#sort">4.2.6. sort</a></h4>
+<h4 id="sort"><a class="link" href="#sort">4.2.5. sort</a></h4>
 <div class="paragraph">
 <p>Sorts the records by an input parameter in an input order.</p>
 </div>
@@ -539,7 +522,7 @@ drug, kinN, kinR, kinP, kinA, desc.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="stat"><a class="link" href="#stat">4.2.7. stat</a></h4>
+<h4 id="stat"><a class="link" href="#stat">4.2.6. stat</a></h4>
 <div class="imageblock">
 <div class="content">
 <img src="images/StatWindow.png" alt="StatWindow" width="500">
@@ -555,7 +538,7 @@ table of records; a bar chart visualization; and a pie chart visualization.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="exit"><a class="link" href="#exit">4.2.8. exit</a></h4>
+<h4 id="exit"><a class="link" href="#exit">4.2.7. exit</a></h4>
 <div class="paragraph">
 <p>Exits the program. You won&#8217;t be able to exit if copies exist.</p>
 </div>
@@ -2024,7 +2007,7 @@ Executing the command without specifying a date will cause the calendar to load 
 </table>
 </div>
 <div class="paragraph">
-<p>format: <code>taskcal</code> or <code>taskcal DD-MM-YYYY</code></p>
+<p>Format: <code>taskcal</code> or <code>taskcal DD-MM-YYYY</code></p>
 </div>
 <div class="paragraph">
 <p>Figure 3 below shows the the displayed window and its key components</p>
@@ -2233,7 +2216,7 @@ e.g. <code>exit</code></p>
 </li>
 <li>
 <p><strong>Export</strong> : <code>export FILE_PATH INDEX_RANGE`</code><br>
-e.g. <code>export mnt/clinicRecords.txt 1,3-5</code></p>
+e.g. <code>export clinicRecords.json 1,3-5</code></p>
 </li>
 <li>
 <p><strong>Help</strong> : <code>help</code></p>
@@ -2243,11 +2226,11 @@ e.g. <code>export mnt/clinicRecords.txt 1,3-5</code></p>
 </li>
 <li>
 <p><strong>Import</strong> : <code>import FILE_PATH INDEX_RANGE</code><br>
-e.g. <code>import \mnt\newData.json 1,3-5</code></p>
+e.g. <code>import newData.json 1,3-5</code></p>
 </li>
 <li>
 <p><strong>Open</strong> : <code>open FILE_PATH</code><br>
-e.g. <code>Open mnt/sample/newData.json</code></p>
+e.g. <code>open sample/newData.json</code></p>
 </li>
 <li>
 <p><strong>Record Add</strong> : <code>recordadd pro/PROCEDURE desc/DESCRIPTION</code><br>
@@ -2259,7 +2242,7 @@ e.g. <code>recorddelete 4</code></p>
 </li>
 <li>
 <p><strong>Record Edit</strong> : <code>recordedit INDEX PARAMETERS…</code><br>
-e.g. <code>recordedit 1 ic/S1234657H</code></p>
+e.g. <code>recordedit 1 desc/Extraction of wisdom tooth completed.</code></p>
 </li>
 <li>
 <p><strong>Record Clear</strong> : <code>recordclear</code><br>
@@ -2274,7 +2257,7 @@ e.g. <code>recordmc 1</code></p>
 </li>
 <li>
 <p><strong>Save</strong> : <code>save FILE_PATH`</code><br>
-e.g. <code>save mnt/clinicRecords.txt</code></p>
+e.g. <code>save clinicRecords.json</code></p>
 </li>
 <li>
 <p><strong>Sort</strong> : <code>sort PARAM ORDER</code><br>
@@ -2293,6 +2276,10 @@ e.g. <code>taskedit 1 ti/Tooth extraction for Alex pri/HIGH</code></p>
 e.g. <code>taskdelete 1</code></p>
 </li>
 <li>
+<p><strong>Task calendar</strong>: <code>taskcal DATE</code><br>
+e.g. <code>taskcal 11-11-2019</code></p>
+</li>
+<li>
 <p><strong>Task copy</strong>: <code>taskcopy INDEX [COUNT]</code>+
 e.g. <code>taskcopy 1</code></p>
 </li>
@@ -2301,16 +2288,8 @@ e.g. <code>taskcopy 1</code></p>
 e.g. <code>taskdone 1</code></p>
 </li>
 <li>
-<p><strong>Task calendar</strong>: <code>taskcal INDEX</code><br>
-e.g. <code>taskcal 11-11-2019</code></p>
-</li>
-<li>
 <p><strong>Tasksort</strong> <code>tasksort starttime/endtime/priority [asce/desc]</code>
 e.g. <code>tasksort endtime</code></p>
-</li>
-<li>
-<p><strong>Teeth</strong> : <code>teeth patientadd &lt;Template&gt;</code><br>
-e.g. <code>teeth patientadd primary</code></p>
 </li>
 <li>
 <p><strong>Undo</strong> : <code>undo</code></p>
@@ -2318,4 +2297,4 @@ e.g. <code>teeth patientadd primary</code></p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-15 15:34:02 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-15 15:42:04 UTC</div></div></div></body></html>
