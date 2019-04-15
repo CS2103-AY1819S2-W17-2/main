@@ -47,14 +47,19 @@
 <li><a href="#patient-list">4.4.5. Patient List</a></li>
 <li><a href="#patient-find">4.4.6. Patient Find</a></li>
 <li><a href="#patient-clear">4.4.7. Patient Clear</a></li>
-<li><a href="#go-to">4.4.8. Go To</a></li>
-<li><a href="#back">4.4.9. Back</a></li>
-<li><a href="#record-add">4.4.10. Record Add</a></li>
-<li><a href="#record-delete">4.4.11. Record Delete</a></li>
-<li><a href="#record-edit">4.4.12. Record Edit</a></li>
-<li><a href="#record-list">4.4.13. Record List</a></li>
-<li><a href="#record-find">4.4.14. Record Find</a></li>
-<li><a href="#record-clear">4.4.15. Record Clear</a></li>
+<li><a href="#records-mode">4.4.8. Records Mode</a>
+<ul class="sectlevel4">
+<li><a href="#entering-the-records-mode-of-a-specified-patient">Entering the Records Mode of a specified patient</a></li>
+<li><a href="#exiting-the-records-mode">Exiting the Records Mode</a></li>
+<li><a href="#visual-example">Visual Example</a></li>
+</ul>
+</li>
+<li><a href="#record-add">4.4.9. Record Add</a></li>
+<li><a href="#record-delete">4.4.10. Record Delete</a></li>
+<li><a href="#record-edit">4.4.11. Record Edit</a></li>
+<li><a href="#record-list">4.4.12. Record List</a></li>
+<li><a href="#record-find">4.4.13. Record Find</a></li>
+<li><a href="#record-clear">4.4.14. Record Clear</a></li>
 </ul>
 </li>
 <li><a href="#teeth-management">4.5. Teeth Management</a>
@@ -911,21 +916,10 @@ must be specified. Adding a next of kin address or phone number without both the
 <div class="ulist">
 <ul>
 <li>
-<p><code>delete 1</code>&#8201;&#8212;&#8201;Deletes the patient shown with index 1 from the displayed list.</p>
+<p><code>delete 1</code><br>
+Deletes the patient shown with index 1 from the displayed list.</p>
 </li>
 </ul>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-If the patient index is invalid, the application will display an error message to the user.
-</td>
-</tr>
-</table>
 </div>
 </div>
 <div class="sect3">
@@ -988,7 +982,8 @@ Must be a positive integer (e.g 1, 2 or 3).</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>patientedit 1 ic/S1234567A</code>&#8201;&#8212;&#8201;Edits the <code>NRIC</code> of the first patient in the patient list.</p>
+<p><code>patientedit 1 ic/S1234567A</code><br>
+Edits the <code>NRIC</code> of the first patient in the patient list.</p>
 </li>
 </ul>
 </div>
@@ -1102,51 +1097,73 @@ Show all the patients with an address containing the keyword Yishun.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="go-to"><a class="link" href="#go-to">4.4.8. Go To</a></h4>
+<h4 id="records-mode"><a class="link" href="#records-mode">4.4.8. Records Mode</a></h4>
 <div class="paragraph">
-<p>The goto command specifies a patient by index, and brings the user to the records mode, where all dental records of the specified patient are listed.</p>
+<p>The records mode allows users to access the dental records of a specified patient.
+In this mode, users can modify their patients' dental records and teeth information.</p>
 </div>
+<div class="sect4">
+<h5 id="entering-the-records-mode-of-a-specified-patient"><a class="link" href="#entering-the-records-mode-of-a-specified-patient">Entering the Records Mode of a specified patient</a></h5>
 <div class="paragraph">
-<p>Record-related commands can then be executed in this mode.</p>
-</div>
-<div class="paragraph">
-<p>Format: <code>goto 1</code></p>
+<p>Format: <code>goto INDEX</code></p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Goes into records mode and displays all dental records of patient 1.</p>
+<p>If the user is not in records mode, the goto command brings the user into records mode.</p>
 </li>
 <li>
-<p>The given index must be a positive integer (e.g 1, 2 or 3…)</p>
+<p>All dental records of the patient at the indicated index will be displayed.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>goto 1</code><br>
+Go into records mode with the patient at index 1.</p>
 </li>
 </ul>
 </div>
 </div>
-<div class="sect3">
-<h4 id="back"><a class="link" href="#back">4.4.9. Back</a></h4>
+<div class="sect4">
+<h5 id="exiting-the-records-mode"><a class="link" href="#exiting-the-records-mode">Exiting the Records Mode</a></h5>
 <div class="paragraph">
-<p>The back command can only be run in records mode.
-It brings the user back to the patients mode, where all patients will be listed.</p>
+<p>Format: <code>back</code></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>If the user is in records mode, the back command will bring the user out of records mode.</p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
-<p>Format: <code>back</code>&#8201;&#8212;&#8201;Brings the user back to patient mode.</p>
+<p>Example:</p>
 </div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-The <code>back</code> command will work with parameters, but they will be ignored.
-</td>
-</tr>
-</table>
+<div class="ulist">
+<ul>
+<li>
+<p><code>back</code><br>
+Brings the user back to patient mode.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="visual-example"><a class="link" href="#visual-example">Visual Example</a></h5>
+<div class="imageblock">
+<div class="content">
+<img src="images/RecordsModeTransition.png" alt="RecordsModeTransition" width="">
+</div>
+</div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="record-add"><a class="link" href="#record-add">4.4.10. Record Add</a></h4>
+<h4 id="record-add"><a class="link" href="#record-add">4.4.9. Record Add</a></h4>
 <div class="paragraph">
 <p>This command adds a new dental record to the patient.</p>
 </div>
@@ -1168,13 +1185,45 @@ The <code>back</code> command will work with parameters, but they will be ignore
 <div class="ulist">
 <ul>
 <li>
-<p>The program assigns the name of the dentist stored in the dentist information</p>
+<p>Procedures should be in the format of <code>Type-Subtype</code>.</p>
 </li>
 <li>
-<p>The program assigns the date of record as the date the record is created.</p>
+<p>While there is a list of valid procedure types, procedure subtypes are user defined.</p>
 </li>
 <li>
-<p>When records of a patient is accessed, the stored records are sorted from newest to oldest.</p>
+<p>Valid Procedure Types:</p>
+</li>
+</ul>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Consultation</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Preventive</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Filling</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Crown Gum</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Extraction</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Replacement</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Braces</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Aesthetic</p></td>
+</tr>
+</tbody>
+</table>
+<div class="ulist">
+<ul>
+<li>
+<p>Description allows our users to describe the dental session, and is also user defined.</p>
+</li>
+<li>
+<p>The stored records are sorted from newest to oldest.</p>
 </li>
 <li>
 <p>New dental records will appear on the top of the list upon entry.</p>
@@ -1190,7 +1239,7 @@ The <code>back</code> command will work with parameters, but they will be ignore
 <p><code><a href="#goto">goto</a> 1</code> - Displays dental records of the first patient in the list and hides the patient list.</p>
 </li>
 <li>
-<p><code>recordadd desc/Mouth was noticeably smelly, might have halitosis</code> - Adds a new dental record.</p>
+<p><code>recordadd pro/Other-Checkup desc/Mouth was noticeably smelly, might have halitosis</code> - Adds a new dental record.</p>
 </li>
 <li>
 <p><code><a href="#back">back</a></code> - Go back to the patient list.</p>
@@ -1199,7 +1248,7 @@ The <code>back</code> command will work with parameters, but they will be ignore
 </div>
 </div>
 <div class="sect3">
-<h4 id="record-delete"><a class="link" href="#record-delete">4.4.11. Record Delete</a></h4>
+<h4 id="record-delete"><a class="link" href="#record-delete">4.4.10. Record Delete</a></h4>
 <div class="paragraph">
 <p>This command deletes a dental record of a specified patient.</p>
 </div>
@@ -1249,7 +1298,7 @@ The <code>back</code> command will work with parameters, but they will be ignore
 </div>
 </div>
 <div class="sect3">
-<h4 id="record-edit"><a class="link" href="#record-edit">4.4.12. Record Edit</a></h4>
+<h4 id="record-edit"><a class="link" href="#record-edit">4.4.11. Record Edit</a></h4>
 <div class="paragraph">
 <p>This command edits a patient’s dental record.</p>
 </div>
@@ -1302,7 +1351,7 @@ The <code>back</code> command will work with parameters, but they will be ignore
 </div>
 </div>
 <div class="sect3">
-<h4 id="record-list"><a class="link" href="#record-list">4.4.13. Record List</a></h4>
+<h4 id="record-list"><a class="link" href="#record-list">4.4.12. Record List</a></h4>
 <div class="paragraph">
 <p>Shows a list of all records stored in TeethHub.</p>
 </div>
@@ -1322,7 +1371,7 @@ Shows details of all records.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="record-find"><a class="link" href="#record-find">4.4.14. Record Find</a></h4>
+<h4 id="record-find"><a class="link" href="#record-find">4.4.13. Record Find</a></h4>
 <div class="paragraph">
 <p>Shows patients whose data contains any of the given keywords according to a specified parameter.</p>
 </div>
@@ -1360,7 +1409,7 @@ Show all the patients with a procedure containing the keyword Braces.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="record-clear"><a class="link" href="#record-clear">4.4.15. Record Clear</a></h4>
+<h4 id="record-clear"><a class="link" href="#record-clear">4.4.14. Record Clear</a></h4>
 <div class="paragraph">
 <p>Clears all of a patient&#8217;s dental records.</p>
 </div>
@@ -2199,4 +2248,4 @@ e.g. <code>teeth patientadd primary</code></p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-15 09:32:51 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-15 09:59:18 UTC</div></div></div></body></html>

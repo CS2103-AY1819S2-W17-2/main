@@ -695,7 +695,7 @@ If the <code>back</code> command is entered while the window is already showing 
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/GotoActivityDiagram.png" alt="GotoActivityDiagram" width="800">
+<img src="images/GotoActivityDiagram.png" alt="GotoActivityDiagram" width="">
 </div>
 </div>
 <div class="paragraph">
@@ -1006,40 +1006,6 @@ However, the patient class is mutable, and accidental changes to its attributes 
 <li>
 <p><strong>Choice Justification:</strong> An straightforward object-oriented solution and easy to understand by other collaborating programmers who are familiar with object-oriented programming.
 However, <code>Tooth</code> and <code>Teeth</code> objects, as well as their relevant methods takes a significant amount of time to be created. They will also require proper test cases to be implemented.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect4">
-<h5 id="aspect-implementing-the-dentist-class"><a class="link" href="#aspect-implementing-the-dentist-class">Aspect: Implementing the Dentist class</a></h5>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Current implementation:</strong> Use a patient variable to store the patient specified by the command.</p>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Alternative:</strong> Create a new immutable patient variable to store the specified patient.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Alternative Pros: Ensures the the specified patient cannot be edited by other classes or methods.</p>
-</li>
-<li>
-<p>Alternative Cons: Major changes to the patient class would require the immutable patient class to be changed too.
-Furthermore, every time any record of the specified patient is modified, a new immutable patient needs to be created to update the currently stored immutable patient.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>Choice Justification:</strong> An intuitive solution, as the specified patient is stored as an exact same class as a patient.
-Additionally, attributes of the specified patient can be accessed just like any other patient class.
-Changes to the patient class does not significantly affect the goto command.
-However, the patient class is mutable, and accidental changes to its attributes by other classes or methods can occur.</p>
 </li>
 </ul>
 </div>
@@ -4447,4 +4413,4 @@ Expected: Error message "Data file is not in the correct format." is shown in me
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-15 09:32:51 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-15 09:59:18 UTC</div></div></div></body></html>

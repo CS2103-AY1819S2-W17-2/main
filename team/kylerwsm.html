@@ -7,7 +7,7 @@
 <p>In a software engineering module in school, my team was given a brownfield development task to enhance an existing application: The AddressBook 4.</p>
 </div>
 <div class="paragraph">
-<p>My team and I took a step further, to morph the provided application into one of our choice. The result was TeethHub.</p>
+<p>In an ambitious attempt, my team and I took a step further, to morph the entire application into one of our choice. The result was TeethHub.</p>
 </div>
 <div class="paragraph">
 <p>This portfolio documents my contributions to TeethHub and showcases my technical writing and documentation skills.</p>
@@ -21,19 +21,42 @@
 <p>TeethHub is a desktop application specially designed for tech-savvy dentists, who prefers to use the command line interface.</p>
 </div>
 <div class="paragraph">
-<p>The user interacts with the application through the type via the command line interface, and graphical representations of the stored data will be shown.
-The program is written in Java.</p>
+<p>The user interacts with the application through the type via the command line interface, and graphical representations of the stored data will be shown.</p>
 </div>
 <div class="paragraph">
-<p>As of version 1.4:<br>
-TeethHub allows Dentists to manage patient information, records of each patient and tasks for the dentist. TeethHub can also export them to a PDF file.<br>
-TeethHub displays the latest teeth information in the form of an image that follows the <strong>Universal Numbering System</strong> dental notation.
-TeethHub displays statistics generated from all patients and records stored in it.</p>
+<p>The GUI of TeethHub is created with JavaFX. TeethHub is written in Java, and has about 20,000 lines of code.</p>
 </div>
 <div class="paragraph">
-<p>The GUI of TeethHub is created with JavaFX. TeethHub is written in Java, and has about 20,000 lines of code.<br>
-TeethHub was morphed from AddressBook 4, which had about 10,000 lines of code.</p>
+<p>TeethHub was morphed from AddressBook 4, which had about 10,000 lines of code.</p>
 </div>
+<div class="paragraph">
+<p>I actively participated in the development of TeethHub from version 1.1 to 1.4.</p>
+</div>
+<div class="paragraph">
+<p>As of version 1.4, some of the key features TeethHub can process/support:</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Patient information</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Dental records</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Patients' teeth data</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Graphical teeth data</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Permanent teeth</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">File management</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Task events</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Patient statistics</p></td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 <div class="sect1">
@@ -119,7 +142,7 @@ The implementation too was demanding, as many factors need to be considered.</p>
 <p>Added a new GUI to allow users to interact with a specific patient&#8217;s dental records.</p>
 </li>
 <li>
-<p>Wrote additional tests for new features to significantly increase coverage (~1%).</p>
+<p>Wrote additional tests for new features to significantly increase coverage (~5%).</p>
 </li>
 </ul>
 </div>
@@ -182,12 +205,44 @@ This includes their personal particulars, next-of-kin information, dental record
 <p>This command adds a patient to the patients list.</p>
 </div>
 <div class="paragraph">
-<p>Name, NRIC, and Date of Birth fields are compulsory.
+<p>Name, NRIC, Sex and Date of Birth fields are compulsory.
 The rest are optional fields, and can be filled in later via the <code>recordedit</code> command.</p>
 </div>
 <div class="paragraph">
 <p>Format: <code>patientadd PARAMETERS …</code> or <code>padd PARAMETERS …</code></p>
 </div>
+<div class="paragraph">
+<p>Parameters:</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">n/NAME</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s/SEX</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ic/NRIC</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">dob/DATE_OF_BIRTH</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">p/PHONE_NUMBER</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">e/EMAIL</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">a/ADDRESS</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">da/DRUG_ALLERGY</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">nokn/NEXT_OF_KIN_NAME</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">nokp/NEXT_OF_KIN_PHONE_NUMBER</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">nokr/NEXT_OF_KIN_RELATION</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">noka/NEXT_OF_KIN_ADDRESS</p></td>
+</tr>
+</tbody>
+</table>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -200,6 +255,22 @@ TeethHub determines the uniqueness of patients based on their <code>NRIC</code>.
 </tr>
 </table>
 </div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>While having a next of kin is optional, if you want to add details for a next of kin the fields <code>nokn/</code> &amp; <code>nokr/</code>
+must be specified. Adding a next of kin address or phone number without both the name and relationship of the next of
+ kin is not possible.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
 <div class="paragraph">
 <p>Example:</p>
 </div>
@@ -208,35 +279,64 @@ TeethHub determines the uniqueness of patients based on their <code>NRIC</code>.
 <li>
 <p><code>patientadd n/John Choo sex/M ic/S1234567H dob/09-09-1995</code></p>
 </li>
+<li>
+<p><code>patientadd n/John Choo sex/M p/98425871 e/jonC@example.com a/IDA street block 13
+#02-05 ic/S1234567H dob/26-02-1987 nokn/Jacky Choo nokp/84875215 nokr/Father noka/same desc/New Patient</code></p>
+</li>
 </ul>
 </div>
 </div>
 <div class="sect3">
-<h4 id="patient-edit"><a class="link" href="#patient-edit">Patient Edit</a></h4>
+<h4 id="patient-delete"><a class="link" href="#patient-delete">Patient Delete</a></h4>
 <div class="paragraph">
-<p>This command edits the information of an existing patient.</p>
+<p>This command deletes the patient specified by <code>index</code> from the patients list.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code>patientedit INDEX [PREFIX/KEYWORDS]</code> or <code>pedit INDEX [PREFIX/KEYWORDS]</code></p>
+<p>Format: <code>patientdelete INDEX</code> or <code>pdelete INDEX</code></p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Edits the patient at the specified index shown from list or find command.
-Must be a positive integer (e.g 1, 2 or 3).</p>
+<p>Deletes the patient at the specified index.</p>
 </li>
 <li>
-<p>Input the prefix followed by the new value to replace the existing data.</p>
-<div class="ulist">
-<ul>
+<p>The index refers to the index number shown in the displayed patient list.</p>
+</li>
 <li>
-<p>The full list of possible prefixes can be found in <a href="#breakdown-of-attributes-used-within-teethhub">Breakdown of attributes used within TeethHub</a></p>
+<p>The given index must be a positive integer (e.g 1, 2 or 3…).</p>
 </li>
 </ul>
 </div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>delete 1</code><br>
+Deletes the patient shown with index 1 from the displayed list.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="records-mode"><a class="link" href="#records-mode">Records Mode</a></h4>
+<div class="paragraph">
+<p>The records mode allows users to access the dental records of a specified patient.
+In this mode, users can modify their patients' dental records and teeth information.</p>
+</div>
+<div class="sect4">
+<h5 id="entering-the-records-mode-of-a-specified-patient"><a class="link" href="#entering-the-records-mode-of-a-specified-patient">Entering the Records Mode of a specified patient</a></h5>
+<div class="paragraph">
+<p>Format: <code>goto INDEX</code></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>If the user is not in records mode, the goto command brings the user into records mode.</p>
 </li>
 <li>
-<p>The given index must be a positive integer (e.g. 1, 2, or 3…).</p>
+<p>All dental records of the patient at the indicated index will be displayed.</p>
 </li>
 </ul>
 </div>
@@ -246,50 +346,46 @@ Must be a positive integer (e.g 1, 2 or 3).</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>patientedit 1 ic/S1234567A</code>&#8201;&#8212;&#8201;Edits the <code>NRIC</code> of the first patient in the patient list.</p>
+<p><code>goto 1</code><br>
+Go into records mode with the patient at index 1.</p>
 </li>
 </ul>
 </div>
 </div>
-<div class="sect3">
-<h4 id="go-to"><a class="link" href="#go-to">Go To</a></h4>
+<div class="sect4">
+<h5 id="exiting-the-records-mode"><a class="link" href="#exiting-the-records-mode">Exiting the Records Mode</a></h5>
 <div class="paragraph">
-<p>The goto command specifies a patient by index, and brings the user to the records mode, where all dental records of the specified patient are listed.</p>
-</div>
-<div class="paragraph">
-<p>Format: <code>goto 1</code></p>
+<p>Format: <code>back</code></p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Goes into records mode and displays all dental records of patient 1.</p>
+<p>If the user is in records mode, the back command will bring the user out of records mode.</p>
 </li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="ulist">
+<ul>
 <li>
-<p>The given index must be a positive integer (e.g 1, 2 or 3…)</p>
+<p><code>back</code><br>
+Brings the user back to patient mode.</p>
 </li>
 </ul>
 </div>
 </div>
-<div class="sect3">
-<h4 id="back"><a class="link" href="#back">Back</a></h4>
-<div class="paragraph">
-<p>The back command can only be run in records mode.
-It brings the user back to the patients mode, where all patients will be listed.</p>
+<div class="sect4">
+<h5 id="visual-example"><a class="link" href="#visual-example">Visual Example</a></h5>
+<div class="imageblock">
+<div class="content">
+<img src="../images/RecordsModeTransition.png" alt="RecordsModeTransition" width="">
+</div>
 </div>
 <div class="paragraph">
-<p>Format: <code>back</code>&#8201;&#8212;&#8201;Brings the user back to patient mode.</p>
+<p>&#160;</p>
 </div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-The <code>back</code> command will work with parameters, but they will be ignored.
-</td>
-</tr>
-</table>
 </div>
 </div>
 <div class="sect3">
@@ -315,13 +411,45 @@ The <code>back</code> command will work with parameters, but they will be ignore
 <div class="ulist">
 <ul>
 <li>
-<p>The program assigns the name of the dentist stored in the dentist information</p>
+<p>Procedures should be in the format of <code>Type-Subtype</code>.</p>
 </li>
 <li>
-<p>The program assigns the date of record as the date the record is created.</p>
+<p>While there is a list of valid procedure types, procedure subtypes are user defined.</p>
 </li>
 <li>
-<p>When records of a patient is accessed, the stored records are sorted from newest to oldest.</p>
+<p>Valid Procedure Types:</p>
+</li>
+</ul>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Consultation</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Preventive</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Filling</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Crown Gum</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Extraction</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Replacement</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Braces</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Aesthetic</p></td>
+</tr>
+</tbody>
+</table>
+<div class="ulist">
+<ul>
+<li>
+<p>Description allows our users to describe the dental session, and is also user defined.</p>
+</li>
+<li>
+<p>The stored records are sorted from newest to oldest.</p>
 </li>
 <li>
 <p>New dental records will appear on the top of the list upon entry.</p>
@@ -337,7 +465,57 @@ The <code>back</code> command will work with parameters, but they will be ignore
 <p><code><a href="#goto">goto</a> 1</code> - Displays dental records of the first patient in the list and hides the patient list.</p>
 </li>
 <li>
-<p><code>recordadd desc/Mouth was noticeably smelly, might have halitosis</code> - Adds a new dental record.</p>
+<p><code>recordadd pro/Other-Checkup desc/Mouth was noticeably smelly, might have halitosis</code> - Adds a new dental record.</p>
+</li>
+<li>
+<p><code><a href="#back">back</a></code> - Go back to the patient list.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="record-delete"><a class="link" href="#record-delete">Record Delete</a></h4>
+<div class="paragraph">
+<p>This command deletes a dental record of a specified patient.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<code>recorddelete</code> requires the application to first be in records mode, via the <code>goto</code> command.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Format: <code>recorddelete INDEX</code> or <code>rdelete INDEX</code></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Deletes the patient’s dental record at the specified index.</p>
+</li>
+<li>
+<p>The index refers to the index number shown in the displayed dental record list.</p>
+</li>
+<li>
+<p>The given index must be a positive integer (e.g 1, 2 or 3…)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code><a href="#goto">goto</a> 1</code> - Displays dental records of the first patient in the list and hides the patient list.</p>
+</li>
+<li>
+<p><code>recorddelete 1</code> - patientdelete the latest dental record of the specified patient</p>
 </li>
 <li>
 <p><code><a href="#back">back</a></code> - Go back to the patient list.</p>
@@ -398,6 +576,30 @@ The <code>back</code> command will work with parameters, but they will be ignore
 </ul>
 </div>
 </div>
+<div class="sect3">
+<h4 id="record-clear"><a class="link" href="#record-clear">Record Clear</a></h4>
+<div class="paragraph">
+<p>Clears all of a patient&#8217;s dental records.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>recordclear</code> or <code>rclear</code></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<code>recordclear</code> requires the application to first be in records mode, via the <code>goto</code> command.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="teeth-management"><a class="link" href="#teeth-management">Teeth Management</a></h3>
 <div class="sect3">
 <h4 id="teeth-create"><a class="link" href="#teeth-create">Teeth Create</a></h4>
 <div class="paragraph">
@@ -663,7 +865,7 @@ If the <code>back</code> command is entered while the window is already showing 
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="../images/GotoActivityDiagram.png" alt="GotoActivityDiagram" width="400">
+<img src="../images/GotoActivityDiagram.png" alt="GotoActivityDiagram" width="">
 </div>
 </div>
 </div>
@@ -709,7 +911,7 @@ The <code>teethedit</code> command can only run after a patient is specified via
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="../images/TeethClassDiagram.png" alt="TeethClassDiagram" width="200">
+<img src="../images/TeethClassDiagram.png" alt="TeethClassDiagram" width="">
 </div>
 </div>
 </div>
@@ -835,40 +1037,6 @@ However, <code>Tooth</code> and <code>Teeth</code> objects, as well as their rel
 </ul>
 </div>
 </div>
-<div class="sect4">
-<h5 id="aspect-implementing-the-dentist-class"><a class="link" href="#aspect-implementing-the-dentist-class">Aspect: Implementing the Dentist class</a></h5>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Current implementation:</strong> Use a patient variable to store the patient specified by the command.</p>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Alternative:</strong> Create a new immutable patient variable to store the specified patient.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Alternative Pros: Ensures the the specified patient cannot be edited by other classes or methods.</p>
-</li>
-<li>
-<p>Alternative Cons: Major changes to the patient class would require the immutable patient class to be changed too.
-Furthermore, every time any record of the specified patient is modified, a new immutable patient needs to be created to update the currently stored immutable patient.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>Choice Justification:</strong> An intuitive solution, as the specified patient is stored as an exact same class as a patient.
-Additionally, attributes of the specified patient can be accessed just like any other patient class.
-Changes to the patient class does not significantly affect the goto command.
-However, the patient class is mutable, and accidental changes to its attributes by other classes or methods can occur.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</div>
 </div>
 </div>
 <div class="sect2">
@@ -917,15 +1085,5 @@ Expected: No GUI elements changed. Error details shown in the status message. St
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="user-stories"><a class="link" href="#user-stories">User Stories</a></h3>
-<div class="ulist">
-<ul>
-<li>
-<p>I have contributed numerous user stories on the Developer Guide, which are related to patients, dental records and teeth.</p>
-</li>
-</ul>
 </div>
-</div>
-</div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-15 09:32:51 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-15 09:59:18 UTC</div></div></div></body></html>
